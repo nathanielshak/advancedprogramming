@@ -1,5 +1,7 @@
 # Next Level Programming
 
+Creator: Nathaniel Shak
+
 Welcome to StreetCode's Next Level Programming Class! In this class we will go from knowing the basics of coding and having a couple of projects under our belt to learning some of the core concepts to really take your coding skills to the next level (hence, the name). This class will be taught using **Python**, specifically Python 3. The skills you learn in this class will be especially useful for anyone who wishes to pursue Computer Science more seriously in college or in any academic setting, people aiming to get into the tech industry one day as a software engineer, or people who just love coding and want to build some cool projects :)  
 
 ## Prerequisites for taking this classAs one of our more advanced course offerings, it’s important to make sure you’re ready before diving into the material. If this isn’t you yet, don’t worry! This doesn’t mean you’re not smart enough to take this class – it just means it would probably be best for you to take a step back and spend some time mastering these things before attempting this material.
@@ -63,5 +65,4 @@ Students should leave this class with:
 * The tools to succeed in technical interviews and beginner-level software internships.
 * The ability to fly.
 
-Anyways, I'm looking forward to getting started! Let's get to it!   
--Nathaniel Shak
+Anyways, let's get started!
