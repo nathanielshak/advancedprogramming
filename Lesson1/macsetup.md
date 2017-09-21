@@ -6,9 +6,9 @@
 
 *What is that?!*  
 
-Yes I know, it looks scary. I remember I felt a mixture of extreme fear and the feeling that I was doing some hardcore hacking of a government system or something the first time I used the terminal. I'll explain more about what this is later. In the meantime, see what happens if you hit "command-i" and mess around if you want to feel even more like a hacker.
+Yes I know, it looks scary. I remember feeling a mixture of extreme fear and the feeling that I was doing some hardcore hacking of a government system or something the first time I used the terminal. I'll explain more about what this is later. In the meantime, see what happens if you hit "command-i" and mess around if you want to feel even more like a hacker.
 
-* **Check your Python version**. Okay, I know the terminal looks really scary, but bear with me. Type the following into the terminal:  
+* **Check your Python version**. Okay, I know the terminal looks really scary, but you can do it! By the end of this class, you and the terminal will be good friends. Type the following into the terminal:  
 
         python --version
         
@@ -28,7 +28,7 @@ This is unlikely, but if, by chance, you see something like this:
 
 	Python 3.x.xx
 	
-That means you have Python 3 set up instead of 2, in which case you should either talk to a mentor to change it to 2 (which will be a bit more complicated) or just go on with it. There are some minor syntactical differences between 2 and 3 (mostly the "print" statements), but as a beginner, you honestly might not notice too many differences.  
+That means you have Python 3 set up instead of 2, in which case you should either talk to a mentor to change it to 2 (which will be a bit more complicated) or just go on with it. There are some minor syntactical differences between 2 and 3 (mostly the "print" statements), but most of the changes won't be super noticeable.  
 
 *Okay, let's continue*.
 
@@ -63,7 +63,7 @@ Click through the next couple dialogue boxes and install the software.
 
 *Okay, we're almost there*.
 
-* **Install Python**. More typing things we don't understand into the terminal. Yaaay. You know the drill.  
+* **Install Python**. More typing things we don't understand into the terminal. Yaaay. You know the drill. Put this in the terminal and hit "enter":  
 
 		brew install python
 		
@@ -75,4 +75,4 @@ in the terminal and pressing "enter". If the following shows up:
 
 	Python 2.x.xx
 	
-You're good! Go ahead and [continue with the lesson](README.md). If not, go ahead and check with a mentor.
+You're good! Go ahead and [continue with the lesson](README.md). If not, check with a mentor.
