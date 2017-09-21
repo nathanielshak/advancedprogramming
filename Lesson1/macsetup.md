@@ -1,4 +1,4 @@
-# Setting up Python 3 on Mac
+# Setting up Python 2 on Mac
 
 * **Open the terminal**. You should be able to find it by just pressing "command-space" and typing in "terminal". One you have it open, it should look something like this:
 
