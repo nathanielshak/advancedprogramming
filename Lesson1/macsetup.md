@@ -1,4 +1,4 @@
-#Setting up Python 3 on Mac
+# Setting up Python 3 on Mac
 
 * **Open the terminal**. You should be able to find it by just pressing "command-space" and typing in "terminal". One you have it open, it should look something like this:
 
@@ -75,4 +75,4 @@ in the terminal and pressing "enter". If the following shows up:
 
 	Python 2.x.xx
 	
-You're good! If not, go ahead and check with a mentor.
+You're good! Go ahead and [continue with the lesson](README.md). If not, go ahead and check with a mentor.
