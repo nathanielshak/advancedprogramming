@@ -1,5 +1,7 @@
 # Setting up Python 2 on Mac
 
+This tutorial is honestly just going to be a bunch following instructions. In the process of this, you will get introduced to **the terminal**, a mysterious and scary being that every young coder will one day encounter. As you go through this tutorial, *don't be afraid to mess around with things for the heck of it*. If you're curious about something that I didn't explain well, **Google it**! As you will soon learn, a large portion of coding is learned through Googling and messing with things. *Anyways, let's get started!*
+
 * **Open the terminal**. You should be able to find it by just pressing "command-space" and typing in "terminal". One you have it open, it should look something like this:
 
 ![terminal](Terminal.png)

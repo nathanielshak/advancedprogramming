@@ -4,7 +4,7 @@
 
 * Have Python set up on your computer and be able to run Python files
 * Be familiar with the terminal (and feel like a complete hacker when using it - trust me, you'll see)
-* Be familiar with Python and how it's different from other coding languages they may have used
+* Start to be familiar with Python and how it's different from other coding languages they may have used
 
 
 ## Getting set up with Python
