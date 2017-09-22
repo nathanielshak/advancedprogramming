@@ -14,7 +14,7 @@ Yes I know, it looks scary. I remember feeling a mixture of extreme fear and the
 TODO: do they have to install ruby first here?
 -->
 
-* **Install Homebrew**. You don't really need to know what this is, but if you're curious, it's software that helps us easily install and manage other software. This will actually be useful whether or not you need to install Python. Now for the fun part.
+* **Install Homebrew**. You don't really need to know what this is, but if you're curious, it's software that helps us easily install and manage other software. This will actually be useful whether or not you need to install Python. 
 
 Okay, I know the terminal looks really scary, but you can do it! By the end of this class, you and the terminal will be good friends. *Okay, ready to really feel like a real hacker?*
 
@@ -49,7 +49,7 @@ This is unlikely, but if, by chance, you see something like this:
 
 	Python 3.x.xx
 	
-That means you have Python 3 set up instead of 2, in which case you should either talk to a mentor to change it to 2 (which will be a bit more complicated) or just go on with it. There are some minor syntactical differences between 2 and 3 (mostly the "print" statements), but most of the changes won't be super noticeable.  
+That means you have Python 3 set up instead of 2, in which case you should either talk to a mentor to change it to 2 (which will be a bit more complicated) or just go on with it. There are some minor syntactical differences between 2 and 3 (mostly the "print" statements), but most of the differences won't be super noticeable.  
 
 *Okay, let's continue*.
 
@@ -73,7 +73,7 @@ Don't worry about it. Just continue. Otherwise, click through the next couple di
 
 		brew install python
 		
-Okay, after the terminal starts going crazy from that last command, you should be good. You can check to see if it all worked by typing:
+Okay, after the terminal finishes going crazy from that last command, you should be good. You can check to see if it all worked by typing:
 
 	python --version
 	

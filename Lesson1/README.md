@@ -41,7 +41,7 @@ It should look something like this after you hit "enter":
 
 Cool! You write the code, then below the code, you see the immediate output of that code. (If you're using Python 3, you will need parentheses around the words).
 
-Let's try some more. Here's a list of things to try. First, think to yourself what you expect will show up, then pop it in and see if you were right. If you were wrong, don't worry about it! Feel free to **#googleit** if you're curious. Also if the interpreter gives you an error on some of these, don't worry - that's meant to happen on some of them ;). If you want to get out of the interpreter and back to the regular terminal, just hit "ctrl-d" at any time. Also, once again, don't be afraid to mess around with it and try some stuff just for the heck of it.
+Let's try some more. Here's a list of things to try. First, think to yourself what you expect will show up, then pop it in and see if you were right. If you were wrong, don't worry about it! Feel free to **#googleit** if you're curious. For the sake of time, I won't be explaining every single one of these just yet. They're just for you to start to get familiar with Python. Also if the interpreter gives you an error on some of these, don't worry - that's meant to happen on some of them ;). If you want to get out of the interpreter and back to the regular terminal, just hit "ctrl-d" at any time. Also, once again, don't be afraid to mess around with it and try some stuff just for the heck of it.
 
 1. `1 + 2`
 2. `1 / 3`

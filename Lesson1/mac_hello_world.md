@@ -33,7 +33,9 @@ And if you open up Finder and look in that same folder that you're in in the ter
 
 Just to prove it to you, here's what that folder looks like for me in Finder:  
 
+
 <img src="finder.png" width=50%">  
+
 
 Now, to learn one of the most important terminal commands we'll be using. Go ahead and use this command:
 
