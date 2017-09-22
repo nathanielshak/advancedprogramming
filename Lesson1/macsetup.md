@@ -65,7 +65,7 @@ If it says something like:
 
 	xcode-select: error: command line tools are already installed, use "Software Update" to install updates
 	
-Just move on. Otherwise, click through the next couple dialogue boxes and install the software.
+Don't worry about it. Just continue. Otherwise, click through the next couple dialogue boxes and install the software.
 
 *Okay, we're almost there*.
 
