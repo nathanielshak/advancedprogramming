@@ -13,7 +13,7 @@ Welcome to StreetCode's Next Level Programming Class! In this class we will go f
 ### So, what should I know before starting this class?  
 
 * **Have a good understanding of control flow.**  
-This one is bolded since it's especially important. If you haven't heard the words, "**control flow**", before, don't worry! What people mean when they say this is understanding how things like **while loops**, **if and else statements**, and **for loops** work and how they fit together. You should be fairly familiar with all of these and should have used them many times yourself in whatever languages you've coded in in the past.  
+This one is bolded since it's especially important. If you haven't heard the words, "**control flow**", before, that's fine! What people mean when they say this is understanding how things like **while loops**, **if and else statements**, and **for loops** work and how they fit together. You should be fairly familiar with all of these and should have used them many times in whatever languages you've coded in in the past.  
 
 The rest of these are a bit more self explanatory, so I'll just list them out. You should know what all of these are and have used them in your code before:
 
@@ -31,7 +31,7 @@ You should be able to look at code like this and tell what it will print out.
 		else:
 			print(a) 
 
-Yes, it's fine if you haven't coded Python before (that's Python). I'm guessing there's enough similarities in that code for people who have learned the things I mentioned above to figure it out.
+Yes, it's fine if you haven't coded Python before (that's Python).
 
 Again, if you don't feel like you qualify to take this class based off these criteria, **don't worry**. Learning how to code, like all things, takes patience and time. There’s nothing wrong with taking the time to go back and make sure you've mastered these things before taking this class.  
 

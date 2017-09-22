@@ -1,6 +1,6 @@
 # Setting up Python 2 on Mac
 
-This tutorial is honestly just going to be a bunch following instructions. In the process of this, you will get introduced to **the terminal**, a mysterious and scary being that every young coder will one day encounter. As you go through this tutorial, *don't be afraid to mess around with things for the heck of it*. If you're curious about something that I didn't explain well, **Google it**! As you will soon learn, a large portion of coding is learned through Googling and messing with things. *Anyways, let's get started!*
+This tutorial is honestly just going to be a bunch following instructions. In the process of this, you will get introduced to **the terminal**, a mysterious and scary being that every young coder will one day encounter. As you go through this tutorial, *don't be afraid to stop and mess around with things for the heck of it*. If you're curious about something that I didn't explain well, **Google it**! As you will soon learn, a large portion of coding is learned through Googling and messing with things. *Anyways, let's get started!*
 
 * **Open the terminal**. You should be able to find it by just pressing "command-space" and typing in "terminal". One you have it open, it should look something like this:
 
@@ -14,7 +14,7 @@ Yes I know, it looks scary. I remember feeling a mixture of extreme fear and the
 TODO: do they have to install ruby first here?
 -->
 
-* **Install Homebrew**. You don't really need to know what this is, but if you're curious, it's software that helps us easily install and manage other software. This will actually be useful whether or not you need to install Python. 
+* **Install Homebrew**. Alright, ready for some fun? You don't really need to know what Homebrew is, but if you're curious, it's software that helps us easily install and manage other software. This will actually be useful whether or not you need to install Python. 
 
 Okay, I know the terminal looks really scary, but you can do it! By the end of this class, you and the terminal will be good friends. *Okay, ready to really feel like a real hacker?*
 

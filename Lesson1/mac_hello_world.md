@@ -3,7 +3,8 @@
 Okay! You made it this far! Now, we get to write our first program in Python. Before we do that though, we need to get a bit more acquainted with our scary but useful friend, the terminal.
 
 <img src="hacking.gif" width=50%>  
-(This actually isn't at all what working with the terminal looks like. It's just what I felt like I was doing the first time I used it.)
+
+> (This actually isn't at all what working with the terminal looks like. It's just what I felt like I was doing the first time I used it.)
 
 ## So, what is the terminal?
 
@@ -13,7 +14,7 @@ Here is the dictionary definition of the terminal, according to dictionary.com:
 
 > Any device for entering information into a computer or receiving information from it.  
  
-That's a bit vague, but essentially all it is. It's a way of us interacting with the computer in a different way than clicking and scrolling through windows. In some ways, it's more limited and difficult to use, but in other ways, as you'll learn throughout this class, it makes things a lot easier, especially things involving programming.  
+That's a bit vague, but essentially all it is. It's a way of us interacting with the computer in a different way than clicking and scrolling through windows. In some ways, it's more limited and difficult to use, but in other ways, as you'll learn throughout this class, it makes things a lot easier and gives us much more capabilities, especially around things involving programming.  
 
 So let's go ahead and learn some of the basics.  
 
@@ -29,7 +30,7 @@ You should see something that looks like this:
 
 	/Users/nshak
 
-And if you open up Finder and look in that same folder that you're in in the terminal, you should see matching folders and files to what was printed out by `ls`.  
+And if you open up Finder and look in that same folder that you're in in the terminal, you should see matching folders and files to what was printed out by `ls`. The terminal is actually a lot like a text version of the Finder in many ways if that makes it easier to think about.  
 
 Just to prove it to you, here's what that folder looks like for me in Finder:  
 
@@ -75,7 +76,7 @@ Now, we're going to need to install a program called Sublime Text 2 if you don't
 
 	which subl
 	
-If nothing shows up, we need to [install it](installsublmac.md). If it's already installed, you should see something like:
+`which` is a command that checks where certain programs are stored on your computer. If nothing shows up, follow [these instructions](installsublmac.md) to install it. If it's already installed, you should see something like:
 
 	/usr/local/bin/subl
 	
@@ -83,7 +84,7 @@ Next, we're going to create our Python file. Use the following command to do so:
 
 	subl helloworld.py
 	
-This should open an empty Sublime Text 2 window. We also need the `.py` to tell it that it's a python file. If you haven't used Sublime Text before, it's a text editor for your code. Think Microsoft Word, but for code. You'll come to appreciate it soon.
+This should open an empty Sublime Text 2 window. We need the `.py` to tell it that it's a python file. If you haven't used Sublime Text before, it's a text editor for your code. Think Microsoft Word, but for code. You'll come to appreciate it in all it's awesomeness soon as we go further through the class.
 
 Alright, ready for our first Python program?
 
@@ -103,8 +104,12 @@ Go back to the terminal and run the following command:
 
 	python helloworld.py
 	
+>Tip: try pressing tab after you've typed a couple characters of "helloworld.py".
+	
 This is how we run Python files. You should see the following:
 
 <img src="helloworldoutput.png" width=70%>
 
-Congrats, you just wrote your first program! That's all for this lesson!
+Which means you ran your program, and you're seeing the output of that program. Congrats, you just wrote your first program! That's all for this lesson!
+
+[Click here to move on to Lesson 2](../Lesson2)
