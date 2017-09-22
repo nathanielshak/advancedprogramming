@@ -10,7 +10,26 @@ This tutorial is honestly just going to be a bunch following instructions. In th
 
 Yes I know, it looks scary. I remember feeling a mixture of extreme fear and the feeling that I was doing some hardcore hacking of a government system or something the first time I used the terminal. I'll explain more about what this is later. In the meantime, see what happens if you hit "command-i" and mess around if you want to feel even more like a hacker.
 
-* **Check your Python version**. Okay, I know the terminal looks really scary, but you can do it! By the end of this class, you and the terminal will be good friends. Type the following into the terminal:  
+<!--
+TODO: do they have to install ruby first here?
+-->
+
+* **Install Homebrew**. You don't really need to know what this is, but if you're curious, it's software that helps us easily install and manage other software. This will actually be useful whether or not you need to install Python. Now for the fun part.
+
+Okay, I know the terminal looks really scary, but you can do it! By the end of this class, you and the terminal will be good friends. *Okay, ready to really feel like a real hacker?*
+
+Go ahead and copy/paste the following into the terminal:
+
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+then press "enter".  
+
+*Whoaaa, that looks crazy right?*  
+
+Go ahead and wait for the terminal to stop spitting out random text, then we can continue to the next step.
+
+* **Check your Python version**. Type the following into the terminal: 
 
         python --version
         
@@ -33,25 +52,6 @@ This is unlikely, but if, by chance, you see something like this:
 That means you have Python 3 set up instead of 2, in which case you should either talk to a mentor to change it to 2 (which will be a bit more complicated) or just go on with it. There are some minor syntactical differences between 2 and 3 (mostly the "print" statements), but most of the changes won't be super noticeable.  
 
 *Okay, let's continue*.
-
-<!--
-TODO: do they have to install ruby first here?
--->
-
-* **Install Homebrew**. You don't really need to know what this is, but if you're curious, it's software that helps us easily install and manage other software.  
-
-*Okay, ready to really feel like a real hacker?*
-
-Go ahead and copy/paste the following into the terminal:
-
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-
-then press "enter".  
-
-*Whoaaa, that looks crazy right?*  
-
-Go ahead and wait for the terminal to stop spitting out random text, then we can continue to the next step.
 
 * **Install Xcode Command Line Tools**. You don't need to know what this is. Pretty much, we need it for Python to work.  
 
