@@ -61,7 +61,11 @@ You know the drill now, just paste this into the terminal:
 	
 and hit "enter" again.
 
-Click through the next couple dialogue boxes and install the software.
+If it says something like:
+
+	xcode-select: error: command line tools are already installed, use "Software Update" to install updates
+	
+Just move on. Otherwise, click through the next couple dialogue boxes and install the software.
 
 *Okay, we're almost there*.
 
