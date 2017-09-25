@@ -41,14 +41,13 @@ It should look something like this after you hit "enter":
 
 Cool! You write the code, then below the code, you see the immediate output of that code. (If you're using Python 3, you will need parentheses around the words).
 
-Let's try some more. Here's a list of things to try. First, think to yourself what you expect will show up, then pop it in and see if you were right. If you were wrong, don't worry about it! Feel free to **#googleit** if you're curious. For the sake of time, I won't be explaining every single one of these just yet. They're just for you to start to get familiar with Python. Also if the interpreter gives you an error on some of these, don't worry - that's meant to happen on some of them ;). If you want to get out of the interpreter and back to the regular terminal, just hit "ctrl-d" at any time. Also, once again, don't be afraid to mess around with it and try some stuff just for the heck of it.
+Let's try some more. Here's a list of things to try. First, think to yourself what you expect will show up, then type it into the interpreter and hit "enter" to see if you were right. If you were wrong, don't worry about it! Feel free to **#googleit** if you're curious why it happened the way it did. For the sake of time, I won't be explaining these just yet. They're just for you to start to get familiar with Python. Also if the interpreter gives you an error on some of these, don't worry - that's meant to happen on some of them ;). If you want to get out of the interpreter and back to the regular terminal, just hit "ctrl-d" at any time. Also, once again, don't be afraid to mess around with it and try some stuff just for the heck of it.
 
 1. `1 + 2`
 2. `1 / 3`
 3. `1.0 / 3`
 4. `2*3`
 4. `2**3`
-5. `float("inf")`
 6. `float(1)`
 7. `1 == float(1)`
 8. `1 is float(1)`
@@ -70,4 +69,4 @@ Once you're done with that, go ahead and hit "ctrl-d" to exit the interpreter.
 
 Okay, next we're going to write our first official Python program and run it. This will look a bit different for windows and mac users, so click [here](mac_hello_world.md) if you're using a Mac computer and [here](windows_hello_world.md) if you're using a Windows computer.
 
-After that, you're done with lesson 1!
+After that, you're done with lesson 1! On to [Lesson 2!](../Lesson2)
