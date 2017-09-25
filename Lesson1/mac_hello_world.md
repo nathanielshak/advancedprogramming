@@ -14,7 +14,7 @@ Here is the dictionary definition of the terminal, according to dictionary.com:
 
 > Any device for entering information into a computer or receiving information from it.  
  
-That's a bit vague, but essentially all it is. It's a way of us interacting with the computer in a different way than clicking and scrolling through windows. In some ways, it's more limited and difficult to use, but in other ways, as you'll learn throughout this class, it makes things a lot easier and gives us much more capabilities, especially around things involving programming.  
+That's a bit vague, but essentially all it is. It's a way of us interacting with the computer in a different way than clicking and scrolling through windows. In some ways, it's more limited and difficult to use, but in other ways, as you'll learn throughout this class, it makes things a lot easier and gives us much more capabilities, especially for things involving programming.  
 
 So let's go ahead and learn some of the basics.  
 
@@ -26,7 +26,7 @@ You should see something that looks like this:
 
 *What just happened?*
 
-`ls` stands for "list", and what you just did is list all the files of the directory you're currently in. That's another thing about the terminal. You always have a directory that you're in at any given point. To figure out what that is, you can use the command, `pwd`. This stands for "print work directory". After doing this, you should see similar to:
+`ls` stands for "list", and what you just did is list all the files of the directory you're currently in. That's another thing about the terminal. You always have a directory that you're in at any given point. To figure out what directory that is, you can type the command, `pwd` into the terminal. This stands for "print work directory". After doing this, you should see similar to:
 
 	/Users/nshak
 
@@ -38,11 +38,11 @@ Just to prove it to you, here's what that folder looks like for me in Finder:
 <img src="finder.png" width=50%>  
 
 
-Now, to learn one of the most important terminal commands we'll be using. Go ahead and use this command:
+Now, to learn one of the most important terminal commands we'll be using. Go type this command into the terminal:
 
 	cd Documents
 	
-Now, type `ls`. Notice anything different? That's because we just entered the "Documents" folder. If you want to confirm that, go ahead and try the `pwd` command to confirm that. If you didn't already guess it, `cd` stands for "change directory". Should be pretty easy to remember, right?  
+Now, type `ls` into the terminal. Notice anything different? That's because we just entered the "Documents" folder. If you want to confirm that, go ahead and try the `pwd` command to confirm that. If you didn't already guess it, `cd` stands for "change directory". Should be pretty easy to remember, right?  
 
 Another thing, if you ever want to go up a level in folders (out of the directory you're currently in), use this command:
 
@@ -76,7 +76,7 @@ Now, we're going to need to install a program called Sublime Text 2 if you don't
 
 	which subl
 	
-`which` is a command that checks where certain programs are stored on your computer. If nothing shows up, follow [these instructions](installsublmac.md) to install it. If it's already installed, you should see something like:
+`which` is a command that checks where certain programs are stored on your computer. If nothing shows up, it means it isn't installed yet. Follow [these instructions](installsublmac.md) to install it. If it's already installed, you should see something like:
 
 	/usr/local/bin/subl
 	

@@ -6,4 +6,4 @@ Next, we need to run the following command in the terminal:
 
 	brew install caskroom/versions/sublime-text2
 	
-And that should be it!
+And that should be it! [Head back to the lesson.](mac_hello_world.md)
