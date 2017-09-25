@@ -4,7 +4,7 @@ Okay! You made it this far! Now, we get to write our first program in Python. Be
 
 <img src="hacking.gif" width=50%>  
 
-> (This actually isn't at all what working with the terminal looks like. It's just what I felt like I was doing the first time I used it.)
+> (This actually isn't at all what working with the terminal looks like. It's just what it feels like the first couple times you use it.)
 
 ## So, what is the terminal?
 
