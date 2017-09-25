@@ -27,9 +27,9 @@ You should be able to look at code like this and tell what it will print out.
 	while a < 20:
 		a = a + 2
 		if a == 12:
-			print("I'm skipping this number because I don't like it.")
+			print "I'm skipping this number because I don't like it."
 		else:
-			print(a) 
+			print a
 
 Yes, it's fine if you haven't coded Python before (that's Python).
 
