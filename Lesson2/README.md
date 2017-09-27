@@ -31,11 +31,11 @@ If you've coded in most other languages besides python, this line probably looks
 
 	a = 0
 	
-No, this isn't the middle of the program where `a` has already been defined earlier. This is actually just how you define variables in Python. Shouldn't it look something like this?:
+No, this isn't the middle of the program where `a` has already been defined earlier. This is actually just how you define variables in Python. You might be thinking: "shouldn't it look something like this?":
 
 	int a = 0
 	
-You might ask. Well, yes, if we're using Java or most other languages, but Python is what people call **dynamically typed**. Pretty much, this means that Python is able to figure out what type of variable each variable is you ever having to say so in the code. In fact, if I wanted to, I could even do something like this:
+Well, yes, if we're using Java or most other languages, but Python is what people call **dynamically typed**. Pretty much, this means that Python is able to figure out what type of variable each variable is without you ever having to say so in the code. In fact, if I wanted to, I could even do something like this:
 
 	a = 0
 	a = "yolo swag"
@@ -49,7 +49,7 @@ You might ask. Well, yes, if we're using Java or most other languages, but Pytho
  
 #### Conditionals
 
-Looking at these lines of code:
+Looking at these parts of the code:
 
 	while a < 20:
 	...
@@ -118,4 +118,148 @@ When you run the code, you'll see that, like the Java code above, it will print 
 
 ### Readability
 
-One of the biggest differences in Python compared to other languages is its *readability* - pretty much, it looks more similar to English than any other coding language out there. Even looking at the above code for the for a Python for loop versus a Java one, you can tell that someone who has never coded before would be much more likely to understand the Python one. That was very intentional and a big reason why Python is growing so much. It's also a big reason why we're using it in this class.
+One of the biggest differences in Python compared to other languages is its *readability* - pretty much, it looks more similar to English than any other coding language out there. Even looking at the above code for the for a Python for loop versus the Java one, you can tell that someone who has never coded before would be much more likely to understand the Python one. That was very intentional and a big reason why Python is growing so much. It's also a big reason why we're using it in this class.
+
+## Let's get started with some coding
+
+Okay, for the part that many of you have been waiting for. Let's get into some coding. Remember what we did last lesson when we created a Python file? We're going to do that again now and write our code there. 
+
+Go ahead and open up the terminal again and navigate to a folder where you want to write some code using `cd`. Once you're in a folder where you'd like to write some code, type `subl lesson2ex1.py` in the terminal. This will open up Sublime Text and create a file called "lesson2ex1.py" for you to write your code in.
+
+> Remember, the way to use cd is to type: `cd foldername` where foldername is the folder you'd like to change into. You can use `cd ..` to go out of the folder you're currently in. 
+
+### Tic Tac Toe
+
+Now, we're going to try our first exercise.  
+
+In your lesson2ex1.py file, write code to print out a Tic Tac Toe board that looks like this:
+
+	  |  |
+	--------
+	  |  |
+	--------
+	  |  |  
+
+> **Hint**: to print things in Python, use the `print` function.  
+> ex: `print "yolo"`
+ 
+Once you're ready to test your code, we're going to go ahead and run our tictactoe.py program the same way we ran our tictactoe.py program in the last lesson.  
+
+Just to review, go to the terminal and make sure you're in the same directory that tictactoe.py is in.
+
+> **Reminder**: use `ls` to list the files in your current directory and `
+ 
+Make sure you saved your sublime text file ("command-s"). Then type the following command:
+
+	python tictactoe.py
+	
+You should see the output of our code (or potentially an error). Go ahead and repeat this process until you've got it.
+
+### I'm Awesome x 100
+
+Once you're done with that, we can move on to the next exercise. Create another file called imawesome.py using the same steps we used in the above exercise, then do the following:
+
+Write a program that prints out "\*your name\* is awesome!" 100 times. Then run it the same way we ran the last program (remember to save first!) Here's an example of what my program looked like when I ran it:
+
+![I'm awesome](imawesome.png)
+
+> **Hint**: Try using a for loop. (Look at the code earlier in this lesson for a good example.)  
+> **Challenge**: If you used a for loop, try doing this again with a while loop.
+
+### Even Odd
+
+Great job! You know the drill now - make a new file (you can call it whatever you want) and try the next problem:
+
+Write a program that prints out the numbers 0 through 30 followed by whether that number is even or odd. Here's what the output should look like:
+
+	0
+	even
+	1
+	odd
+	2
+	even
+
+	...
+
+	28
+	even
+	29
+	odd
+	30
+	even
+	
+	
+> **Hints:**
+> For loops will be useful again here.  
+> **Your code should not involve over 5 lines of print statements**.  
+> If you're thinking about how you could figure out if a number is even or odd, try the mod operator (%). This operator gives the remainder of one number divided by another. EX: 6 % 2 = 0, 7 % 2 = 1.  
+
+### Even Odd Part 2
+
+This next one is very similar to the last exercise, but a bit different. 
+
+This time, we will print from 0-66 but have the number increase by 3 each time instead of 1. I know there's ways to do this with a for loop, but for the sake of this exercise, try it with a while loop. Here's an example of what your output should look like:
+
+	0
+	even
+	3
+	odd
+	6
+	even
+	
+	...
+	
+	60
+	even
+	63
+	odd
+	66
+	even
+
+> **Hint:** Looking at the code sample I gave in the very beggining of the lesson might be helpful here.
+ 
+
+### Fizzbuzz
+
+In the next exercise, we're going to do the following:  
+
+Write a program that prints the numbers 0 to 100. However, on the numbers that are divisible by 3, print "fizz" instead. On numbers that are divisible by 5, print "buzz" instead. on numbers that are divisible by 3 **and** 5 print "fizzbuzz". Here's what your output should look like:
+
+	fizzbuzz
+	1
+	2
+	fizz
+	4
+	buzz
+	fizz
+	7
+	8
+	fizz
+	buzz
+	11
+	fizz
+	
+	...
+	
+	88
+	89
+	fizzbuzz
+	91
+	92
+	fizz
+	94
+	buzz
+	fizz
+	97
+	98
+	fizz
+	buzz
+	
+**Hint:** Think about how "if, else if, and else" statements might be useful here. Below is an example of what these statements look like in Python. In Python "elif" is used instead of "else if".
+
+	if num == 3:
+		print "eww it's a 3"
+	elif num == 42:
+		print "YES! it's my favorite number! 42 for the win!!!"
+	else:
+		print "meh, this number is okay."
