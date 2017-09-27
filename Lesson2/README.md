@@ -147,7 +147,7 @@ Once you're ready to test your code, we're going to go ahead and run our tictact
 
 Just to review, go to the terminal and make sure you're in the same directory that tictactoe.py is in.
 
-> **Reminder**: use `ls` to list the files in your current directory and `
+> **Reminder**: use `ls` to list the files in your current directory and `pwd` to list the current directory you're in.
  
 Make sure you saved your sublime text file ("command-s"). Then type the following command:
 
