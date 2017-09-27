@@ -19,7 +19,7 @@ Before we start doing any coding, I want you to look at the following block of P
 		else:
 			print a
 
-You might have seen this code already if you were reading the course requirements of this class, but let's take a closer look at it. Now, if you've programmed a decent amount before, you should be able to have a rough idea of what the code is doing and what it will print out. Feel free to paste all this code into the helloworld.py file from the last lesson and run the file again in the terminal (using `python helloworld.py`) to see for sure what prints from it.  
+You might have seen this code already if you were reading the course requirements of this class, but let's take a closer look at it. Now, even if you haven't coded in Python before, you might still be able to tell roughly what the code is doing and what it will print out. Feel free to paste all this code into the helloworld.py file from the last lesson and run the file again in the terminal (using `python helloworld.py`) to see for sure what prints from it.  
 
 Now, even though you might have been able to tell what was going to print out, you might have also noticed that there are some weird differences between this code and other languages you may have used in the past. 
 
@@ -114,7 +114,7 @@ Now this looks a fair bit different from for loops in most other languages. Here
 		System.out.println(i);
 	}
 	
-When you run the code, you'll see that, like the Java code above, it will print the numbers 0-9. This is because the `range(10)` function defines that the for loop will go up to **but not including** the number 10, running pretty much the same way a regular for loop runs.
+When you run the code, you'll see that, like the Java code above, it will print the numbers 0-9. This is because the `range(10)` function defines that the for loop will go up to **but not including** the number in the parentheses, 10, running pretty much the same way a regular for loop runs.
 
 ### Readability
 
@@ -124,7 +124,7 @@ One of the biggest differences in Python compared to other languages is its *rea
 
 Okay, for the part that many of you have been waiting for. Let's get into some coding. Remember what we did last lesson when we created a Python file? We're going to do that again now and write our code there. 
 
-Go ahead and open up the terminal again and navigate to a folder where you want to write some code using `cd`. Once you're in a folder where you'd like to write some code, type `subl lesson2ex1.py` in the terminal. This will open up Sublime Text and create a file called "lesson2ex1.py" for you to write your code in.
+Just to remind you if you forgot how: go ahead and open up the terminal again and navigate to a folder where you want to write some code using `cd`. Once you're in a folder where you'd like to write some code, type `subl lesson2ex1.py` in the terminal. This will open up Sublime Text and create a file called "lesson2ex1.py" for you to write your code in.
 
 > Remember, the way to use cd is to type: `cd foldername` where foldername is the folder you'd like to change into. You can use `cd ..` to go out of the folder you're currently in. 
 
@@ -153,7 +153,7 @@ Make sure you saved your sublime text file ("command-s"). Then type the followin
 
 	python tictactoe.py
 	
-You should see the output of our code (or potentially an error). Go ahead and repeat this process until you've got it.
+You should see the output of our code (or potentially an error). If it didn't work exactly how you wanted, go ahead and repeat this process until you've got it.
 
 ### I'm Awesome x 100
 
@@ -198,7 +198,7 @@ Write a program that prints out the numbers 0 through 30 followed by whether tha
 
 This next one is very similar to the last exercise, but a bit different. 
 
-This time, we will print from 0-66 but have the number increase by 3 each time instead of 1. I know there's ways to do this with a for loop, but for the sake of this exercise, try it with a while loop. Here's an example of what your output should look like:
+This time, we will print numbers from 0-66 followed by if the number is even or odd but have the number increase by 3 each time instead of 1. I know there's ways to do this with a for loop, but for the sake of this exercise, try it with a while loop. Here's an example of what your output should look like:
 
 	0
 	even
@@ -221,7 +221,7 @@ This time, we will print from 0-66 but have the number increase by 3 each time i
 
 ### Fizzbuzz
 
-In the next exercise, we're going to do the following:  
+Okay, this next one might be a bit tricky. Here's what we're going to do:  
 
 Write a program that prints the numbers 0 to 100. However, on the numbers that are divisible by 3, print "fizz" instead. On numbers that are divisible by 5, print "buzz" instead. on numbers that are divisible by 3 **and** 5 print "fizzbuzz". Here's what your output should look like:
 
@@ -263,3 +263,81 @@ Write a program that prints the numbers 0 to 100. However, on the numbers that a
 		print "YES! it's my favorite number! 42 for the win!!!"
 	else:
 		print "meh, this number is okay."
+		
+> Assume the variable, `num` has been defined earlier in the program.
+ 
+## Functions
+
+Cool, we're almost done. There's one last concept for us to get through in this lesson, and that's functions. I'm going to assume that if you're doing this lesson, you've already worked with functions, parameters, and return types in the past so I'll skip the explanation of what they are.
+
+> If you do need an explanation/review of what functions and parameters are, go [here](https://www.learnpython.org/en/Functions).
+ 
+Here's an example of what a function with parameters looks like in Python:
+
+	def count_up(num):
+		for i in range(num):
+			print i
+		print "all done!"
+		
+> Notice that
+
+Once I define the function like this, I can **call** this function using the following code:
+
+	count_up(5)
+	
+which would have the following output:
+
+	0
+	1
+	2
+	3
+	4
+	all done!
+	
+Notice that I didn't have to define a return type in the function. In Python, it automatically figure it out for me. I could also write a function like this:
+
+	def sum(a, b):
+		return a + b
+		
+> Yes, I know it would make much more sense, to just use addition. This is just an example.
+
+then call it like this:
+
+	mysum = sum(23, 54)
+	print mysum
+	
+and then the output would be:
+	
+	77
+	
+### Making Fizzbuzz a Function
+	
+Okay, last exercise. 
+
+Go back to the code you wrote for fizzbuzz. Change it so that you use that code in a function called "fizzbuzz" that takes in a parameter that can specify what number fizzbuzz will go up to. After writing this function, you should be able call the fizzbuzz function like this:
+
+	fizzbuzz(16)
+	
+and the output should look like this:
+
+	fizzbuzz
+	1
+	2
+	fizz
+	4
+	buzz
+	fizz
+	7
+	8
+	fizz
+	buzz
+	11
+	fizz
+	13
+	14
+	fizzbuzz
+	16
+	
+> **Hint**: Remeber range(n) will go up to, **but not including** the number n
+ 
+After you finish that, you're done with Lesson 2! Good job! 
