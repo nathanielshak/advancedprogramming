@@ -268,7 +268,7 @@ Write a program that prints the numbers 0 to 100. However, on the numbers that a
  
 ## Functions
 
-Cool, we're almost done. There's one last concept for us to get through in this lesson, and that's functions. I'm going to assume that if you're doing this lesson, you've already worked with functions, parameters, and return types in the past so I'll skip the explanation of what they are.
+Cool, we're almost done. There's one last concept for us to get through in this lesson, and that's functions. I'm going to assume that if you're doing this lesson, you've already worked with functions, parameters, and return types in the past in at least some other language so I'll skip the explanation of what they are.
 
 > If you do need an explanation/review of what functions and parameters are, go [here](https://www.learnpython.org/en/Functions).
  
@@ -279,8 +279,6 @@ Here's an example of what a function with parameters looks like in Python:
 			print i
 		print "all done!"
 		
-> Notice that
-
 Once I define the function like this, I can **call** this function using the following code:
 
 	count_up(5)
@@ -294,12 +292,12 @@ which would have the following output:
 	4
 	all done!
 	
-Notice that I didn't have to define a return type in the function. In Python, it automatically figure it out for me. I could also write a function like this:
+Notice that I didn't have to define a return type in the function. In Python, it automatically figures it out for you. I could also write a function like this:
 
 	def sum(a, b):
 		return a + b
 		
-> Yes, I know it would make much more sense, to just use addition. This is just an example.
+> Yes, I know it would make much more sense to just use addition. This is just an example.
 
 then call it like this:
 
@@ -337,6 +335,17 @@ and the output should look like this:
 	14
 	fizzbuzz
 	16
+	
+or like this:
+
+	fizzbuzz(3)
+	
+and the output would look like this:
+
+	fizzbuzz
+	1
+	2
+	fizz	
 	
 > **Hint**: Remeber range(n) will go up to, **but not including** the number n
  
