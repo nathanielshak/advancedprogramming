@@ -1,10 +1,14 @@
 # Lesson 1: Some Housekeeping and Getting Started with Python  
 
-**By the end of this lesson, students will**: 
+<!--
+TODO: add prior knowledge reqs
+-->
 
-* Have Python set up on your computer and be able to run Python files
-* Be familiar with the terminal (and feel like a complete hacker when using it - trust me, you'll see)
-* Start to be familiar with Python and how it's different from other coding languages they may have used
+**By completing this lesson, students will**: 
+
+* Get Python set up on your computer and be able to run Python files.
+* Become familiar with the terminal (and feel like a complete hacker when using it - trust me, you'll see).
+* Start to be familiar with Python and how it's different from other coding languages they may have used.
 
 
 ## Getting set up with Python

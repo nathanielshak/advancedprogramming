@@ -1,8 +1,13 @@
-# Lesson 2:
+# Lesson 2: Getting Familiar with Python
 
-**By the end of this lesson, students will**:
+<!--
+TODO: add prior knowledge reqs
+-->
 
-* Have an understanding of variables, functions, and control flow statements in Python and how they work in Python as opposed to other languages.
+**By completing this lesson, students will**:
+
+* Gain an understanding of variables, functions, and control flow statements in Python and how they work in Python as opposed to other languages.
+* Get practice using control flow to write programs that follow a logical flow in Python.
 * Be able to construct basic programs in Python and run them.
 
 Before I start this lesson, let me make sure you know that as I write this lesson, I'm assuming that you have already done a fair share of basic programming. This means that I may go through a couple of concepts fairly quickly without slowing down to explain them.  
