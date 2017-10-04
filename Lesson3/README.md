@@ -20,7 +20,7 @@ For this lesson, we'll be doing a decent amount of coding. To start, download th
 
 Before we get into the coding, let's introduce a datastructure in Python: Lists.
 
-> If you haven't heard the word datastructure before, it's pretty much a fancy word to describe some sort of computer representation we use in coding to store data and information.
+> If you haven't heard the word datastructure before, it's pretty much a fancy word to describe some sort of computer storage unit we use in coding to hold data and information.
 
 If you're familiar with arrays in other languages, the Python version of them is lists. Pretty much, they're a way of storing several pieces of data in order. If you need a bit of a review, think of arrays and lists as a cabinet with several shelves in order that each have a piece of data stored. We keep track of each "shelf" by labeling it with a number starting from 0 and intcreasing. The first "shelf" is numbered 0, then 1, then 2, etc.
 
@@ -38,7 +38,6 @@ In memory, the data would look something like this:
 Then we can access items in the list like this.
 
 	print items[0] # will print out "yay"
-	a = items[2] # a now equals "in"
 
 or change the values of the list around like this:
 
@@ -54,7 +53,7 @@ We can find how long the list is like this:
 
 	print len(items) # will print 5
 	
-We can iterate through all items in a list and print them like this:
+We can go through all items in a list in order and print them like this:
 
 	for item in items:
 		print item
@@ -104,7 +103,7 @@ Okay, that's a lot of information. Let's put some of it into practice with some 
 		
 #### List Print
 
-The first function: `list_print` is already filled out for you. This function goes through every item in a list passed as a parameter and prints them in order. You can use this as an example as you work on the rest of the problems.
+The first function: `list_print` is already filled out for you. This function goes through every item in a list passed as a parameter (in the `list` variable) and prints them in order. You can use this as an example as you work on the rest of the problems.
 
 The first function we're going to write our code in is `list_sum`. In this program, we will assume the parameter, `list` is a list of numbers, and we will want the function to compute the sum of all of them, then return that sum. 
 
@@ -118,15 +117,15 @@ The other function: `find_list_max` will take in a list of positive numbers, and
 
 Once you're done with that, go ahead and run exercises.py again to test your solution.
 
-##Dictionaries
+## Dictionaries
 
 One of the other most important datastructures in Python is called a dictionary (or "dict" for short). If you're familiar with Maps in other languages, such as Java, dictionaries in Python are very similar.
 
 Like lists, dictionaries are a datastructure that can hold several seperate pieces of data. The difference is that lists have these pieces of data ordered where we can say things like "I want the first element of this list" and have a clear answer. Dictionaries are different because they are unordered, and instead have what we call **keys**.
 
-Keys are a way of labeling each "data slot" of a dictionary so that we know what to associate the stored data with. If we're thinking of a list as a cabinet with several shelves in a row that are all ordered by number, think of a dictionary as a cabinet where we label each shelf with not necessarily a number, but a specific label that says something like "books" or "cleaning supplies".
+Keys are a way of labeling each "data slot" of a dictionary so that we know how to refer to and access each piece of data. If think of a list as a cabinet with several shelves in a row that are all ordered by number, think of a dictionary as a cabinet where we label each shelf with not necessarily a number, but a specific label that says something like "books" or "cleaning supplies".
 
-In Python, a key could be a lot of things that you would normally store in a variable: a string, a number, a boolean. However, it must be something *hashable*. You don't really need to know what that means - pretty much, usually only more simple datatypes will work: think numbers, booleans, and strings. On the other hand, the associated values contained in a dictionary could be any data type in Python - even another dictionary! Here's what initializing an empty dictionary looks like:
+In Python, a key could be a lot of things that you would normally store in a variable: a string, a number, a boolean. However, it must be something *hashable*. You don't really need to worry about what that means yet - pretty much, usually only more simple datatypes will work: think numbers, booleans, and strings - not bigger things like lists or other dictionaries. On the other hand, the **values** contained in a dictionary could be any data type in Python - even another dictionary! Here's what initializing an empty dictionary looks like:
 
 	empty_dict = {}
 	
@@ -140,7 +139,7 @@ The data in this dictionary would look something like this:
 |-----|-----|-------|----|
 |**Data**| "yes" | "idk" | "no" | 
 	
-You can access items in the dictionary like this:
+Then, you can access items in the dictionary like this:
 
 	print food["spam"]
 	
@@ -174,11 +173,34 @@ Anyways, that should be most of what you need to know on dictionaries. For more 
 
 ### Dictionaries Exercises
 
-Okay, back to coding. Take a look at the next couple functions in exercises.py. I've provided the function, `dict_print` as an example of how to iterate through a dictionary's keys and print out the associated values.
+Okay, back to coding. Take a look at the next couple functions in exercises.py. 
+
+	#prints out each corresponding key value pair in a dict
+	def dict_print(dict):
+		for key in dict:
+			print "key: " + str(key) + " value: " + str(dict[key])
+	
+	
+	
+	#returns the key that has the highest value in the dict. You can assume all values in the dict are positive numbers
+	def key_max_value(dict):
+		#TODO: finish this!
+		return -1
+	
+	
+	
+	#counts how many of each item are in the given list, returns them as a dict of items mapping to the number of times they appeared
+	def count_items(list):
+		#TODO: finish this!
+		print "not implemented yet :("
+
+
+
+I've provided the function, `dict_print` as an example of how to iterate through a dictionary's keys and print out the associated values.
 
 #### Key Max Value
 
-Go ahead and find the `key_max_value` function. In this function, we're going write code to iterate through the dictionary passed as a parameter in `dict` and return the **key** associated with the highest **value** stored in the dictionary (remember, this is different from a key). We can assume all values in the dictionary will be positive numbers.
+Go ahead and find the `key_max_value` function. In this function, we're going write code to iterate through the dictionary passed as a parameter in `dict` and return the **key** that matches with the highest **value** stored in the dictionary (remember the difference between keys and values). We can assume all values in the dictionary will be positive numbers.
 
 So if we passed in a dictionary like this:
 
