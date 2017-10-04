@@ -1,4 +1,4 @@
-# Lesson 3:
+# Lesson 3: Lists and Dictionaries
 
 **To start this lesson, students should:**
 
