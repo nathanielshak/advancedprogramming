@@ -55,6 +55,7 @@ def test_list_sum(tests):
 		else:
 			print "FAIL!"
 			print "failed on " + str(test[0])
+			print "answer was " + str(list_sum(test[0])) + ", but it should have been " + str(test[1])
 			return False
 		test_num += 1
 	return True
@@ -69,6 +70,7 @@ def test_list_max(tests):
 		else:
 			print "FAIL!"
 			print "failed on " + str(test[0])
+			print "answer was " + str(find_list_max(test[0])) + ", but it should have been " + str(test[1])
 			return False
 		test_num += 1
 	return True
@@ -83,6 +85,7 @@ def test_key_max_value(tests):
 		else:
 			print "FAIL!"
 			print "failed on " + str(test[0])
+			print "answer was " + str(key_max_value(test[0])) + ", but it should have been " + str(test[1])
 			return False
 		test_num += 1
 	return True
@@ -97,6 +100,7 @@ def test_count_items(tests):
 		else:
 			print "FAIL!"
 			print "failed on " + str(test[0])
+			print "answer was " + str(count_items(test[0])) + ", but it should have been " + str(test[1])
 			return False
 		test_num += 1
 	return True
