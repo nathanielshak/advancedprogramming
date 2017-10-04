@@ -1,8 +1,9 @@
 # Lesson 1: Some Housekeeping and Getting Started with Python  
 
-<!--
-TODO: add prior knowledge reqs
--->
+**To start this lesson, students should**:
+
+* Be computer proficient - be a decent typer, know how to navigate the computer, have experience regularly using a computer.
+* Have experience coding in other languages.
 
 **By completing this lesson, students will**: 
 

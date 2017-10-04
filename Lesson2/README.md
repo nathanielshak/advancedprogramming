@@ -1,8 +1,11 @@
 # Lesson 2: Getting Familiar with Python
 
-<!--
-TODO: add prior knowledge reqs
--->
+**To start this lesson, students should**:
+
+* Have Python and Sublime Text 2 set up on their computer.
+* Be familiar with the terminal/command prompt, how to navigate around with it, and how to run Python files from it.
+* Have a basic understanding of variables, control flow, and functions (it's okay if it's in different languages).
+* Have experience putting together the concepts above to form coherent programs.
 
 **By completing this lesson, students will**:
 
