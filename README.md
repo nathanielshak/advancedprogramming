@@ -10,6 +10,7 @@ Welcome to StreetCode's Next Level Programming Class! In this class we will go f
 2. [Getting Familiar with Python](Lesson2)
 3. [Lists and Dictionaries](Lesson3)
 4. [Let's get some practice](Lesson4)
+5. [Searching and an Introduction to Algorithmic Analysis](Lesson5)
 
 ## Prerequisites for taking this classAs one of our more advanced course offerings, it’s important to make sure you’re ready before diving into the material. If this isn’t you yet, don’t worry! This doesn’t mean you’re not smart enough to take this class – it just means it would probably be best for you to take a step back and spend some time mastering these things before attempting this material.
 

@@ -1,4 +1,4 @@
-# Lesson 5: Searching and and Introduction to Algorithmic Analysis
+# Lesson 5: Searching and an Introduction to Algorithmic Analysis
 
 **To start this lesson, students should:**
 
