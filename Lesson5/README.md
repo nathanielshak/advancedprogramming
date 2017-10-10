@@ -74,3 +74,21 @@ Here is a diagram of what binary search would look like on a list of sorted numb
 > The arrow represents which number you're checking at any given point and comparing to the number you're looking for before choosing which half to look into.
 
 ## Algorithmic Analysis
+
+Through all of this, there's something that is hopefully becoming clear: **regardless of if the code works, some code will be inherently faster than other code that does the same thing depending on your approach**. In this section, we're going to talk about **algorithmic analysis**, the way you can formalize and measure the **efficiency** of one coding approach versus another.
+
+To start with, let's take a look at one of the exercises we did in the last lesson. Do you remember the max difference question from [lesson 4](Lesson4)? Just a as refresher, we were supposed to write a function that: "will return the maximum difference between any two numbers in the list of number, `nums`. You can assume that everything in the list, `nums`5 is a number and that there are at least 2 numbers in list."
+
+Here's one potential solution to that problem:
+
+	def max_diff(nums):
+		cur_max_diff = 0
+		for index1 in range(len(nums)):
+			for index2 in range(index1 + 1, len(nums)):
+				diff = abs(nums[index1] - nums[index2])
+				if diff > cur_max_diff:
+					cur_max_diff = diff
+		return cur_max_diff
+		
+Okay, what's going on in this code?
+
