@@ -14,7 +14,7 @@
 
 ## Getting set up with Python
 
-First things first! To start this class, we're going to need to set up Python on your computer. We will be using Python 2. This process will be different for Mac users and Windows users, so if you're using a Mac, go [here](macsetup.md), and if you're using a Windows computer, go [here](windowssetup.pdf), then and follow the instructions. When you're done, come back here and we'll continue.
+First things first! To start this class, we're going to need to set up Python on your computer. We will be using Python 2. This process will be different for Mac users and Windows users, so if you're using a Mac, go [here](macsetup.md), and if you're using a Windows computer, go [here](https://docs.google.com/document/d/e/2PACX-1vSMJNOaNphw0dD9h-pB3MlJLnpZOVP-ZtI4Hfe5J33QHwDrEWjKYEsX2Rv8UB0n6-8UfBrzehYUIjSe/pub), then and follow the instructions. When you're done, come back here and we'll continue.
 
 ## Messing around with Python
 
