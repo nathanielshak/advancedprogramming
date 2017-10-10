@@ -132,7 +132,7 @@ One of the biggest differences in Python compared to other languages is its *rea
 
 Okay, for the part that many of you have been waiting for. Let's get into some coding. Remember what we did last lesson when we created a Python file? We're going to do that again now and write our code there. 
 
-Just to remind you if you forgot how: go ahead and open up the terminal again and navigate to a folder where you want to write some code using `cd`. Once you're in a folder where you'd like to write some code, type `subl lesson2ex1.py` in the terminal. This will open up Sublime Text and create a file called "lesson2ex1.py" for you to write your code in.
+Just to remind you if you forgot how: go ahead and open up the terminal again and navigate to a folder where you want to write some code using `cd`. Once you're in a folder where you'd like to write some code, type `subl tictactoe.py` in the terminal. This will open up Sublime Text and create a file called "lesson2ex1.py" for you to write your code in.
 
 > Remember, the way to use cd is to type: `cd foldername` where foldername is the folder you'd like to change into. You can use `cd ..` to go out of the folder you're currently in. 
 
@@ -140,7 +140,7 @@ Just to remind you if you forgot how: go ahead and open up the terminal again an
 
 Now, we're going to try our first exercise.  
 
-In your lesson2ex1.py file, write code to print out a Tic Tac Toe board that looks like this:
+In your tictactoe.py file, write code to print out a Tic Tac Toe board that looks like this:
 
 	  |  |
 	--------
