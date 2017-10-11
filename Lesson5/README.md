@@ -83,12 +83,129 @@ Here's one potential solution to that problem:
 
 	def max_diff(nums):
 		cur_max_diff = 0
-		for index1 in range(len(nums)):
-			for index2 in range(index1 + 1, len(nums)):
-				diff = abs(nums[index1] - nums[index2])
+		for num1 in nums:
+			for num2 in nums:
+				diff = abs(num1 - num2)
 				if diff > cur_max_diff:
 					cur_max_diff = diff
 		return cur_max_diff
 		
-Okay, what's going on in this code?
+### What's going on in this code? 
 
+Pretty much, for every number in the array, we're checking the difference between that number and all the other numbers in the array and saving the greatest difference we see. You can copy the code and test it yourself if you're curious.
+
+### How much work does this take?
+
+It depends on how many numbers are in the list, `nums`. Every number in `nums` is checked against all the numbers in nums, so if there are 3 numbers in `nums`, that will be 3\*3=9 checks. If there's 20 numbers, there will be 20\*20=400 checks. As a general rule, it seems like we can safely say that there will be n<sup>2</sup> checks, where n is the length of the list, `nums`.
+
+### A Different Approach
+
+Okay, now let's look at a different way we could have solved this problem.
+
+	def max_diff(nums):
+		cur_min = float("inf")
+		cur_max = -float("inf")
+		for num in nums:
+			if num > cur_max:
+				cur_max = num
+			if num < cur_min:
+				cur_min = num
+		return cur_max - cur_min
+
+Depending on how you approached the problem from lesson 4, your code for `max_diff` could have either looked more like this or like the previous solution. *Both of these solutions work*. Feel free to copy this code and test it if you want.
+
+### What's going on in this code?
+
+In this solution, we keep track of the minimum and the maximum number in the list as we loop through every number stored in the list. After checking every number, we return the difference between the maximum and the minimum number as the max difference.
+
+### How is this code different?
+
+On face value, this code might not look too different. It's just a slightly different way of solving the same problem. However, the biggest difference is in **how much work the code does**. 
+
+In the previous solution, we came to the conclusion that the algorithm did n<sup>2</sup> checks of the list, where n is the number of elements in the list. How many checks does this algorithm do?
+
+If we look at it carefully, there is only one loop through the list, therefore, **each element in the list is only checked once**. Meaning compared to the **n<sup>2</sup>** checks the first algorithm does, this algorithm only does **n** checks.
+
+Now we can see that even though both of these algorithms work, the second one is objectively better because **it is more efficent**.
+
+## Big O
+
+There's a way of measuring **algorithmic efficiency**, as we were talking about it above. The way we do that is through something called **Big O Notation**.
+
+Pretty much, this is a way to measure **how much work** an algorithm does **in the worst case** relative to **its input size**, notated as **n**. 
+
+The Big O runtime of our first `max_diff` algorithm is written like:
+
+O(n<sup>2</sup>)
+
+While the Big O runtime of the second `max_diff` algorithm is written like:
+
+O(n)
+
+That seems easy enough, but there's a couple nuances we need to be aware of. What if we modified the first `max_diff` algorithm to look like this?
+
+	def max_diff(nums):
+		for i in range(1000):
+			print "hi."
+		cur_max_diff = 0
+		for num1 in nums:
+			for num2 in nums:
+				diff = abs(num1 - num2)
+				if diff > cur_max_diff:
+					cur_max_diff = diff
+		return cur_max_diff
+		
+How does this make the code different? To be honest, all that changes is that whenever you run the code, now it will annoyingly print out "hi" 1000 times before calculating the max difference in the array. Even though this doesn't affect whether or not we get the right answer, it obviously adds to how much work the code does. So, does that mean the Big O notation would now look like this?
+
+O(n<sup>2</sup> + 1000)
+
+That seems logical. In addition to the n<sup>2</sup> checks on the list, we also have to do the work of printing "hi." 1000 times. However, in Big O notation, we're only concerned with runtime with regards to the input, so we can ignore constants - therefore, the Big O runtime would still be:
+
+O(n<sup>2</sup>)
+
+What if the code looked like this?
+
+	def max_diff(nums):
+		for i in nums:
+			print i
+		cur_max_diff = 0
+		for num1 in nums:
+			for num2 in nums:
+				diff = abs(num1 - num2)
+				if diff > cur_max_diff:
+					cur_max_diff = diff
+		return cur_max_diff
+		
+Now would the Big O runtime be:
+
+O(n<sup>2</sup> + n)
+
+the extra n since we loop through the array an additional time in the beginning. In actuality, it would still be this:
+
+O(n<sup>2</sup>)
+
+Because in Big O notation, we're only concerned with the biggest exponents and can ignore lesser ones. Another example - what if we modified the code from the second `max_diff` algorithm to look like this?
+
+	def max_diff(nums):
+		cur_min = float("inf")
+		cur_max = -float("inf")
+		for num in nums:
+			print num
+		for num in nums:
+			if num > cur_max:
+				cur_max = num
+			if num < cur_min:
+				cur_min = num
+		return cur_max - cur_min
+		
+Now, we loop through the array twice. Would the Big O notation now be:
+
+O(2n)?
+
+Actually, it would still be 
+
+O(n)
+
+Another rule of Big O notation is that we ignore constant factors.
+
+We'll talk a bit more about Big O notation in the future, but before we go see if you can figure out what the Big O runtime of binary and linear search are? Feel free to read up more about Big O [here](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/).

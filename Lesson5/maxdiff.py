@@ -1,10 +1,21 @@
-def max_diff(nums):
-    cur_max_diff = 0
-    for index1 in range(len(nums)):
-        for index2 in range(index1 + 1, len(nums)):
-            diff = abs(nums[index1] - nums[index2])
-            if diff > cur_max_diff:
-                cur_max_diff = diff
-    return cur_max_diff
+def max_diff1(nums):
+	cur_max_diff = 0
+	for num1 in nums:
+		for num2 in nums:
+			diff = abs(num1 - num2)
+			if diff > cur_max_diff:
+				cur_max_diff = diff
+	return cur_max_diff
 
-print max_diff([1,7,8,8,8,8,8,8,8,8,5,5,5,3,474,74,8,4])
+def max_diff2(nums):
+    cur_min = float("inf")
+    cur_max = -float("inf")
+    for num in nums:
+        if num > cur_max:
+            cur_max = num
+        if num < cur_min:
+            cur_min = num
+    return cur_max - cur_min
+
+print max_diff1([1,7,-2,8,8,8,8,8,8,8,5,5,5,3,474,74,8,4])
+print max_diff2([1,7,-2,8,8,8,8,8,8,8,5,5,5,3,474,74,8,4])
