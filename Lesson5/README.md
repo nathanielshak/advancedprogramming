@@ -2,7 +2,15 @@
 
 **To start this lesson, students should:**
 
+* Understand Lists in Python
+* Be able to analyze code effectively
+* Have a grasp on algebra level math
+
 **By completing this lesson, students will:**
+
+* Become familiar with the linear and binary search algorithms
+* An understanding of the concept of algorithmic efficiency
+* A familiarity with Big O runtime analysis
 
 ## Searching through a Phonebook
 

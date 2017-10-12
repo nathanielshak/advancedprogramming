@@ -2,6 +2,10 @@
 
 **To start this lesson, students should:**
 
+* Have a basic understanding of Lists and Dictionaries in Python.
+* Have a solid grasp of control flow and designing logical solutions to coding problems.
+* Understand variables, operations, and booleans.
+
 **By completing this lesson, students will:**
 
 * Gain a soldified understanding of variables, control flow, lists, and dictionaries.
