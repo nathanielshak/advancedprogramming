@@ -85,7 +85,7 @@ Here is a diagram of what binary search would look like on a list of sorted numb
 
 Through all of this, there's something that is hopefully becoming clear: **regardless of if the code works, some code will be inherently faster than other code that does the same thing depending on your approach**. In this section, we're going to talk about **algorithmic analysis**, the way you can formalize and measure the **efficiency** of one coding approach versus another.
 
-To start with, let's take a look at one of the exercises we did in the last lesson. Do you remember the max difference question from [lesson 4](Lesson4)? Just a as refresher, we were supposed to write a function that: "will return the maximum difference between any two numbers in the list of number, `nums`. You can assume that everything in the list, `nums`5 is a number and that there are at least 2 numbers in list."
+To start with, let's take a look at one of the exercises we did in the last lesson. Do you remember the max difference question from [lesson 4](Lesson4)? Just a as refresher, we were supposed to write a function that: "will return the maximum difference between any two numbers in the list of number, `nums`. You can assume that everything in the list, `nums` is a number and that there are at least 2 numbers in list."
 
 Here's one potential solution to that problem:
 
@@ -184,15 +184,15 @@ What if the code looked like this?
 					cur_max_diff = diff
 		return cur_max_diff
 		
-Now would the Big O runtime be:
+Now you might be wondering if the Big O runtime looks like this:
 
 O(n<sup>2</sup> + n)
 
-the extra n since we loop through the array an additional time in the beginning. In actuality, it would still be this:
+since we loop through the array an additional time in the beginning, adding **n** extra checks. In actuality, it would still be this:
 
 O(n<sup>2</sup>)
 
-Because in Big O notation, we're only concerned with the biggest exponents and can ignore lesser ones. Another example - what if we modified the code from the second `max_diff` algorithm to look like this?
+Because in Big O notation, we're only concerned with the biggest terms and can ignore lesser ones. Another example - what if we modified the code from the second `max_diff` algorithm to look like this?
 
 	def max_diff(nums):
 		cur_min = float("inf")
@@ -216,4 +216,6 @@ O(n)
 
 Another rule of Big O notation is that we ignore constant factors.
 
-We'll talk a bit more about Big O notation in the future, but before we go see if you can figure out what the Big O runtime of binary and linear search are? Feel free to read up more about Big O [here](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/).
+We'll talk a bit more about Big O notation in the future, but as an exercise, see if you can figure out what the Big O runtime of binary and linear search are? Feel free to read up more about Big O [here](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/).
+
+See you in [lesson 6](Lesson6)!
