@@ -174,3 +174,5 @@ Write a function that takes an list of integers and returns the size of the larg
 	max_ascending([4, 3, 2, 1]) --> 1
 	
 > This one is definitely the hardest of the lesson, so don't get discouraged if it takes a while.
+
+[On to lesson 5](../Lesson5)

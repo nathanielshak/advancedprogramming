@@ -358,3 +358,5 @@ and the output would look like this:
 > **Hint**: Remeber range(n) will go up to, **but not including** the number n
  
 After you finish that, you're done with Lesson 2! Good job! 
+
+[On to lesson 3](../Lesson3)

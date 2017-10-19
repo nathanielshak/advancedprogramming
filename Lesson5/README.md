@@ -218,4 +218,4 @@ Another rule of Big O notation is that we ignore constant factors.
 
 We'll talk a bit more about Big O notation in the future, but as an exercise, see if you can figure out what the Big O runtime of binary and linear search are? Feel free to read up more about Big O [here](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/).
 
-See you in [lesson 6](Lesson6)!
+See you in [lesson 6](../Lesson6)!
