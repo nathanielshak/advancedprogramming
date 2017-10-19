@@ -32,9 +32,3 @@ def max_diff(nums):
 def hourglass(size):
 	#TODO: implement this!
 	print "not implemented"
-
-
-#returns the size of the maximum increasing sublist in the list of numbers supplied in the variable, nums
-def max_ascending_sublist_size(nums):
-	#TODO: implement this!
-	return -1
