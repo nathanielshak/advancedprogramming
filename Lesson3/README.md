@@ -83,29 +83,30 @@ Which would make the list look like this:
 Okay, that's a lot of information. Let's put some of it into practice with some coding exercises. Inside of excercises.py, you'll see the following code at the top:
 
 	#prints out all the items in the list
-	def list_print(list):
-		for item in list:
+	def list_print(lst):
+		for item in lst:
 			print item
 	
 	
 	
 	#sums up all the numbers in the list and returns it
-	def list_sum(list):
+	def list_sum(lst):
 		#TODO: finish this!
 		return -1
 	
 	
 	
 	#finds and returns the greatest number in the list. You can assume all numbers in the list are positive.
-	def find_list_max(list):
+	def find_list_max(lst):
 		#TODO: finish this!
 		return -1
+	
 		
 #### List Print
 
-The first function: `list_print` is already filled out for you. This function goes through every item in a list passed as a parameter (in the `list` variable) and prints them in order. You can use this as an example as you work on the rest of the problems.
+The first function: `list_print` is already filled out for you. This function goes through every item in a list passed as a parameter (in the `lst` variable) and prints them in order. You can use this as an example as you work on the rest of the problems.
 
-The first function we're going to write our code in is `list_sum`. In this program, we will assume the parameter, `list` is a list of numbers, and we will want the function to compute the sum of all of them, then return that sum. 
+The first function we're going to write our code in is `list_sum`. In this program, we will assume the parameter, `lst` is a list of numbers, and we will want the function to compute the sum of all of them, then return that sum. 
 
 > **Hint**: Think of how using a variable could be helpful here.
 
@@ -176,21 +177,21 @@ Anyways, that should be most of what you need to know on dictionaries. For more 
 Okay, back to coding. Take a look at the next couple functions in exercises.py. 
 
 	#prints out each corresponding key value pair in a dict
-	def dict_print(dict):
-		for key in dict:
-			print "key: " + str(key) + " value: " + str(dict[key])
+	def dict_print(d):
+		for key in d:
+			print "key: " + str(key) + " value: " + str(d[key])
 	
 	
 	
 	#returns the key that has the highest value in the dict. You can assume all values in the dict are positive numbers
-	def key_max_value(dict):
+	def key_max_value(d):
 		#TODO: finish this!
 		return -1
 	
 	
 	
 	#counts how many of each item are in the given list, returns them as a dict of items mapping to the number of times they appeared
-	def count_items(list):
+	def count_items(lst):
 		#TODO: finish this!
 		print "not implemented yet :("
 
@@ -200,11 +201,11 @@ I've provided the function, `dict_print` as an example of how to iterate through
 
 #### Key Max Value
 
-Go ahead and find the `key_max_value` function. In this function, we're going write code to iterate through the dictionary passed as a parameter in `dict` and return the **key** that matches with the highest **value** stored in the dictionary (remember the difference between keys and values). We can assume all values in the dictionary will be positive numbers.
+Go ahead and find the `key_max_value` function. In this function, we're going write code to iterate through the dictionary passed as a parameter in `d` and return the **key** that matches with the highest **value** stored in the dictionary (remember the difference between keys and values). We can assume all values in the dictionary will be positive numbers.
 
 So if we passed in a dictionary like this:
 
-|**Label**|dict[999]|dict["yolo"]|dict[True]|dict["heheheh]|
+|**Label**|d[999]|d["yolo"]|d[True]|d["heheheh]|
 |-----|-----|-------|----|-----|
 |**Data**|1| 42 |18| 22 |
 
@@ -222,7 +223,7 @@ For example, calling the function like this:
 
 should return a dict that looks like this:
 
-|**Label**|dict["yo"]|dict[1]|dict[2]|dict[3]|dict[8]|dict[7]|
+|**Label**|d["yo"]|d[1]|d[2]|d[3]|d[8]|d[7]|
 |-----|-----|-------|----|-----|-----|-----|
 |**Data**|2|3|1|2|1|1|
 

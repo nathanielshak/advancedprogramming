@@ -1,40 +1,40 @@
 #prints out all the items in the list
-def list_print(list):
-	for item in list:
+def list_print(lst):
+	for item in lst:
 		print item
 
 
 
 #sums up all the numbers in the list and returns it
-def list_sum(list):
+def list_sum(lst):
 	#TODO: finish this!
 	return -1
 
 
 
 #finds and returns the greatest number in the list. You can assume all numbers in the list are positive.
-def find_list_max(list):
+def find_list_max(lst):
 	#TODO: finish this!
 	return -1
 
 
 
 #prints out each corresponding key value pair in a dict
-def dict_print(dict):
-	for key in dict:
-		print "key: " + str(key) + " value: " + str(dict[key])
+def dict_print(d):
+	for key in d:
+		print "key: " + str(key) + " value: " + str(d[key])
 
 
 
 #returns the key that has the highest value in the dict. You can assume all values in the dict are positive numbers
-def key_max_value(dict):
+def key_max_value(d):
 	#TODO: finish this!
 	return -1
 
 
 
 #counts how many of each item are in the given list, returns them as a dict of items mapping to the number of times they appeared
-def count_items(list):
+def count_items(lst):
 	#TODO: finish this!
 	print "not implemented yet :("
 

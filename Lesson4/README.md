@@ -142,6 +142,21 @@ And the following is an hourglass of size 5:
 	 ********
 	**********
 	
+**Hint:** In Python, you can multiply strings! For example, the code: 
+
+	"a" * 7
+	
+would result in:
+
+	"aaaaaaa"
+	
+You can also add strings like this:
+	
+	"aaa" + "3" * 2
+	
+which would result in
+
+	"aaa33"
 
 ### Max Ascending Sublist Size
 
