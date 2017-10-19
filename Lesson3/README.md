@@ -229,4 +229,4 @@ should return a dict that looks like this:
 
 After that, go ahead and run exercises.py to test your solutions - once you've got all the tests passing, you're done!
 
-[On to lesson 4](Lesson4)
+[On to lesson 4](../Lesson4)
