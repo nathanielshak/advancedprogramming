@@ -2,7 +2,15 @@
 
 **To start this lesson, students should**:
 
+* Have a solid understanding of lists and dictionaries in Python and know how to use them.
+* Have a basic understanding of Big O notation.
+* Have experience approaching and breaking down diffict coding problems.
+
 **By completing this lesson, students will**: 
+
+* Further solidify their understanding of lists and dictionaries
+* Further their understanding of Big O notation through practice
+* Get practice putting together solutions to complex coding problems
 
 Becoming a good coder is all about practice. This lesson will go through a couple practice problems to help you solidify what you've learned already.
  
@@ -27,11 +35,11 @@ For this problem, we will a function that takes an list of integers and returns 
 	
 ### Big O Practice
 
-Here's a challenge now. Once you're satisfied with your solution to this question, *what is the Big O runtime?* Once you think you have an answer, check with a mentor to see if you're right.
+Here's a challenge now. Once you're satisfied with your solution to this question, *what is the Big O runtime?* Feel free to review [lesson 5](../Lesson5) if you forgot how Big O works. Once you think you have an answer, check with a mentor to see if you're right.
 
 ## Chocolate
 
-Next question is also on codingbat! Go [here](http://codingbat.com/prob/p190859) for the next question, then come on back and we can continue.
+Next question is also on codingbat! Go [here](http://codingbat.com/prob/p190859) for the next question, then, once you finish, come on back and we can continue.
 
 ### Big O
 
@@ -50,9 +58,9 @@ The next exercise is in this function:
 		
 For this function, we are going to write a function that looks at two strings, `orig` and `translated`, then applies the same translation to `words` and returns the result.
 
-In this translation, we can assume that the rule is that every letter in `orig` will be substituted a single letter, and that that letter will always be the same. Therefore, you can assume that `translated` will always be the same length as `orig` and that every letter at the same index in the two strings should always be swapped in your resulting translation.
+In this translation, we can assume that the rule is that every letter in `orig` will be substituted a single letter, and that that letter will always be the same, resulting in the string, `translated`. Therefore, you can assume that `translated` will always be the same length as `orig` and that every letter at the same index in the two strings should always be swapped in your resulting translation.
 
-Letters that don't appear in `orig` should remain the same
+Letters that don't appear in `orig` should remain the same.
 
 For example:
 
@@ -61,3 +69,5 @@ For example:
 	translate("q", "p", "qpeo") -> "ppeo"
 	
 **Again, see if you can figure out the Big O runtime after you finish this.**
+
+After that, it's on to [lesson 7!](../Lesson7)
