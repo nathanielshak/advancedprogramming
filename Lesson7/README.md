@@ -6,6 +6,6 @@
 
 ## What is sorting?
 
-Go ahead and take a look at this video.
+Go ahead and take a look at this video:
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/kPRA0W1kECg" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+[![Watch the video](youtube.png)](https://www.youtube.com/watch?v=kPRA0W1kECg)
