@@ -2,7 +2,17 @@
 
 **To start this lesson, students should:**
 
+* Have a familiarity and basic understanding of Big O analysis.
+* Understand lists in Python.
+* Have a decent amount amount of experience analyzing and coding semi-complex algoirthms.
+
 **By completing this lesson, students will:**
+
+* Get practice implementing complex algorithms to solve coding problems.
+* Be introduced to sorting algorithms, the variety of concerns that may come into play when choosing one.
+* Gain a greater understanding of Big O analysis and the nuances of where it might not explain everything.
+* Get introduced the concept of Space vs Time complexity.
+* Get practice reading documentation.
 
 ## What is sorting?
 
