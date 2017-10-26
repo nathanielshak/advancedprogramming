@@ -1,11 +1,14 @@
 import numpy as np
 
-BUCKET_NUM = 10
-
+#sorts the nums array using selection sort
 def selection_sort(nums):
 	#TODO: write the code to sort the nums array!
 	return nums
 
+
+BUCKET_NUM = 10
+
+#sorts the nums array using bucket sort with selection sort. The number of buckets is declared in BUCKET_NUM.
 def bucket_sort(nums):
 	#initializes a list of lists - each of these lists are a bucket!
 	buckets = [[] for i in range(BUCKET_NUM)]
@@ -26,6 +29,6 @@ def bucket_sort(nums):
 	return result
 
 print "testing selection_sort:"
-print selection_sort(np.random.choice(100,1000).tolist())
+print selection_sort(np.random.choice(1000,1000).tolist())
 print "testing bucket_sort:"
 print bucket_sort(np.random.choice(100,1000).tolist())
