@@ -49,7 +49,7 @@ However, if the data always tends to be clumped together, we know that the bucke
 
 ## Space vs Time
 
-Another question might have come up as you read through this. If the runtime is roughly:
+Another thing you may be wondering is: If the runtime is roughly:
 
 **N<sup>2</sup>/k**
 

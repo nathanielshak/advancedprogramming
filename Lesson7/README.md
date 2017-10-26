@@ -45,7 +45,7 @@ You already know what I'm going to ask next. **What's the Big O runtime of this?
 
 ## Bucket Sort
 
-Next, we're going to learn about a sorting algorithms that *could actually use* Selection Sort as part of it. However, in general, it will run much faster, especially with large input sizes.
+Next, we're going to learn about a sorting algorithm you can actually combine with Selection Sort. However, in general, it will run much faster, especially with large input sizes.
 
 [Here](https://mathspace.co/learn/world-of-maths/coding-and-algorithms/sorting-algorithms-58142/sorting-algorithms-2104/) is a detailed description of bucket sort (you'll have to scroll down a bit until you hit bucket sort). Feel free to check out some of the other sorting algorithms while you're there!
 
@@ -53,7 +53,7 @@ Next, we're going to learn about a sorting algorithms that *could actually use* 
 
 And [here](https://www.youtube.com/watch?v=VuXbEb5ywrU) is a video that demonstrates one example of how bucket sort could work.
 
-> When the video says "Now sort each bucket individually using **insertion sort**", once again, you could use any sorting algorithm. 
+> When the video says "Now sort each bucket individually using **insertion sort**", once again, you could use any sorting algorithm, such as Selection Sort.
  
 ### Big O
 
@@ -62,6 +62,12 @@ This one is a bit less straightforward to figure out. This is because the Big O 
 For the sake of this example, see if you can figure out what the Big O runtime would be if we used **selection sort** on each bucket.
 
 Once you think you have a good guess, click [here](bucketbigo.md) to see if you were right.
+
+### Code it up!
+
+Once you have a good understanding of how bucket sort works, let's code it up! Now, this one might be a bit tricky since there's many different steps. To help, we've already written some code to get you started:
+
+
 
 
  
