@@ -2,8 +2,9 @@ import numpy as np
 
 #sorts the nums array using selection sort
 def selection_sort(nums):
-	#TODO: write the code to sort the nums array!
-	return nums
+	result = nums[:]
+	#TODO: write the code to sort the result array!
+	return result
 
 
 BUCKET_NUM = 10

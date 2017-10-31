@@ -42,10 +42,11 @@ Now, we're going to try our hand at implementing this algorithm. We've provided 
 
 	#sorts the nums array using selection sort
 	def selection_sort(nums):
-		#TODO: write the code to sort the nums array!
-		return nums
+		result = nums[:]
+		#TODO: write the code to sort the result array!
+		return result
 		
-Here, we want to write a function that takes in an unsorted list of numbers, `nums`, and returns it sorted using selection sort.
+Here, we want to write a function that takes in an unsorted list of numbers, `nums`, and returns a sorted version of it using selection sort as the `result` array.
 
 Feel free to run that code to confirm that it works. We've written a quick test that will print out the results of your algorithm on a random array - if this comes out sorted, your code works! 
 
