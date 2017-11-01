@@ -13,7 +13,7 @@ Well, since we do this once for each element in the list, the answer to this is 
 
 **How many items to we check per each loop?**
 
-That's a trickier one. The first time, we will compare at **N - 1** elements against the first one, then, we will check **N - 2**, followed by **N - 3**, and so on. If we find the sum for all of this, it comes out to `n(n - 1) / 2 ` through an [arithmetic progression](https://en.wikipedia.org/wiki/Arithmetic_progression).
+That's a trickier one. The first time, we will compare **N - 1** elements against the first one, then, we will check **N - 2**, followed by **N - 3**, and so on. If we find the sum for all of this, it comes out to `n(n - 1) / 2 ` through an [arithmetic progression](https://en.wikipedia.org/wiki/Arithmetic_progression).
 
 > If you don't understand the math, it's okay - just make sure you know it comes out to n(n-1)/2 checks.
  
@@ -30,3 +30,5 @@ n<sup>2</sup> - n
 In Big O, we also don't care about any terms other than the biggest exponent one, so we can also ignore the n, leaving us with:
 
 n<sup>2</sup>, which in Big O is: **O(N<sup>2</sup>)** 
+
+[Back to the lesson!](README.md)

@@ -61,4 +61,4 @@ However, on the flip side, the lower our **k**, the slower our algorithm will be
 
 **We often have to balance the tradeoff between how much space we use in memory and how long our algoithms will take**.
 
-Anyways, that was a lot of information - definitely find a mentor to run through some of this if there were parts you didn't fully understand. Once you feel good about that, it's [back to the lesson!](README.md).
+Anyways, that was a lot of information - definitely find a mentor to run through some of this if there were parts you didn't fully understand. Once you feel good about that, it's on to [lesson 8](../Lesson8)!

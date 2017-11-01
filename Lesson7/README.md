@@ -4,13 +4,13 @@
 
 * Have a familiarity and basic understanding of Big O analysis.
 * Understand lists in Python.
-* Have a decent amount amount of experience analyzing and coding semi-complex algoirthms.
+* Have a decent amount of experience analyzing and coding semi-complex algorithms.
 
 **By completing this lesson, students will:**
 
 * Get practice implementing complex algorithms to solve coding problems.
 * Be introduced to sorting algorithms, the variety of concerns that may come into play when choosing one.
-* Gain a greater understanding of Big O analysis and the nuances of where it might not explain everything.
+* Gain a greater understanding of Big O analysis and the nuances of where it might not explain everything relevant to a problem.
 * Get introduced the concept of Space vs Time complexity.
 * Get practice reading documentation.
 
@@ -26,9 +26,9 @@ Okay, *what was that?* What that was, was a bunch of different **sorting algorit
 
 Sorting is one of the most classic problems in computer science. What is the best way to take an array, or list in our case, of unsorted numbers and rearrange them into sorted order? Each different way to solve this problem, we call a **sorting algorithm**.
 
-There are at least 20 sorting algorithms I've heard of before, and probably hundreds in existance. Here we will introduce a couple of them, look at their advantages and disadvantages, and try to code some of them up.
+There are at least 10 sorting algorithms I've heard of before, and probably hundreds in existence. Here we will introduce a couple of them, look at their advantages and disadvantages, and try to code some of them up.
 
-Since there is a ton of explanations and research already out there around sorting algorithms, this lesson will involve a lot of us linking you to other pages that describe these. This lesson would be especially helpful to go through with a mentor if you're having trouble grasping any of the concepts. Some of these can be difficult to understand on the first read.
+Since there are a ton of explanations and research already out there around sorting algorithms, this lesson will involve a lot of us linking you to other pages that explain these. This lesson would be especially helpful to go through with a mentor if you're having trouble grasping any of the concepts. Some of these can be difficult to understand on the first read.
 
 ## Selection Sort
 
@@ -67,14 +67,7 @@ Next, we're going to learn about a sorting algorithm you can actually combine wi
 And [here](https://www.youtube.com/watch?v=VuXbEb5ywrU) is a video that demonstrates one example of how bucket sort could work.
 
 > When the video says "Now sort each bucket individually using **insertion sort**", once again, you could use any sorting algorithm, such as Selection Sort.
- 
-### Big O
 
-This one is a bit less straightforward to figure out. This is because the Big O runtime depends on what sorting algorithm we use for each bucket. 
-
-For the sake of this example, see if you can figure out what the Big O runtime would be if we used **selection sort** on each bucket.
-
-Once you think you have a good guess, click [here](bucketbigo.md) to see if you were right.
 
 ### Code it up!
 
@@ -159,13 +152,21 @@ In the last part of the code:
 	
 	return result
 	
-We want to put together all the sorted arrays in `buckets` into our results array, then return in.
+We want to put together all the sorted arrays in `buckets` into our results array, then return it.
 
 > Hint: [this](https://stackoverflow.com/questions/8177079/python-take-the-content-of-a-list-and-append-it-to-another-list) stack overflow post might be helpful if you're trying to figure out how to add lists together.
  
 Once you're done with that, go ahead and run the code. The tests we've written should print out a sorted array if your code works. 
 
-If you want to experiement, you can try comparing how fast selection_sort and bucket_sort take on the same random list. If you increase the number of elements in the list to about 10,000, you might start to notice a difference.
+If you want to experiment, you can try comparing how fast selection_sort and bucket_sort take on the same random list. If you increase the number of elements in the list to about 10,000, you might start to notice a difference.
+
+### Big O
+
+Now to see how much this change actually helped us...what's the Big O runtime? 
+
+Staying consistent with this example, see if you can figure out what the Big O runtime would be if we used **selection sort** on each bucket.
+
+Once you think you have a good guess, click [here](bucketbigo.md) to see if you were right, then we're done!
 
 On to [lesson 8](../Lesson8)!
 
