@@ -1,4 +1,5 @@
-import numpy as np
+import random
+import time
 
 #sorts the nums array using selection sort
 def selection_sort(nums):
@@ -29,7 +30,15 @@ def bucket_sort(nums):
 
 	return result
 
+
 print "testing selection_sort:"
-print selection_sort(np.random.choice(1000,1000).tolist())
+start = time.time()
+print selection_sort([random.randint(0, 999) for _ in xrange(1000)])
+diff = time.time() - start
+print 'selection_sort took %s seconds' % diff
+
 print "testing bucket_sort:"
-print bucket_sort(np.random.choice(100,1000).tolist())
+start = time.time()
+print bucket_sort([random.randint(0, 99) for _ in xrange(1000)])
+diff = time.time() - start
+print 'bucket_sort took %s seconds' % diff
