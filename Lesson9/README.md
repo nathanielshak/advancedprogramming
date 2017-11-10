@@ -196,4 +196,31 @@ If we were to code this up using recursion, it would look something like this:
 		else:
 			return num + sum_to_10(num + 1)
 			
-It might be a bit confusing how this is working on first glance.
+It might be a bit confusing how this is working on first glance. Try sketching out each function call if you're confused and go through it with a mentor until you have a good grasp on that.
+
+## Factorials
+
+Once you've done that, we're going to try to code another similar problem. If you've heard of factorials in math before, this is the way they work:
+
+	5! = 5*4*3*2*1 = 120
+	
+or
+	
+	4! = 4*3*2*1 = 24
+	
+or 
+
+	0! = 1! = 1
+	
+You might notice some similarities to the previous problem (hint hint). Go ahead and find this part of the code in `exercises.py`:
+
+	#recursively compute a factorial
+	def factorial(num):
+		#TODO: implement this!
+		return -1
+		
+and implement the **recursive** version of factorial. 
+
+> Once again, I know this could be done with a for loop or a while loop, but for the sake of this exercises, let's do it with recursion.
+> 
+> **Hint**: similar to the previous problem, notice that factorial(n) = n * factorial(n-1)
