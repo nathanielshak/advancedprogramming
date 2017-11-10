@@ -7,39 +7,39 @@
 # 2. Find last letters
 
 def find_last_letters(word):
-  ret = {}
+  result = {}
   # TODO
-  return ret
+  return result
 
 
 # 3. Words by length
 
 def words_by_length(words):
-  ret = {}
+  result = {}
   # TODO
-  return ret
-
-def words_by_length_challenge(words):
-  ret = {}
-  # TODO
-  return ret
+  return result
 
 def word_appears(words_dict, word):
   # TODO
   return False
 
+def words_by_length_challenge(words):
+  result = {}
+  # TODO
+  return result
+
 
 # 4A. Splitting lists
 
 def split_list(items, count):
-  ret = []
+  result = []
   # TODO
-  return ret
+  return result
 
 def split_list_challenge(items, count):
-  ret = []
+  result = []
   # TODO
-  return ret
+  return result
 
 
 # 4B. Finding items in nested lists
