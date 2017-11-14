@@ -101,7 +101,7 @@ The last sub-list can be shorter if there aren't enough items to fill it up. For
 
 (`split_list` always returns a list containing other lists, unless the input list is empty.)
 
-> **Hint**: You can access items from the end of a list using negative numbers. For example, `some_list[-1]` is the last item in a list, `some_list[-2]` is the second-to-last, and so on.
+> **Hint**: You can access items from the end of a list using negative numbers. For example, `some_list[-1]` is the last item in a list, `some_list[-2]` is the second-to-last, and so on. (You can solve this problem without using negative indices, but your code will probably be a bit longer.)
 
 ### Challenge: 
 
@@ -114,6 +114,8 @@ In this function:
 
 Try rewriting the function using slices instead. [This StackOverflow answer](https://stackoverflow.com/a/509295) explains what slices are and how to use them.
 
+**Note**: It's possible to write this function in a single line using a *list comprehension*, a shorthand for loops that generate lists. It's not part of this lesson, but if you're curious, you can read about list comprehensions [here](http://www.pythonforbeginners.com/basics/list-comprehensions-in-python).
+
 ### Part B: Finding items in nested lists
 
 In this function:
@@ -122,15 +124,15 @@ In this function:
 	  # TODO
 	  return -1
 
-Write a function that finds which sublist a given item is in. If the item isn't in any of the lists, return -1. For example:
+Write a function that finds which sublist a given item is in. If the item is in multiple sublists, return the first one that it appears in. If the item isn't in any of the lists, return -1. For example:
 
-	which_list([[1, 3, 5], [7, 9, 11], [13]], 1) -> 0
-	which_list([[1, 3, 5], [7, 9, 11], [13]], 5) -> 0
-	which_list([[1, 3, 5], [7, 9, 11], [13]], 9) -> 1
-	which_list([[1, 3, 5], [7, 9, 11], [13]], 13) -> 2
-	which_list([[1, 3, 5], [7, 9, 11], [13]], 17) -> -1
+	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 1) -> 0
+	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 5) -> 0
+	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 9) -> 1
+	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 11) -> 2
+	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 17) -> -1
 
-> Hint: You can use `for item_index, item in enumerate(list)` to iterate over list items along with their indexes, so `item_index` would equal the list index, and `item` would be the actual item at that index.
+> **Hint**: You can use `for item_index, item in enumerate(list)` to iterate over list items along with their indexes, so `item_index` would equal the list index, and `item` would be the actual item at that index.
 
 ### Runtime
 

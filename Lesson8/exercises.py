@@ -130,8 +130,8 @@ def test_split_list():
       return
   print 'split_list is correct'
 
-  which_list_input = [[1, 3, 5], [7, 9, 11], [13]]
-  which_list_cases = [(1, 0), (5, 0), (9, 1), (13, 2), (17, -1)]
+  which_list_input = [[1, 3, 5], [5, 7, 9], [9, 11]]
+  which_list_cases = [(1, 0), (5, 0), (7, 1), (9, 1), (11, 2), (17, -1)]
   for item, expected_result in which_list_cases:
     result = which_list(which_list_input, item)
     if result != expected_result:
