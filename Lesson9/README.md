@@ -2,8 +2,14 @@
 
 **To start this lesson, students should**:
 
+* Have experience coding solutions to complex problems.
+* Have a clear understanding of functions and control flow.
+* Be familiar with 2D arrays/lists.
 
 **By completing this lesson, students will**:
+
+* Understand what recursion is.
+* Gain some experience writing recursive functions.
 
 ## Zombies and Cats
 
@@ -298,6 +304,8 @@ If we know this, then we can start our recursive function like this:
 			
 > Here we're assuming that x and y are the coordinates of the being that was just bitten.
  
+### Turning the human into a zombie
+ 
 Okay, what next?
 
 Firstly, we know that if it reaches the next point in the code, it's a human, so we know that human will turn into a zombies since it just got bitten.
@@ -306,6 +314,8 @@ Firstly, we know that if it reaches the next point in the code, it's a human, so
 		if world[x][y] is ZOMBIE or world[x][y] is CAT:
 			return
 		world[x][y] = ZOMBIE
+		
+### Recursive zombie bites
 		
 Now, the hard part. How do we code in the recursion? How do we make sure that the zombies spread as far as they should?
 
@@ -329,6 +339,8 @@ This is because each time a human was turned into a zombie, a recursive call wou
  
 But the zombies need to be spreading in other directions too, right? - not just down.
 
+### Multidirectional zombie bites
+
 You're right - what would happen if we modified the code to do this?
 
  	def zombie_bite(x, y):
@@ -339,6 +351,8 @@ You're right - what would happen if we modified the code to do this?
 		zombie_bite(x + 1, y)
 
 Again, talk it over with a mentor until you understand what's going on here. 
+
+### You try!
 
 Once you get that, I'll let you go ahead and try to complete the rest of the missing code. **Hint:** we need two more lines similar to the ones we just wrote.
 
