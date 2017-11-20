@@ -115,7 +115,7 @@ If we think back to the zombie example, we could see `num` being greater than 10
 
 Let's try a similar version of this. Go ahead and find this function in exercises.py.
 	
-	#recursively count down from num to 0
+	#recursively count down from num to 1
 	def count_down(num):
 		#TODO: implement this!
 		pass
@@ -224,3 +224,128 @@ and implement the **recursive** version of factorial.
 > Once again, I know this could be done with a for loop or a while loop, but for the sake of this exercises, let's do it with recursion.
 > 
 > **Hint**: similar to the previous problem, notice that factorial(n) = n * factorial(n-1)
+
+## Back to the Zombies
+
+About now you might still not be convinced that recursion is useful. The main reason being that every problem we've solved so far could've been solved **more easily** without even using recursion in the first place.
+
+For example, we could have easily done this for count_down:
+
+	def count_down(num):
+		cur_num = num
+		while cur_num > 0:
+			print cur_num
+			cur_num -= 1
+		print "all done!
+
+Or this for factorial:
+
+	def factorial(num):
+		result = 1
+		for i in range(1, num + 1):
+			result *= i
+		return result
+
+> range(1, num + 1) will go from 1 to num
+ 
+If you thought that both of these solutions would have run just as quickly as the recursive solutions, and they would've been less confusing to code, you would've been right! The main purpose of us coding them recursively was just as a learning exercise.
+
+But that begs the question, *when is recursion actually useful?*
+
+### Zombie Algorithm with Recursion
+
+Rather than try to answer that question with just an explanation, I'll try to give an example.
+
+Let's go back to that zombie example we opened with. 
+
+![](https://inventwithpython.com/blogstatic/floodfill/zombie1.gif)
+
+And this time, let's imagine what the code would look like if we were to simulate this happening **using code**.
+
+> As a warning, this part is pretty tricky, but very important - so do take the time to go through it with a mentor if possible until you really understand it.
+
+Firstly, how would we represent the problem in the first place? How would we keep track of what spaces have zombies, humans, or cats? 
+
+The easiest way would probably be a **2 Dimensional Array**. In other words, a **list of lists**. This means to access the top left person (that eventually turns into a zombie) in the above picture, we could do:
+
+	world[0][0]
+	
+Where `world` is our 2D array that holds all the humans, zombies, and cats.
+
+Likewise, to get the topmost left cat, we would do:
+
+	world[2][1]
+	
+Just to make this example easier, let's pretend turning one of these spaces into a zombie could be done simply by saying:
+
+	word[6][6] = ZOMBIE
+	
+Okay, so given that what would the code look like for this?
+
+I guess there could be some conceivable way to use while loops and for loops in an **iterative** way to keep on checking if humans exist next to zombies and turning those humans into zombies, but recursion actually makes this much easier.
+
+### The base case
+
+To figure out what the recursive solution would look like, first, think: what is our base case? In other words, at what points does the recursion (in this case, the recursion being more humans turning into zombies) stop?
+
+The answer to this would be when you run into another zombie (it's already a zombie) or when you run into a cat.
+
+If we know this, then we can start our recursive function like this:
+
+	def zombie_bite(x, y):
+		if world[x][y] is ZOMBIE or world[x][y] is CAT:
+			return
+			
+> Here we're assuming that x and y are the coordinates of the being that was just bitten.
+ 
+Okay, what next?
+
+Firstly, we know that if it reaches the next point in the code, it's a human, so we know that human will turn into a zombies since it just got bitten.
+
+	def zombie_bite(x, y):
+		if world[x][y] is ZOMBIE or world[x][y] is CAT:
+			return
+		world[x][y] = ZOMBIE
+		
+Now, the hard part. How do we code in the recursion? How do we make sure that the zombies spread as far as they should?
+
+Well, we know that the code we just wrote here will should run the same for any other creature that got bitten, right?
+
+What would happen if I did this?
+
+	def zombie_bite(x, y):
+		if world[x][y] is ZOMBIE or world[x][y] is CAT:
+			return
+		world[x][y] = ZOMBIE
+		zombie_bite(x, y + 1)
+		
+Try to take some time to think this out before reading on.
+
+This would cause the zombie outbreak to spread vertically downwards from the original zombie until we reached another existing zombie or a cat.
+
+This is because each time a human was turned into a zombie, a recursive call would be made, calling `zombie_bite` on the human below, and repeating until we reached another zombie or a cat.
+
+> If you're not sure why this is, take some time to sketch it out and talk it over with a mentor until you get it - this part is really important to get before moving on.
+ 
+But the zombies need to be spreading in other directions too, right? - not just down.
+
+You're right - what would happen if we modified the code to do this?
+
+ 	def zombie_bite(x, y):
+		if world[x][y] is ZOMBIE or world[x][y] is CAT:
+			return
+		world[x][y] = ZOMBIE
+		zombie_bite(x, y + 1)
+		zombie_bite(x + 1, y)
+
+Again, talk it over with a mentor until you understand what's going on here. 
+
+Once you get that, I'll let you go ahead and try to complete the rest of the missing code. **Hint:** we need two more lines similar to the ones we just wrote.
+
+> For now, don't worry about going out of bounds on the `world` 2d array. We can pretend the code automatically stops when it goes off the end of the world.
+
+Once, you get that and check it with a mentor, congrats! You made it! We've just successfully coded a full zombie outbreak :)
+
+![](zombierabits.gif)
+
+If you still don't feel like you understand recursion well, it's okay. We'll have plenty of time to practice in [Lesson 10](../Lesson10).
