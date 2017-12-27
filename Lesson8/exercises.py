@@ -83,11 +83,11 @@ def test_words_by_length():
               5: ['sheep', 'horse', 'human']}
   ret = words_by_length(animals)
   if ret != expected:
-    print 'find_last_letters(%r) should return %r, but it returned %r' % (
+    print 'words_by_length(%r) should return %r, but it returned %r' % (
         animals, expected, ret)
     return
   else:
-    print 'find_last_letters is correct'
+    print 'words_by_length is correct'
 
   cases = [
     # (word, expected_result)
@@ -109,10 +109,10 @@ def test_words_by_length():
     return  # don't print anything if the challenge wasn't attempted
 
   if ret != expected:
-    print 'find_last_letters_challenge(%r) should return %r, but it returned %r' % (
+    print 'words_by_length_challenge(%r) should return %r, but it returned %r' % (
         animals, expected, ret)
   else:
-    print 'find_last_letters_challenge is correct'
+    print 'words_by_length_challenge is correct'
 
 def test_split_list():
   cases = [
