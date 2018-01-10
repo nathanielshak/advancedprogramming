@@ -16,7 +16,10 @@ HUMAN = 'h'
 
 # Flood-fill
 def flood_fill(world, x, y):
-    # TODO: implement this!
-    pass
+    # Check if (x, y) is inside the world - if it's outside, do nothing.
+    if (x < 0) or (x >= len(world)):
+        return
+    if (y < 0) or (y >= len(world[x])):
+        return
 
-
+    # TODO: implement the rest of this!

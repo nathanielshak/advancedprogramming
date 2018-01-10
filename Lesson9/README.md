@@ -13,11 +13,11 @@
 
 ## Zombies and Cats
 
-To start with, I'm going to direct you to [this page](https://inventwithpython.com/blog/2011/08/11/recursion-explained-with-the-flood-fill-algorithm-and-zombies-and-cats/), which has a great illustration of recursion using zombies and cats. Read up to the **"The Basics: Recursive Calls and Base Cases"** part, then **come back here**. (Feel free to read further if you're curious, but we may end up double explaining some parts.)
+To start with, take a look at [this page](https://inventwithpython.com/blog/2011/08/11/recursion-explained-with-the-flood-fill-algorithm-and-zombies-and-cats/), which has a great illustration of recursion using zombies and cats. Read up to the **"The Basics: Recursive Calls and Base Cases"** part, then **come back here**. (Feel free to read further if you're curious, but we may end up double-explaining some parts.)
 
 ![](https://inventwithpython.com/blogstatic/floodfill/zombie1.gif)
 
-Cool, so we just got...a weird example involving zombies and cats that somehow has to do with recursion. *How?*, you might ask? We'll get to that in a bit, but first, let's define some things.
+So, we just got... a weird example involving zombies and cats that somehow has to do with recursion. *How?*, you might ask? We'll get to that in a bit, but first, let's define a few things.
 
 ## What is recursion?
 
@@ -34,7 +34,7 @@ Feel free to copy this code and try running it to see what happens. If you read 
 
 This means that we got into something like an **infinite loop** and the `foo` function never stopped calling itself, causing the error you saw.
 
-> An [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop) is a common thing in computer science where you program ends up hypothetically getting stuck where it will run **forever** if you don't stop it. Normally, this will either cause a crash or you'll have to exit out of the program manually when this happens.
+> An [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop) is a common thing in computer science where your program ends up hypothetically getting stuck where it will run **forever** if you don't stop it. Normally, this will either cause a crash or you'll have to exit out of the program manually when this happens.
 
 What do you think would happen if we did something like this?
 
@@ -46,7 +46,7 @@ If you guessed that it would print out "hi" forever, you're right. But if you tr
 
     RuntimeError: maximum recursion depth exceeded
 
-> If you can't see the "hi's", they're there - you just have to scroll up a while because the error message will have a long trail of listing what function it crashed in, which in this case involves calls of the same function.
+> If you can't see the "hi's", they're there - you just have to scroll up a while because the error message will have a long trail of listing what function it crashed in, which in this case involves a lot of calls of the same function.
 
 That's because the program crashes from the infinite loop after printing "hi" many times.
 
@@ -178,7 +178,7 @@ or
 
     sum_to_10(10) = 10
 
-If we looked at this, we could see a pattern emerging where:
+We can see a pattern emerging where:
 
     sum_to_10(5) = 5 + sum_to_10(6)
 
@@ -191,7 +191,7 @@ Here, we can see the repeating pattern of each step of this equation having anot
 If we were to code this up using recursion, it would look something like this:
 
     def sum_to_10(num):
-        if num is 10:
+        if num == 10:
             return 10
         else:
             return num + sum_to_10(num + 1)
@@ -222,7 +222,7 @@ You might notice some similarities to the previous problem (hint hint). Find thi
 and implement the **recursive** version of factorial. 
 
 > Once again, I know this could be done with a for loop or a while loop, but for the sake of this exercises, let's do it with recursion.
-> 
+
 > **Hint**: similar to the previous problem, notice that `factorial(n) = n * factorial(n-1)`.
 
 ## Back to the Zombies
@@ -338,12 +338,12 @@ Again, talk it over with a mentor until you understand what's going on here.
 
 ### You try!
 
-Once you get that, go ahead and complete the rest of the missing code.
+Once you get that, go ahead and complete the rest of the missing code in exercises.py.
 
-> For now, don't worry about going out of bounds on the `world` 2-D array. We can pretend the code automatically stops when it goes off the end of the world.
+> Don't worry about going out of bounds on the `world` 2-D array. We already wrote a check for you that makes `flood_fill` do nothing if (x, y) is out of bounds.
 
-Once, you get that and check it with a mentor, congrats! You made it! We've just successfully coded a full zombie outbreak :)
+Once you get that and check it with a mentor, congrats! You made it! We've just successfully coded a full zombie outbreak :)
 
-![](zombierabits.gif)
+![](zombierabbits.gif)
 
 If you still don't feel like you understand recursion very well, it's fine - we'll have plenty of time to practice in [Lesson 10](../Lesson10).
