@@ -10,16 +10,15 @@
 * Gain more practice with using data structures.
 * Practice decomposing complex functions into smaller, simpler functions.
 
-Learning to code is like learning to play an instrument - It's all about practice and repetition. This lesson contains a few more practice problems to reinforce what you've learned.
+Learning to code is like learning to play an instrument - it's all about practice and repetition. This lesson contains a few more practice problems to reinforce what you've learned.
 
 ## 1. round_sum
 
-The first question is on CodingBat again. Do to the question [here](http://codingbat.com/prob/p179960), then
-return here afterward for the other questions - they will all be in exercises.py.
+The first question is on CodingBat. Do to the question [here](http://codingbat.com/prob/p179960), then return here afterward for the other questions - they will all be in exercises.py.
 
 ## 2. Find last letters
 
-The next exercise is in exercises.py. Copy the code to your own file, then find this code:
+The next exercise is in exercises.py. Find this code in the file:
 
 	# 2. Find last letters
 	
@@ -28,8 +27,7 @@ The next exercise is in exercises.py. Copy the code to your own file, then find 
 	  # TODO
 	  return ret
 
-
-Write a function that takes a word and returns a dictionary of the position of the last occurrence of each letter. 
+Write code that takes a word and returns a dictionary of the position of the last occurrence of each letter. 
 
 For example, given the word 'challenge', it would return the dictionary `{'c': 0, 'h': 1, 'a': 2, 'l': 4, 'e': 8, 'n': 6, 'g': 7}` (remember, the first letter is at position 0).
 
@@ -75,7 +73,7 @@ In this part of the code:
 	  # TODO
 	  return result
 
-Write a different version of your function so that each word appears only once in the returned dictionary.
+Write a different version of your function so that each word appears only once in the dictionary that you return.
 
 ## 4. Nested lists
 
@@ -122,7 +120,7 @@ In this function:
 	  # TODO
 	  return -1
 
-Write a function that finds which sublist a given item is in. If the item is in multiple sublists, return the index of the first one that it appears in. If the item isn't in any of the lists, return -1. For example:
+Write code that finds which sublist a given item is in. If the item is in multiple sublists, return the index of the first one that it appears in. If the item isn't in any of the lists, return -1. For example:
 
 	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 1) -> 0
 	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 5) -> 0
@@ -130,12 +128,12 @@ Write a function that finds which sublist a given item is in. If the item is in 
 	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 11) -> 2
 	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 17) -> -1
 
-> **Hint**: You can use `for item_index, item in enumerate(list)` to iterate over list items along with their indexes, so `item_index` would equal the list index, and `item` would be the actual item at that index.
+> **Hint**: You can use `for item_index, item in enumerate(list)` to loop over list items along with their indexes, so `item_index` would equal the list index, and `item` would be the actual item at that index.
 
 ### Runtime
 
 What's the Big O runtime of the function in part A? What about part B? Check with a mentor to see if you're right.
 
-Challenge: Can you make part B faster if you make part A return something else? (Don't worry if you can't figure out a way to do this - it's pretty difficult! Feel free to brainstorm ideas with people around you.)
+Challenge: Can you make part B faster if you make part A return something else? (Don't worry if you can't figure out a way to do this - it's pretty difficult! Feel free to brainstorm ideas with mentors and people around you.)
 
-We're all done here - on to Lesson 9!
+We're all done here - on to [lesson 9](../Lesson9)!
