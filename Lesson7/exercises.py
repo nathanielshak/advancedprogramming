@@ -1,34 +1,36 @@
 import random
 import time
 
-#sorts the nums array using selection sort
+
+# Sorts the nums array using selection sort.
 def selection_sort(nums):
-	result = nums[:]
-	#TODO: write the code to sort the result array!
-	return result
+    result = nums[:]
+    # TODO: write the code to sort the result array!
+    return result
 
 
 BUCKET_NUM = 10
 
-#sorts the nums array using bucket sort with selection sort. The number of buckets is declared in BUCKET_NUM.
+# Sorts the nums array using bucket sort with selection sort.
+# The number of buckets is declared in BUCKET_NUM above.
 def bucket_sort(nums):
-	#initializes a list of lists - each of these lists are a bucket!
-	buckets = [[] for i in range(BUCKET_NUM)]
+    # Initializes a list of lists - each of these lists is a bucket!
+    buckets = [[] for i in range(BUCKET_NUM)]
 
-	#TODO: put the numbers each into their respective buckets
-	for num in nums:
-		pass
+    # TODO: put the numbers each into their respective buckets
+    for num in nums:
+        pass
 
-	#TODO: sort each bucket using the selection_sort function you wrote earlier
-	for bucket in buckets:
-		pass
+    # TODO: sort each bucket using the selection_sort function you wrote earlier
+    for bucket in buckets:
+        pass
 
-	#TODO: put all the sorted buckets together into the results list
-	result = []
-	for bucket in buckets:
-		pass
+    # TODO: put all the sorted buckets together into the results list
+    result = []
+    for bucket in buckets:
+        pass
 
-	return result
+    return result
 
 
 print "testing selection_sort:"
