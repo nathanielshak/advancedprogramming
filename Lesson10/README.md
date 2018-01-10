@@ -10,11 +10,11 @@
 * Gain more practice writing recursive functions.
 * Understand backtracking and state-passing in recursive algorithms.
 
-All of the exercises in this lesson are in exercises.py. Make a copy of that file, open up the copy and let's get started!
+All of the exercises in this lesson are in exercises.py. Open it up and let's get started!
 
 ## 1. Find a file
 
-You're probably already familiar with files and folders (directories). For this question, write a function that checks if a file with a given name exists in a given directory or any directory that it contains. There are some example files and directories in this directory; you can use these to test. For example:
+You're already familiar with files and folders (directories). For this question, write a function that checks if a file with a given name exists in a given directory or any directory that it contains. There are some example files and directories in this directory; you can use these to test. For example:
 
     file_exists('README.md') -> True
     file_exists('you_found_it.txt') -> True
@@ -92,7 +92,7 @@ Each of these smaller problems should be one recursive call in your function.
 
 Write the `solve_maze` function that checks if a maze is solvable. This isn't as hard as it sounds! Remember how the flood-fill algorithm from lesson 9 covers the entire area of a contiguous 2-dimensional space? You can modify the flood-fill algorithm to solve a maze.
 
-Specifically, your function should take a maze and return a list of strings specifying which directions to move. For this question, we'll use a new type of variable - a *class instance object*. We'll talk about classes in detail in the next lesson. For now, just use these functions to work with the maze:
+Specifically, your function should take a maze and return True if the goal is reachable from the start, and False if it isn't. For this question, we'll use a new type of variable - a *class instance object*. We'll talk about classes in detail in the next lesson. For now, just use these functions to work with the maze:
 * `maze.is_wall(x, y)` checks if a cell is a wall or not
 * `maze.mark_visited(x, y)` marks a cell as visited
 * `maze.was_visited(x, y)` checks if a cell was visited already
@@ -108,19 +108,24 @@ To put this in the same context as the flood fill exercise from lesson 9, you ca
 Second, figure our your recursive calls. This should be very similar to flood fill - you should look in all four directions from the current cell.
 
 For this maze, your function should return True:
+
 ![](maze_0.png)
 
 For this maze, your function should return False:
+
 ![](maze_unsolvable.png)
 
 ### Challenge
 
-Write the `sum_to_target_challenge` function so that it returns the path to the goal, or None if the maze is not solvable. Specifically, it should return a list of strings saying which directions to move. For this maze, your function should return `['down', 'down', 'right', 'right', 'right', 'right', 'up' ,'up', 'right', 'right', 'down', 'down', 'down', 'down']`:
+Write the `solve_maze_challenge` function so that it returns the path to the goal, or None if the maze is not solvable. Specifically, it should return a list of strings saying which directions to move. For this maze, your function should return `['down', 'down', 'right', 'right', 'right', 'right', 'up' ,'up', 'right', 'right', 'down', 'down', 'down', 'down']`:
+
 ![](maze_0.png)
 
 The function you'll write in this section should be similar to `solve_maze`. The base cases and recursive calls are actually the same - you just need to change the return values to return the path instead of only `True` or `False`.
 
-When writing the recursive call, it might help to assume that it correctly solves the subproblem, then modify the return value to be the solution of the main problem. For example, suppose you recursively call `sum_to_target_challenge` on the cell below the current cell (the cell at `(x, y + 1)`) and it returns a list (not None). The solution to the maze, then, is to move down from the current cell, then follow the solution that the recursive call returned. In Python, you can add something to the beginning of a list by adding two lists together - for example, `['down'] + x` is a copy of the list `x` with `'down'` added to the beginning.
+When writing the recursive call, it might help to assume that it correctly solves the subproblem, then modify the return value to be the solution of the main problem.
+
+For example, suppose you recursively call `solve_maze_challenge` on the cell below the current cell (the cell at `(x, y + 1)`) and it returns a list (not None), which means that that list is the path that would take you from the cell at `(x, y + 1)` to the goal. The solution to the maze, then, is to move down from the current cell, then follow the path that the recursive call returned. In Python, you can add something to the beginning of a list by adding two lists together - for example, `['down'] + x` is a copy of the list `x` with `'down'` added to the beginning.
 
 > Hint: Don't forget to check if the recursive call's return value is None before modifying and returning it.
 
@@ -163,14 +168,14 @@ What's going on here? We can break it down like this:
         # just moved
         move(n - 1, extra, target, source)
 
-Like the Towers of Hanoi, a surprising number of problems can be solved by breaking them down into smaller problems and solving those, which is often much easier than solving the problem all at once. See the next section for more examples of useful and popular recursive algorithms.
+Like the Tower of Hanoi, a surprising number of problems can be solved by breaking them down into smaller problems and solving those, which is often much easier than solving the problem all at once. See the next section for more examples of useful and popular recursive algorithms.
 
 ## 6. More examples
 
 Wanna see more recursion? Here are some examples of useful or interesting recursive algorithms.
 
-* ![Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) (described in more detail).
-* ![Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
-* ![Binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) is a fast way to find an item in a sorted array. On a 1-million item list, a standard (linear) search can take up to 1 million comparisons to find a specific item, but a binary search will use no more than 10 comparisons.
+* [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) (described in more detail).
+* [Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
+* [Binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) is a fast way to find an item in a sorted array. On a 1-million item list, a standard (linear) search can take up to 1 million comparisons to find a specific item, but a binary search will use no more than 10 comparisons.
 
 In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. See you then!
