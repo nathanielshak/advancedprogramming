@@ -176,6 +176,6 @@ Wanna see more recursion? Here are some examples of useful or interesting recurs
 
 * [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) (described in more detail).
 * [Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
-* [Binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) is a fast way to find an item in a sorted array. On a 1-million item list, a standard (linear) search can take up to 1 million comparisons to find a specific item, but a binary search will use no more than 10 comparisons.
+* [Euclid's algorithm](https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html) is a really efficient way to find the Greatest Common Divisor of two numbers. It's really useful in math!
 
 In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. See you then!
