@@ -17,8 +17,7 @@ Welcome to StreetCode's Next Level Programming class! In this class we will go f
 9. [Introduction to Recursion](Lesson9)
 10. [Recursion Practice](Lesson10)
 11. [Object-Oriented Programming (Classes)](Lesson11)
-12. [Exceptions](Lesson12)
-13. [More Complex Data Structures](Lesson13)
+12. [Exceptions and Advanced Control Flow](Lesson12)
 
 ## Prerequisites for taking this class
 
@@ -80,4 +79,4 @@ Students should leave this class with:
 * The skillset to troubleshoot and debug their own code, how to independently research various kinks that come up while coding. AKA: "being good at Googling".
 * The tools to succeed in technical interviews and beginner-level software internships.
 
-Anyways, let's get started!
+Anyway, let's get started!
