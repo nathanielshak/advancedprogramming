@@ -15,21 +15,21 @@
 Imagine you were dealing with this code:
 
     def some_calculation(x, y, z):
-        print 'doing some calculations...'
+        print('doing some calculations...')
         ret = (x + y) / z
-        print 'done with some calculations!'
+        print('done with some calculations!')
         return ret
 
     def do_something(x, y, z):
-        print 'doing something...'
+        print('doing something...')
         ret = some_calculation(z, y, x)
-        print 'done with something!'
+        print('done with something!')
         return ret
 
     def another_function(x, y):
-        print 'running another function...'
+        print('running another function...')
         ret = do_something(x, y, y)
-        print 'done runnning another function!'
+        print('done runnning another function!')
         return ret
 
 We already know that we can't divide by zero - there's no reasonable value that could come out of that division, so the program will crash. So we have to avoid calling `some_calculation` when `z` is zero. But we might call these functions in lots of different places - how can we make sure we avoid crashing?
@@ -47,12 +47,12 @@ In this example, the basic idea is that you *don't check if `z` is zero*, you ju
 When an exception is raised, Python will *skip the rest of the code* until an appropriate `except` block is found. Maybe this is best illustrated by example... we can write code like this:
 
     try:
-        print 'about to divide y by z...'
+        print('about to divide y by z...')
         ret = y / z
-        print 'y / z is', ret
+        print('y / z is', ret)
     except ZeroDivisionError:
-        print 'could not divide because z was zero'
-    print 'all done!'
+        print('could not divide because z was zero')
+    print('all done!')
 
 What exactly are we saying here? Let's break it down.
 
@@ -142,8 +142,8 @@ If you want to get the actual exception object that was raised, you can catch it
     except KeyError as e:
         # now e is the exception object itself. the arguments that were passed
         # to it are in e.args.
-        print e.args[0]  # prints 'lolz'
-        print e.args[1]  # prints '42'
+        print(e.args[0])  # prints 'lolz'
+        print(e.args[1])  # prints '42'
 
 <!-- %%
 TODO: write an exercise here
@@ -154,14 +154,14 @@ TODO: write an exercise here
 Now that you know about some more types of exceptions, you can also catch multiple types of exceptions at once. Imagine that instead of dividing by `z` in our example above, we're instead dividing by a value from a dictionary, `d[k]`. If `d[k]` is zero, we can still get ZeroDivisionError, like before. But if `d[k]` doesn't exist, then we could also get KeyError. Here's how we can deal with that:
 
     try:
-        print 'about to divide y by d[k]...'
+        print('about to divide y by d[k]...')
         ret = y / d[k]
-        print 'y / d[k] is', ret
+        print('y / d[k] is', ret)
     except ZeroDivisionError:
-        print 'could not divide because d[k] was zero'
+        print('could not divide because d[k] was zero')
     except KeyError:
-        print 'could not divide because d[k] did not exist'
-    print 'all done!'
+        print('could not divide because d[k] did not exist')
+    print('all done!')
 
 The order of the `except` blocks doesn't matter in this case. If there's no exception, then none of them will ever be run, but if there is an exception, **only one** of them will ever be run - the one corresponding to the type of exception that happened. (If the `except ZeroDivisionError` block runs, then it will skip the `except KeyError` block when it's done.)
 
@@ -178,18 +178,18 @@ The answer is that we *unwind the call stack*. This means that whatever function
 We could rearrange the previous example like this:
 
     def divide(a, b):
-        print 'about to divide a by b...'
+        print('about to divide a by b...')
         ret = a / b
-        print 'a / b is', ret
+        print('a / b is', ret)
         return ret
 
     try:
         ret = divide(y, d[k])
     except ZeroDivisionError:
-        print 'could not divide because d[k] was zero'
+        print('could not divide because d[k] was zero')
     except KeyError:
-        print 'could not divide because d[k] did not exist'
-    print 'all done!'
+        print('could not divide because d[k] did not exist')
+    print('all done!')
 
 In this example, ZeroDivisionError can happen when we're inside the `divide` function. Since it's not inside a `try` block at all in that function, the exception **propagates** to the caller - it's as if the exception was raised by the `divide(y, d[k])` line instead. Exceptions can propagate through any number of functions.
 
@@ -227,12 +227,12 @@ TODO: write an exercise here
 When you catch a specific type of exception, you're actually catching that exception type *and all subclasses of that exception type*. This might be a little confusing at first, so here's another example:
 
     try:
-        print 'about to divide y by d[k]...'
+        print('about to divide y by d[k]...')
         ret = y / d[k]
-        print 'y / d[k] is', ret
+        print('y / d[k] is', ret)
     except Exception:
-        print 'could not divide'
-    print 'all done!'
+        print('could not divide')
+    print('all done!')
 
 When we run this code, we would see `could not divide` in the output in both error cases (where `d[k]` is zero, and where `d[k]` doesn't exist). This is because ZeroDivisionError and KeyError are both subclasses of Exception, so the `except` block catches both of them. See [the Python documentation](https://docs.python.org/2/library/exceptions.html#exception-hierarchy) for a full description of which exceptions inherit from which others.
 

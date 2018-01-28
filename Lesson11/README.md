@@ -36,13 +36,13 @@ This class is called Car, and it *inherits* from `object`. We'll talk about inhe
 So what is this thing, then? Just defining the Car class doesn't actually create any variables - instead, it tells Python *how to create Car objects in general*. Now, in addition to numbers, strings, lists, dicts, and the like, we can also use Cars as values for variables! To make a Car, we call the Car class as if it were a function:
 
     c = Car()  # this creates a new Car object
-    print c  # this prints something like '<Car object at 0x10a1b0a50>'
+    print(c)  # this prints something like '<Car object at 0x10a1b0a50>'
 
     d = Car()  # this is a different Car object
-    print d  # this prints something like '<Car object at 0x10a1b0b10>'
+    print(d)  # this prints something like '<Car object at 0x10a1b0b10>'
 
-    print (type(c) == type(d))  # this prints True: c and d are both Cars
-    print (c == d)  # this prints False: c and d are different objects
+    print(type(c) == type(d))  # this prints True: c and d are both Cars
+    print(c == d)  # this prints False: c and d are different objects
 
 Great! Now what?
 
@@ -71,12 +71,12 @@ To make Car objects actually useful, we have to give them some variables and fun
 This code tells Python how to make a Car, but it doesn't actually create any Cars just yet. Like before, we can create Cars by calling the class as if it were a function, but now we have to pass some parameters:
 
     c = Car(4, 20000, None)  # 4 wheels, 20000 miles, not sold (date_sold is None)
-    print c.sale_price()  # prints 20000
-    print c.purchase_price()  # prints 6000
+    print(c.sale_price())  # prints 20000
+    print(c.purchase_price())  # prints 6000
 
     d = Car(6, 10000, None)  # 6 wheels, 10000 miles, not sold (date_sold is None)
-    print d.sale_price()  # prints 30000
-    print d.purchase_price()  # prints 7000
+    print(d.sale_price())  # prints 30000
+    print(d.purchase_price())  # prints 7000
 
 To understand what's happening here, let's break down the Car class definition a bit. We defined a few functions, called `__init__`, `sale_price`, and `purchase_price`, *inside* the class.
 
@@ -115,7 +115,7 @@ Find this class at the top of exercises.py:
 
         def render(self):
             # TODO: write this method!
-            print "not yet implemented"
+            print("not yet implemented")
 
 This class represents an abstract rectangle with some width and height. We provided `__init__` for you. Fill in the method `render` so that it prints a rectangle of '@' characters to the terminal with the width and height from `self`.
 
@@ -129,7 +129,7 @@ This class represents an abstract rectangle with some width and height. We provi
 
         def count(self):
             self.count = self.count + 3
-            print self.count
+            print(self.count)
 
 Now that you've read the class definition, what do you think this code will print?
 

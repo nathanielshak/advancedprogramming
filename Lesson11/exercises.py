@@ -17,7 +17,7 @@ class Rectangle(object):
 
     def render(self):
         # TODO: write this method
-        print "not yet implemented"
+        print("not yet implemented")
 
 
 # 3. Writing an entire class

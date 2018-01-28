@@ -35,7 +35,7 @@ This is the **Python Interactive Interpreter**. It lets you write Python code li
 
 First, go ahead and type this:
 
-    print "Nathaniel is awesome."
+    print("Nathaniel is awesome.")
 
 It should look something like this after you hit "enter":
 
@@ -55,7 +55,7 @@ Let's try some more. Here's a list of things to try. First, think to yourself wh
 8. `1 is float(1)`
 9. `string yolo = "swag"`
 10. `yolo = "swag"`
-11. `print yolo`
+11. `print(yolo`)
 12. `meep = 400`
 13. `meep / 3`
 14. `type(meep)`

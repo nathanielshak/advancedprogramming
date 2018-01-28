@@ -23,9 +23,9 @@ Before we start doing any coding ourselves, look at the following block of Pytho
     while a < 20:
         a = a + 2
         if a == 12:
-            print "I'm skipping this number because I don't like it."
+            print("I'm skipping this number because I don't like it.")
         else:
-            print a
+            print(a)
 
 You might have seen this code already if you were reading the course requirements of this class, but let's take a closer look at it. Now, even if you haven't coded in Python before, you might still be able to tell roughly what the code is doing and what it will print out. Feel free to paste all this code into the helloworld.py file from the last lesson and run the file again in the terminal (using `python helloworld.py`) to see for sure what it prints.
 
@@ -77,9 +77,9 @@ The other thing you might notice is the lack of brackets for our while, if, and 
     while a < 20: {
         a = a + 2
         if a == 12: {
-            print "I'm skipping this number because I don't like it."
+            print("I'm skipping this number because I don't like it.")
         } else: {
-            print a
+            print(a)
         }
     }
 
@@ -99,7 +99,7 @@ the above lines of code are not indented at all because they are not inside of a
 
 are indented once since they are inside of the while loop, but not any other statements. Since they are inside of **one** statement, they are indented **one** time. On the other hand, this line of code:
 
-            print "I'm skipping this number because I don't like it."
+            print("I'm skipping this number because I don't like it.")
 
 is indented **two** times since it is inside both the while loop and if statement. The extra indentation serves as a replacement for the opening bracket that would have come after the if statement. Likewise, the following line:
 
@@ -109,7 +109,7 @@ is indented only **one** time, meaning that it is only inside the while loop, no
 
 The next line:
 
-            print a
+            print(a)
 
 if you haven't guessed already, is indented 2 times since it is inside both the while loop and the else statement.
 
@@ -118,7 +118,7 @@ if you haven't guessed already, is indented 2 times since it is inside both the 
 We didn't look at for loops until now because they're very different than for loops in other languages. Here's an example of code you can try running:
 
     for i in range(10):
-        print i
+        print(i)
 
 This looks very different from for loops in most other languages! Here's the Java equivalent of the above code:
 
@@ -152,7 +152,7 @@ In your tictactoe.py file, write code to print out a Tic Tac Toe board that look
     --------
       |  |  
 
-> **Hint**: to print things in Python, use the `print` statement. For example, `print "yolo"`
+> **Hint**: to print things in Python, use the `print` function. For example, `print("yolo")`
 
 Once you're ready to test your code, go ahead and run your tictactoe.py program the same way we ran our helloworld.py program in the last lesson.
 
@@ -261,11 +261,11 @@ Write a program that prints the numbers 0 to 100. However, on the numbers that a
 **Hint:** Think about how "if, else if, and else" statements might be useful here. Below is an example of what these statements look like in Python. In Python "elif" is used instead of "else if". (Assume `num` has been defined somewhere before this code)
 
     if num == 3:
-        print "eww it's a 3"
+        print("eww it's a 3")
     elif num == 42:
-        print "YES! it's my favorite number! 42 for the win!!!"
+        print("YES! it's my favorite number! 42 for the win!!!")
     else:
-        print "meh, this number is okay."
+        print("meh, this number is okay.")
 
 ## Functions
 
@@ -277,8 +277,8 @@ Here's an example of what a function with parameters looks like in Python:
 
     def count_up(num):
         for i in range(num):
-            print i
-        print "all done!"
+            print(i)
+        print("all done!")
 
 Once I define the function like this, I can **call** this function using the following code:
 
@@ -303,7 +303,7 @@ Notice that I didn't have to define a return type in the function. Python automa
 then call it like this:
 
     mysum = sum(23, 54)
-    print mysum
+    print(mysum)
 
 and then the output would be:
 

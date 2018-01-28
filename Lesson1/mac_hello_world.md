@@ -88,7 +88,7 @@ Alright, ready for our first Python program?
 
 For this, all we're going to do is write one simple line of Python code in Sublime Text. Here it is:
 
-    print "hello world!"
+    print("hello world!")
 
 It should look like this:
 

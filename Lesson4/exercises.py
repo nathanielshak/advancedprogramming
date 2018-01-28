@@ -32,4 +32,7 @@ def max_diff(nums):
 # Prints an hourglass made out of '*' characters with a base the size of the number supplied * 2.
 def hourglass(size):
     # TODO: implement this!
-    print "not implemented"
+    print("not implemented")
+
+
+

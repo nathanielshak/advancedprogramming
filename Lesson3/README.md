@@ -35,7 +35,7 @@ In memory, the data would look something like this:
 
 Then we can access items in the list like this:
 
-    print items[0]  # this will print out "yay"
+    print(items[0])  # this will print out "yay"
 
 or change the values of the list around like this:
 
@@ -49,12 +49,12 @@ The list would now look like this:
 
 We can find how long the list is like this:
 
-    print len(items)  # will print 5
+    print(len(items))  # will print 5
 
 We can go through all items in a list in order and print them like this:
 
     for item in items:
-        print item
+        print(item)
 
 One big difference between Python lists and arrays in other languages is how flexible Python lists are. You can tack on to the list on the fly:
 
@@ -120,7 +120,7 @@ The data in this dictionary would look something like this:
 
 Then, you can access items in the dictionary like this:
 
-    print food["spam"]
+    print(food["spam"])
 
 which would print out: "no".
 
@@ -150,7 +150,7 @@ And then the dictionary would look like this:
 
 Like lists, dictionaries also have a `len()` that gives the number of items in the dictionary:
 
-    print len(food)  # this prints 4
+    print(len(food))  # this prints 4
 
 And you can write loops over the contents of a dictionary in multiple ways:
 

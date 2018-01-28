@@ -39,7 +39,7 @@ This means that we got into something like an **infinite loop** and the `foo` fu
 What do you think would happen if we did something like this?
 
      def foo():
-        print "hi." 
+        print("hi.")
         foo()
 
 If you guessed that it would print out "hi" forever, you're right. But if you try running this code, you'll actually get this error again:
@@ -53,7 +53,7 @@ That's because the program crashes from the infinite loop after printing "hi" ma
 How about this one?
 
     def count(num):
-        print num
+        print(num)
         count(num + 1)
 
 Similar story here. It prints out numbers starting from wherever you started, then keeps counting up until it crashes.
@@ -74,9 +74,9 @@ To illustrate this, let's look at some more examples:
 
     def count_to_100(num):
         if num > 100:
-            print "all done!"
+            print("all done!")
         else:
-            print num
+            print(num)
             count_to_100(num + 1)
 
 This code is actually very similar to the last snippet we looked at. the main difference is the fact that we have a **base case**. If you run the code like this:
@@ -234,9 +234,9 @@ For example, we could have easily done this for count_down:
     def count_down(num):
         cur_num = num
         while cur_num > 0:
-            print cur_num
+            print(cur_num)
             cur_num -= 1
-        print "all done!
+        print("all done!)
 
 Or this for factorial:
 
