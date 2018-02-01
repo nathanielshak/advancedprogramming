@@ -30,9 +30,9 @@ Go ahead and download exercises.py and open it up. Find this function:
 
 For this problem, we will write code that takes a list of integers and returns the length of the largest ascending sublist. An ascending sublist is one where each element is greater than the previous number in the list. For example, for the list `[1, 5, 9, 9, 8, 7]`, `[1, 5, 9]` is an ascending sublist, but `[9, 9]` isn't (the items aren't strictly greater), `[9, 8, 7]` also isn't (the items are descending), and `[1, 5, 8]` also isn't (the items aren't consecutive in the original list).
 
-    max_ascending([5, 10, 15, 20]) -> 4
-    max_ascending([1, 3, 2, 4, 5, 6, 1]) -> 4
-    max_ascending([4, 3, 2, 1]) -> 1
+    max_ascending_sublist_size([5, 10, 15, 20]) -> 4
+    max_ascending_sublist_size([1, 3, 2, 4, 5, 6, 1]) -> 4
+    max_ascending_sublist_size([4, 3, 2, 1]) -> 1
 
 ### Big O Practice
 
