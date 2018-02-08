@@ -84,6 +84,8 @@ That was a lot of information at once. Let's put some of it into practice with s
 
 The first function, `list_print`, is already filled out for you. This function goes through every item in a list passed as a parameter (in the `lst` variable) and prints them in order. You can use this as an example as you work on the rest of the problems.
 
+#### List Sum
+
 The first function we're going to write our code in is `list_sum`. In this function, we will assume the parameter, `lst` is a list of numbers, and we will want the function to compute the sum of all of them, then return that sum. 
 
 > **Hint**: Think of how using a variable could be helpful here.
@@ -114,9 +116,9 @@ You can also initialize them with items already inside.
 
 The data in this dictionary would look something like this:
 
-|**Label**|food["ham"]|food["egg"]|food["spam]|
-|---------|-----------|-----------|-----------|
-|**Data** |"yes"      |"idk"      |"no"       |
+|**Label**|food["ham"]|food["egg"]|food["spam"]|
+|---------|-----------|-----------|------------|
+|**Data** |"yes"      |"idk"      |"no"        |
 
 Then, you can access items in the dictionary like this:
 
