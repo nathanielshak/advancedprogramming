@@ -178,4 +178,4 @@ Wanna see more recursion? Here are some examples of useful or interesting recurs
 * [Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
 * [Euclid's algorithm](https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html) is a really efficient way to find the Greatest Common Divisor of two numbers. It's really useful in math!
 
-In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. See you then!
+In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. On to [lesson 11](../Lesson11)!

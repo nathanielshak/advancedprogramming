@@ -65,10 +65,10 @@ def test_sum_to_target():
   for items, target, expected in cases:
     actual = sum_to_target(items, target)
     if actual != expected:
-      print 'sum_to_target(%r, %r) returned %r, but it should have returned %r' % (
-          items, target, actual, expected)
+      print('sum_to_target(%r, %r) returned %r, but it should have returned %r' % (
+          items, target, actual, expected))
       return
-  print 'sum_to_target is correct'
+  print('sum_to_target is correct')
 
 def test_sum_to_target_challenge():
   cases = [
@@ -80,22 +80,22 @@ def test_sum_to_target_challenge():
   for items, target, expected in cases:
     actual = sum_to_target_challenge(items, target)
     if actual != expected:
-      print 'sum_to_target_challenge(%r, %r) returned %r, but it should have returned %r' % (
-          items, target, actual, expected)
+      print('sum_to_target_challenge(%r, %r) returned %r, but it should have returned %r' % (
+          items, target, actual, expected))
       return
-  print 'sum_to_target_challenge is correct'
+  print('sum_to_target_challenge is correct')
 
 def test_file_exists():
   if not file_exists('.', 'README.md'):
-    print 'file_exists did not find README.md'
+    print('file_exists did not find README.md')
     return
   if not file_exists('.', 'you_found_it.txt'):
-    print 'file_exists did not find you_found_it.txt'
+    print('file_exists did not find you_found_it.txt')
     return
   if file_exists('.', 'not_a_real_file.txt'):
-    print 'file_exists found not_a_real_file.txt, but it does not exist'
+    print('file_exists found not_a_real_file.txt, but it does not exist')
     return
-  print 'file_exists is correct'
+  print('file_exists is correct')
 
 
 def test_subsets_of_size():
@@ -110,15 +110,15 @@ def test_subsets_of_size():
   for items, target, expected in cases:
     actual = subsets_of_size(items, target)
     if sorted(actual) != sorted(expected):
-      print 'subsets_of_size(%r, %r) returned %r, but it should have returned %r (order doesn\'t matter)' % (
-          items, target, actual, expected)
+      print('subsets_of_size(%r, %r) returned %r, but it should have returned %r (order doesn\'t matter)' % (
+          items, target, actual, expected))
       return
-  print 'subsets_of_size is correct'
+  print('subsets_of_size is correct')
 
 def test_solve_maze_error(maze, path, message):
   maze.print_field()
-  print 'Your solution was: %r' % (path,)
-  print 'Solution failed: %s' % (message,)
+  print('Your solution was: %r' % (path,))
+  print('Solution failed: %s' % (message,))
 
 def test_solve_maze_path(maze, path):
   maze.clear_visited()
@@ -205,8 +205,8 @@ def test_solve_maze(test_path=False):
     f = Field(w, h, fixed_maze=''.join(maze))
     ret = solve_maze(f, 1, 1, w - 2, h - 2)
     if ret != solvable:
-      print 'the following maze is %s, but solve_maze returned %r:' % (
-          'solvable' if solvable else 'not solvable', ret)
+      print('the following maze is %s, but solve_maze returned %r:' % (
+          'solvable' if solvable else 'not solvable', ret))
       f.print_field()
       return False
     if test_path:
@@ -216,8 +216,8 @@ def test_solve_maze(test_path=False):
         if not test_solve_maze_path(f, path):
           return False
       elif path is not None:
-        print 'the following maze is not solvable, but solve_maze_challenge returned %r:' % (
-            path,)
+        print('the following maze is not solvable, but solve_maze_challenge returned %r:' % (
+            path,))
         f.print_field()
         return False
 
@@ -226,7 +226,7 @@ def test_solve_maze(test_path=False):
     f = Field(size, size, generate_columns=True, generate_maze=True)
     ret = solve_maze(f, 1, 1, size - 2, size - 2)
     if not ret:
-      print 'the following maze is solvable, but solve_maze returned %r:' % (ret,)
+      print('the following maze is solvable, but solve_maze returned %r:' % (ret,))
       f.print_field()
       return
     if test_path:
@@ -236,9 +236,9 @@ def test_solve_maze(test_path=False):
         return False
 
   if test_path:
-    print 'solve_maze_challenge is correct'
+    print('solve_maze_challenge is correct')
   else:
-    print 'solve_maze is correct'
+    print('solve_maze is correct')
   return True
 
 
@@ -255,9 +255,9 @@ class Field(object):
 
       # generate the base field
       self.data = []
-      for y in xrange(h):
+      for y in range(h):
         line = []
-        for x in xrange(w):
+        for x in range(w):
           line.append(fixed_maze[y * w + x] != ' ')
         self.data.append(line)
 
@@ -268,9 +268,9 @@ class Field(object):
 
       # generate the base field
       self.data = []
-      for y in xrange(h):
+      for y in range(h):
         line = []
-        for x in xrange(w):
+        for x in range(w):
           is_edge = (x == 0) or (x == w - 1) or (y == 0) or (y == h - 1)
           is_column = generate_columns and (not ((x & 1) or (y & 1)))
           is_wall = generate_maze and (not ((x & 1) and (y & 1)))
@@ -299,14 +299,14 @@ class Field(object):
     self.clear_visited()
 
   def print_field(self):
-    print 'y\\x ' + ''.join('%3d' % i for i in xrange(len(self.data[0])))
+    print('y\\x ' + ''.join('%3d' % i for i in range(len(self.data[0]))))
     for y, line in enumerate(self.data):
-      print ('%3d ' % y) + ''.join(('###' if x else '   ') for x in line)
+      print(('%3d ' % y) + ''.join(('###' if x else '   ') for x in line))
 
   def print_visited(self):
-    print 'y\\x ' + ''.join('%3d' % i for i in xrange(len(self.visited[0])))
+    print('y\\x ' + ''.join('%3d' % i for i in range(len(self.visited[0]))))
     for y, line in enumerate(self.visited):
-      print ('%3d ' % y) + ''.join(('---' if x else '   ') for x in line)
+      print(('%3d ' % y) + ''.join(('---' if x else '   ') for x in line))
 
   def is_wall(self, x, y):
     return self.data[y][x]

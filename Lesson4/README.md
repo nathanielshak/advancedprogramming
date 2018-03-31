@@ -67,7 +67,7 @@ For the `most_common_letter` function, we will write code that will return the m
 
     # this will print each individual letter in the string s
     for letter in s:
-        print letter
+        print(letter)
 
 ### Maximum Difference
 

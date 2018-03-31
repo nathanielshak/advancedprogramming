@@ -154,7 +154,7 @@ That seems easy enough, but there are some nuances we need to be aware of. What 
 
     def max_diff(nums):
         for i in range(1000):
-            print "hi."
+            print("hi.")
         cur_max_diff = 0
         for num1 in nums:
             for num2 in nums:
@@ -175,7 +175,7 @@ What if the code looked like this?
 
     def max_diff(nums):
         for i in nums:
-            print i
+            print(i)
         cur_max_diff = 0
         for num1 in nums:
             for num2 in nums:
@@ -198,7 +198,7 @@ When using Big O notation, we're only concerned with the biggest terms and can i
         cur_min = nums[0]
         cur_max = nums[0]
         for num in nums:
-            print num
+            print(num)
         for num in nums:
             if num > cur_max:
                 cur_max = num

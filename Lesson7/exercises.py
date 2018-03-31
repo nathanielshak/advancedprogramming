@@ -33,14 +33,14 @@ def bucket_sort(nums):
     return result
 
 
-print "testing selection_sort:"
+print("testing selection_sort:")
 start = time.time()
-print selection_sort([random.randint(0, 999) for _ in xrange(1000)])
+print(selection_sort([random.randint(0, 999) for _ in range(1000)]))
 diff = time.time() - start
-print 'selection_sort took %s seconds' % diff
+print('selection_sort took %s seconds' % diff)
 
-print "testing bucket_sort:"
+print("testing bucket_sort:")
 start = time.time()
-print bucket_sort([random.randint(0, 99) for _ in xrange(1000)])
+print(bucket_sort([random.randint(0, 99) for _ in range(1000)]))
 diff = time.time() - start
-print 'bucket_sort took %s seconds' % diff
+print('bucket_sort took %s seconds' % diff)

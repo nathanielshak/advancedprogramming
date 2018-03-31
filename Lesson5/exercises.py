@@ -24,9 +24,9 @@ def binary_search(nums, target):
 
 def test_binary_search(nums, target, desired_result):
     if binary_search(nums, target) is desired_result:
-        print "TEST SUCCESSS on: " + str(nums)
+        print("TEST SUCCESS on: " + str(nums))
     else:
-        print "TEST FAILED on: " + str(nums)
+        print("TEST FAILED on: " + str(nums))
 
 
 test_binary_search([1, 2, 3, 6, 7, 10, 10, 10], 7, True)

@@ -35,7 +35,7 @@ In memory, the data would look something like this:
 
 Then we can access items in the list like this:
 
-    print items[0]  # this will print out "yay"
+    print(items[0])  # this will print out "yay"
 
 or change the values of the list around like this:
 
@@ -49,12 +49,12 @@ The list would now look like this:
 
 We can find how long the list is like this:
 
-    print len(items)  # will print 5
+    print(len(items))  # will print 5
 
 We can go through all items in a list in order and print them like this:
 
     for item in items:
-        print item
+        print(item)
 
 One big difference between Python lists and arrays in other languages is how flexible Python lists are. You can tack on to the list on the fly:
 
@@ -83,6 +83,8 @@ That was a lot of information at once. Let's put some of it into practice with s
 #### List Print
 
 The first function, `list_print`, is already filled out for you. This function goes through every item in a list passed as a parameter (in the `lst` variable) and prints them in order. You can use this as an example as you work on the rest of the problems.
+
+#### List Sum
 
 The first function we're going to write our code in is `list_sum`. In this function, we will assume the parameter, `lst` is a list of numbers, and we will want the function to compute the sum of all of them, then return that sum. 
 
@@ -114,13 +116,13 @@ You can also initialize them with items already inside.
 
 The data in this dictionary would look something like this:
 
-|**Label**|food["ham"]|food["egg"]|food["spam]|
-|---------|-----------|-----------|-----------|
-|**Data** |"yes"      |"idk"      |"no"       |
+|**Label**|food["ham"]|food["egg"]|food["spam"]|
+|---------|-----------|-----------|------------|
+|**Data** |"yes"      |"idk"      |"no"        |
 
 Then, you can access items in the dictionary like this:
 
-    print food["spam"]
+    print(food["spam"])
 
 which would print out: "no".
 
@@ -150,7 +152,7 @@ And then the dictionary would look like this:
 
 Like lists, dictionaries also have a `len()` that gives the number of items in the dictionary:
 
-    print len(food)  # this prints 4
+    print(len(food))  # this prints 4
 
 And you can write loops over the contents of a dictionary in multiple ways:
 
