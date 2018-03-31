@@ -77,8 +77,6 @@ In the `max_diff` function, we will write code that will return the maximum diff
     max_diff([1, 3, 5]) -> 4
     max_diff([-2, 0]) -> 2
 
-> **Hint**: to get positive and negative infinity, you can use float("inf") or -float("inf")
-
 ### Hourglass
 
 For the `hourglass` function, write code that prints an hourglass shape of a given size `size` (i.e. the base of the hourglass has `2 * size` stars).

@@ -113,8 +113,8 @@ It depends on how many numbers are in the list, `nums`. Every number in `nums` i
 Okay, now let's look at a different way we could have solved this problem.
 
     def max_diff(nums):
-        cur_min = float("inf")
-        cur_max = -float("inf")
+        cur_min = nums[0]
+        cur_max = nums[0]
         for num in nums:
             if num > cur_max:
                 cur_max = num
@@ -195,8 +195,8 @@ O(n<sup>2</sup>)
 When using Big O notation, we're only concerned with the biggest terms and can ignore smaller ones. Another example - what if we modified the code from the second `max_diff` algorithm to look like this?
 
     def max_diff(nums):
-        cur_min = float("inf")
-        cur_max = -float("inf")
+        cur_min = nums[0]
+        cur_max = nums[0]
         for num in nums:
             print(num)
         for num in nums:
