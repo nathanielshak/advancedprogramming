@@ -65,7 +65,7 @@ Let's try some more. Here's a list of things to try. First, think to yourself wh
 18. `!False`
 19. `not False`
 
-Once you're done with that, go ahead and hit "ctrl-d" to exit the interpreter. 
+Once you're done with that, go ahead and hit "quit()" to exit the interpreter. 
 
 ## Run a Python File
 
