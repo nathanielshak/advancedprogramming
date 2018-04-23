@@ -4,5 +4,5 @@ def start_hangman():
 
 
 # This is the function call to kickstart the function.
-# Note that the above function won't run until you call it usintg the line below
+# Note that the above function won't run until you call it using the line below
 start_hangman()
