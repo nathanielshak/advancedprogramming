@@ -213,11 +213,71 @@ Now that you can print one hangman to the terminal, let's build the different st
 
 Run this file, and you should be able to see all the stages of the hangman!
 
+This is what your file should look like after you're done with this section : [hangman2](hangman2.py)
+
 
 ### Milestone 3 : Getting hangman to work a word
 
+Now that we have our stages for hangman working, let's use it to turn it into a game!
+
+Let our secret word be "PLAY"
+
+Let's try and figure out what our welcome screen should look like. 
+In our welcome screen, let's welcome the player to hangman, and show them the first level of the 
+hangman without any parts. We should also ask the player to enter a letter to guess, and show 4 
+empty dashes indicating no guesses made so far.
+
+We can do that by changing our earlier code to :
+
+    def start_hangman():
+        
+        ...
+         
+        man7 = """
+           ____
+          |    |
+          |    o
+          |   /|\\
+          |   / \\
+         _|_
+        |   |_____
+        |         |
+        |_________|           
+        """
+        #Welcome message
+        print("Welcome to Hangman!")
+        print(man1)
+        print("_ _ _ _") 
+        print("Guess the letter :")
+    
+    start_hangman()
+
+*Small note: The bit where I have written `...` , I refer to all the code that we earlier wrote between `def start_hangman():` and `man7 = """`. I will use this notation often to prevent re-writing long bits of code from previous sections.*
+
+You should try running this bit of code in the terminal and see what happens!
+ 
+Now lets actually take a guess from the user and change our hangman accordingly.
+
+To take in an input from the terminal, we will use a function called `input()`. This function takes in whatever
+the person playing the game types in the terminal, and stores it in a variable.
+
+    def start_hangman():
+        
+        ...
+         
+        print("Guess the letter :")
+        guessed_letter = input()
+    
+    start_hangman()
+
+Awesome, now the players guess should be stored in `guessed_letter`
+
+We have to now figure out whether this letter is actually in the word "PLAY" or not.
+
+### Milestone 3.5 : Breaking things and fixing them - 1
+
 <!---
-TODO: hardcode to get it working for 1 word (a short one)
+TODO: Show how to find bugs with code and fix edge cases
 -->
 
 ### Milestone 4 : Getting hangman to work with any word
@@ -226,8 +286,7 @@ TODO: hardcode to get it working for 1 word (a short one)
 TODO: Use loops to get it working with any word
 -->
 
-
-### Milestone 5 : Breaking things and fixing them
+### Milestone 4.5 : Breaking things and fixing them - 2
 
 <!---
 TODO: Show how to find bugs with code and fix edge cases
