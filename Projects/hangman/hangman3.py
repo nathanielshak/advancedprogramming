@@ -93,10 +93,10 @@ def start_hangman():
     print("Guess the letter :")
     print(dashes)
 
-    guessed_letter = input()
+    guessed_letter = raw_input()
 
     if guessed_letter in secret_word:
-        for position in [0, 1, 2, 3]:
+        for position in range(len(secret_word)):
             if secret_word[position] == guessed_letter:
                 dashes[position] = guessed_letter
                 print("Good Job, guess again!")

@@ -53,8 +53,6 @@ out the last line of the file and try saving and running the file again.
 Wonderful, now you have the basic workflow to run your file in place!! We will use `python hangman.py` to run 
 your file every time we make a change to it.
 
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
-
 To see how your file should like at the end of this chapter, see [hangman1](hangman1.py)
 
 **Lessons used:**
@@ -120,8 +118,6 @@ First, go to your `hangman.py` file. Lets change the function to print our hangm
     start_hangman()
 
 Run the file and see what happens!
-
-~Mini Celebration!!~  :tada: 
 
 Now that you can print one hangman to the terminal, let's build the different stages of the hangman we will use throughout the game!
 
@@ -217,7 +213,6 @@ Now that you can print one hangman to the terminal, let's build the different st
 
 Run this file, and you should be able to see all the stages of the hangman!
 
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
 
 This is what your file should look like after you're done with this section : [hangman2](hangman2.py)
 
@@ -283,11 +278,9 @@ If everything goes well, you should see:
     Process finished with exit code 0
 
 
-~Mini Celebration!!~  :tada: 
-
 Now lets actually take a guess from the user and change our hangman accordingly.
 
-To take in an input from the terminal, we will use a function called `input()`. This function reads whatever the person
+To take in an input from the terminal, we will use a function called `raw_input()`. This function reads whatever the person
 is typing in the terminal. Lets store that input in a variable called `guessed_letter`.
 
     def start_hangman():
@@ -295,7 +288,7 @@ is typing in the terminal. Lets store that input in a variable called `guessed_l
         ...
          
         print("Guess the letter :")
-        guessed_letter = input()
+        guessed_letter = raw_input()
     
     start_hangman()
 
@@ -309,7 +302,7 @@ Python makes this super easy using the `in` keyword. All we will have to do is t
     if guessed_letter in secret_word:
         # Turn the corresponding dash into letter
     else:
-        #print the next hangman
+        # print the next hangman
 
 What happens if the person guesses the wrong letter? 
 
@@ -334,9 +327,10 @@ Thus, lets add on to the code above :
 
     secret_word = "MINI"
     dashes = ["_", "_", "_", "_"]
-    
+    len_of_word = len(secret_word)
+    positions = range(len_of_word)
     if guessed_letter in secret_word:
-        for position in [0,1,2,3]:
+        for position in positions:
             if secret_word[position] == guessed_letter:
                 dashes[position] = guessed_letter
     else:
@@ -348,7 +342,10 @@ Let's examine what the code is doing line by line for a second.
 the guessed_letter is one of the letters in `secret_word` otherwise it sends us to the 
 `else` line.
 
-`for position in len(secret_word):` : This goes through all the positions in the word. Since
+`len_of_word = len(secret_word)` : This line uses an inbuilt python function called `len()`. `len()` can
+ be used in many ways, but here, it takes in our secret word and gives us the length of the word
+
+`for position in range(len_of_word):` : This goes through all the positions in the word. Since
 "MINI" has 4 letters, we will give it position numbers(also called indices) 
 which are 0, 1, 2, 3. (Remember in programming languages we start counting at 0.) If you
 don't remember loops, make sure to check out Lesson2!
@@ -356,7 +353,7 @@ don't remember loops, make sure to check out Lesson2!
 `if secret_word[position] == guessed_letter:` : This will compare the letter at the position
 with the `guessed_letter` and will go to the next line only if the `if` statement is true.
 
-`dashes[position] = guessed_letter` : Finally, this will put in `guessed letter` into the position 
+`dashes[position] = guessed_letter` : Finally, this will put in `guessed_letter` into the position 
 where the dash was.
 
 Whew, that was quite a bit.
@@ -389,24 +386,24 @@ Let's try running all of our code together. At this point it should look like :
         print("Guess the letter :")
         print(dashes)
         
-        guessed_letter = input()
+        guessed_letter = raw_input()
     
         if guessed_letter in secret_word:
-            for position in [0, 1, 2, 3]:
+        
+            for position in range(len_of_word):
                 if secret_word[position] == guessed_letter:
                     dashes[position] = guessed_letter
-                    print("Good Job, guess again!")
+                    print("Good Job!")
         else:
+        
             print(man2)
-            print("Oh no, wrong letter! Try again!")
+            print("Oh no, wrong letter!")
     
         print(dashes)
     
     start_hangman()
 
 If everything goes well, you should be able to put in a guessed letter and see your code work!
-
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
 
 To see how your file should like at the end of this chapter, see [hangman3](hangman3.py)
 
@@ -417,25 +414,63 @@ To see how your file should like at the end of this chapter, see [hangman3](hang
 
 ### Milestone 4 : Getting hangman to work a word - Whole word
 
-<!---
-TODO: Use loops to get it working with any word
--->
+So far, we have accomplished the ability to guess one letter, and then update our hangman. 
+Lets now attempt to do this for the full word.
 
-### Milestone 5 : Breaking things and fixing them
+We want to make sure the game goes on until the player has won the game or is out of guesses.
+For each letter, based on whether the guess is correct or not, we have different actions.
+Since we want to do the same action for each letter, we will be using a `loop`, specifically a `while loop`.
+(If you don't remember what a `while loop` is, do a quick recap here)
 
-<!---
-TODO: Show how to find bugs with code and fix edge cases
--->
+If we were to write in simple english what we wanted our code to do it would be : 
 
-### Milestone 6 : Getting your hangman to work for any word!
+    While the game hasn't been won or lost:
+    
+        Get a letter
+    
+        If the letter is correct :
+        
+            We update the letter in _dashes_
+            We want to display the letter in correct dashes
+            if all letters have been guessed:
+                We tell the player they won the game, and we end the game.
+            
+        If the letter is incorrect:
+        
+            We want to print the hangman with another part.
+            if all the guesses have been used:
+                We tell the player they lost the game, and we end the game
+        
 
-<!---
-TODO: Show how we can break up one long function into smaller working parts
--->
+Try to implement this yourself - for some inspiration, you can always see and try running [hangman4](hangman4.py)
+
+**Lessons used:**
+
+* [Searching and an Introduction to Algorithmic Analysis](Lesson5)
+
+### Milestone 5 : Getting your hangman to work for any word!
+
+Our algorithm should currently be quite easy to use for any word - 
+all we have to make a code change. However, what we could do is make it even more fun
+and allow someone to type in a secret word at the start of the game, and have other people 
+guess the word.
+
+We can re-use a lot of concepts from the previous milestones, specifically `raw_input()`.
+
+Give it a shot before looking at [hangman5](hangman5.py)
 
 
 ### Milestone 6 : Celebrate!
 
-<!---
-TODO: This section
--->
+You now have a fully functional hangman game that you can run in your terminal, Congratulations!
+
+As a future exercise, you can think about how to add some cool features like:
+
+* Have hangman not be sensitive about the case of the letter.
+* Have the hangman game in place (not have a series of hangmen print out in the terminal, but instead the same one look like its updating)
+* Have many more parts in the hangman
+* Have hangman work for phrases in addition to words.
+* Have timeouts for guesses.
+* Have a competitive version(multiplayer)
+
+..... and many more!
