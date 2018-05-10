@@ -53,7 +53,7 @@ out the last line of the file and try saving and running the file again.
 Wonderful, now you have the basic workflow to run your file in place!! We will use `python hangman.py` to run 
 your file every time we make a change to it.
 
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
+:tada: :tada: :tada: :tada:  Mega Celebration!!  :tada: :tada: :tada: :tada: 
 
 To see how your file should like at the end of this chapter, see [hangman1](hangman1.py)
 
@@ -121,7 +121,7 @@ First, go to your `hangman.py` file. Lets change the function to print our hangm
 
 Run the file and see what happens!
 
-~Mini Celebration!!~  :tada: 
+Mini Celebration!! :tada: 
 
 Now that you can print one hangman to the terminal, let's build the different stages of the hangman we will use throughout the game!
 
@@ -217,7 +217,7 @@ Now that you can print one hangman to the terminal, let's build the different st
 
 Run this file, and you should be able to see all the stages of the hangman!
 
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
+:tada: :tada: :tada: :tada:  Mega Celebration!!  :tada: :tada: :tada: :tada: 
 
 This is what your file should look like after you're done with this section : [hangman2](hangman2.py)
 
@@ -283,7 +283,7 @@ If everything goes well, you should see:
     Process finished with exit code 0
 
 
-~Mini Celebration!!~  :tada: 
+Mini Celebration!!  :tada: 
 
 Now lets actually take a guess from the user and change our hangman accordingly.
 
@@ -406,7 +406,7 @@ Let's try running all of our code together. At this point it should look like :
 
 If everything goes well, you should be able to put in a guessed letter and see your code work!
 
-~Mega Celebration!!~  :tada: :tada: :tada: :tada: 
+:tada: :tada: :tada: :tada:  Mega Celebration!!  :tada: :tada: :tada: :tada: 
 
 To see how your file should like at the end of this chapter, see [hangman3](hangman3.py)
 
