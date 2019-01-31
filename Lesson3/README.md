@@ -134,9 +134,9 @@ You can modify things in the dictionary like this:
 
 Which would make it look like this:
 
-|**Label**|food["ham"]|food["egg"]|food["spam]|
-|---------|-----------|-----------|-----------|
-|**Data** |"yes"      |42         |"no"       |
+|**Label**|food["ham"]|food["egg"]|food["spam"]|
+|---------|-----------|-----------|------------|
+|**Data** |"yes"      |42         |"no"        |
 
 You can add new keys into the dictionaries like this:
 
@@ -146,9 +146,9 @@ You can add new keys into the dictionaries like this:
 
 And then the dictionary would look like this:
 
-|**Label**|food["ham"]|food["egg"]|food["spam]|food[87]|
-|---------|-----------|-----------|-----------|--------|
-|**Data** |"yes"      |42         |"no"       |True    |
+|**Label**|food["ham"]|food["egg"]|food["spam"]|food[87]|
+|---------|-----------|-----------|------------|--------|
+|**Data** |"yes"      |42         |"no"        |True    |
 
 Like lists, dictionaries also have a `len()` that gives the number of items in the dictionary:
 
