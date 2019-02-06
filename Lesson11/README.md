@@ -1,317 +1,181 @@
-# Lesson 11: Object-oriented programming
+# Lesson 11: More recursion
 
 **To start this lesson, students should**:
 
-* Understand basic Python data structures (lists, dicts).
-* Understand how functions are defined and called, and when to use them.
+* Understand the basic principles of recursion (base cases, recursive calls).
+* Have some experience writing basic recursive algorithms (factorial, flood fill).
 
 **By completing this lesson, students will**:
 
-* Learn what classes are and when to use them.
-* Know the difference between classes and objects.
-* Be introduced to inheritance and abstract classes.
-* Practice implementing classes.
+* Gain more practice writing recursive functions.
+* Understand backtracking and state-passing in recursive algorithms.
 
-## Thinking abstractly
+All of the exercises in this lesson are in exercises.py. Open it up and let's get started!
 
-Until now, we've been mainly organizing our code using *functions*. When we wanted to use the same code in multiple places, we would put it in a function, and just call the function in multiple places. What if we wanted to store data along with that code?
+## 1. Find a file
 
-One useful example of this is the `maze` variable that we used in lesson 10. (You might want to go back and look at [lesson 10](../Lesson10) if you don't remember this.) The `maze` variable contained all of the data and code that you needed to deal with a two-dimensional grid. When you wrote your maze-solving algorithm, you didn't have to think about how all the data for the maze was stored, or deal with the data directly - all you had to do was tell the maze variable what you wanted it to do, and it took care of the rest.
+You're already familiar with files and folders (directories). For this question, write a function that checks if a file with a given name exists in a given directory or any directory that it contains. There are some example files and directories in this directory; you can use these to test. For example:
 
-This is a really powerful concept: **abstraction**. When working on large projects, it's always a good idea to break them down into small, manageable parts, and try to make each part know *as little about the other parts as possible*. Ideally, each part of the code should only care about *what the other parts of the code do*, but not *specifically how they do it*. If you design your project like this, then you can easily switch out parts of the code that you want to change, and if you don't touch the rest, it will all still work!
+    file_exists('README.md') -> True
+    file_exists('you_found_it.txt') -> True
+    file_exists('not_a_real_file.txt') -> False
 
-## Enter the Class
+When dealing with files and directories in code, directory names are separated by slashes. So the string `'code/Lesson10/exercises.py'` refers to exercises.py in the Lesson10 directory, which is in the code directory.
 
-To allow us to organize code like this, we'll learn a new concept: **classes** and **instance objects** (commonly just called objects). An object is a collection of data (variables), along with functions (methods) that do things with those variables. A class is essentially a **blueprint for creating instance objects** - it defines which variables and methods exist on each object, *but not the values of the variables*. When you define a class, you're telling Python how to create objects of that type. When you **instantiate** it, you actually create an object of that type, and Python uses the class definition to fill it in.
+You can use the `os.listdir` function to list the contents of a directory. You can use the `os.path.isdir` function to check if a given item is a directory or a regular file. See the [Python documentation](https://docs.python.org/3/library/os.html) for more information on these functions.
 
-This can be pretty confusing at first. Let's build up a simple class and talk about each part of it as we go.
+> Hint: Your base case should be when the item you're looking at *is not* a directory.
 
-The simplest possible class has *nothing in it*. It looks like this:
+## 2. Choosing sums
 
-    class Car(object):
-        pass
+Given a list of integers and a target integer, is it possible to choose a group of them (or possibly none of them) so that the group sums to that target? For example:
 
-This class is called Car, and it *inherits* from `object`. We'll talk about inheritance later. For now, most classes should inherit from `object`, which is a built-in class in Python.
+    sum_to_target([2, 4, 8], 10) -> True (2 + 8)
+    sum_to_target([2, 4, 8], 14) -> True (2 + 4 + 8)
+    sum_to_target([2, 4, 8], 9) -> False (there are no odd numbers in the list)
+    sum_to_target([2, 4, 8], 0) -> True (don't choose any of them)
 
-So what is this thing, then? Just defining the Car class doesn't actually create any variables - instead, it tells Python *how to create Car objects in general*. Now, in addition to numbers, strings, lists, dicts, and the like, we can also use Cars as values for variables! To make a Car, we call the Car class as if it were a function:
+One common way to write recursive functions goes like this:
+1. Figure out what your base cases are, and write them first.
+2. Figure out what the recursive calls should be, and write them as if your function already works perfectly.
+(This is what we did with the zombies problem in lesson 9, remember? First we dealt with the current being - checking if it's human or not, and turning it into a zombie if needed, then we dealt with the neighbors.)
 
-    c = Car()  # this creates a new Car object
-    print(c)  # this prints something like '<Car object at 0x10a1b0a50>'
+In this problem, there are two base cases - one for when the numbers array is empty, and one for when the target value is zero. It might help to write the code for these first, before breaking down the problem into recursive calls.
 
-    d = Car()  # this is a different Car object
-    print(d)  # this prints something like '<Car object at 0x10a1b0b10>'
+After your base cases are written, it's time to deal with all the other cases. One way to break down the problem is to consider each item individually. For each item, either you'll choose it or you won't. So there are two smaller problems that need to be solved:
+* Can we hit the target using the items in the rest of the list assuming we *don't* choose the first item?
+* Can we hit `(target - first_item)` using the items in the rest of the list assuming we *do* choose the first item?
+Each of these smaller problems should be one recursive call in your function.
 
-    print(type(c) == type(d))  # this prints True: c and d are both Cars
-    print(c == d)  # this prints False: c and d are different objects
+Write your answer in `sum_to_target` in your Python file. 
 
-Great! Now what?
+> Hint: `numbers[1:]` is a copy of `numbers` with the first item removed.
 
-## Adding variables
+### Challenge
 
-To make Car objects actually useful, we have to give them some variables and functions. We can do that like this:
+Write the `sum_to_target_challenge` function so that it returns the numbers that sum to the target, or None if there's no group that sums to the target (instead of just True or False).
 
-    class Car(object):
+For example:
 
-        def __init__(self, wheels, miles, make, model, year, date_sold):
-            self.wheels = wheels
-            self.miles = miles
-            self.make = make
-            self.model = model
-            self.year = year
-            self.date_sold = date_sold
+    sum_to_target_challenge([2, 4, 8], 10) -> [2, 8]
+    sum_to_target_challenge([2, 4, 8], 14) -> [2, 4, 8]
+    sum_to_target_challenge([2, 4, 8], 9) -> None
+    sum_to_target_challenge([2, 4, 8], 0) -> []
 
-        def sale_price(self):
-            # Returns how much we should sell the car for.
-            return 5000.0 * self.wheels
+> Hint: You'll have to modify the value that the recursive call returns. It might be easier to come back to this question after finishing the rest of the lesson.
 
-        def purchase_price(self):
-            # Returns how much we would buy the car back for.
-            return 8000 - (0.10 * self.miles)
+## 3. Generating subsets
 
-This code tells Python how to make a Car, but it doesn't actually create any Cars just yet. Like before, we can create Cars by calling the class as if it were a function, but now we have to pass some parameters:
+Write the `subsets_of_size` function so that it returns all possible ways of choosing a given number of items from a list.
 
-    c = Car(4, 20000, None)  # 4 wheels, 20000 miles, not sold (date_sold is None)
-    print(c.sale_price())  # prints 20000
-    print(c.purchase_price())  # prints 6000
+For example:
 
-    d = Car(6, 10000, None)  # 6 wheels, 10000 miles, not sold (date_sold is None)
-    print(d.sale_price())  # prints 30000
-    print(d.purchase_price())  # prints 7000
+    subsets_of_size([1, 2, 3, 4], 0) -> [[]]
+    subsets_of_size([1, 2, 3, 4], 1) -> [[1], [2], [3], [4]]
+    subsets_of_size([1, 2, 3, 4], 2) -> [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
+    subsets_of_size([1, 2, 3, 4], 3) -> [[1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
+    subsets_of_size([1, 2, 3, 4], 4) -> [[1, 2, 3, 4]]
+    subsets_of_size([1, 2, 3, 4], 5) -> []  (there's no way to choose 5 items from 4)
 
-To understand what's happening here, let's break down the Car class definition a bit. We defined a few functions, called `__init__`, `sale_price`, and `purchase_price`, *inside* the class.
+First, figure out your base cases.
+* What should we return if `count` is zero?
+* What should we return if `items` is empty?
 
-Notice that all of these functions take `self` as the first parameter - when you call them, that's the *object* itself. When you call these functions, you don't need to provide `self` - Python will do that for you! This is why we could call `sale_price` and `purchase_price` without giving any parameters at all.
+Second, figure out your recursive calls. You can break this problem down like the problem in part 2 by considering the first item in the list.
+* Assume we **don't** choose the first item in the list. What are all possible ways of choosing `count` items from the rest of the list?
+* Assume we **do** choose the first item in the list. What are all possible ways of choosing `count - 1` items from the rest of the list?
+Each of these smaller problems should be one recursive call in your function.
 
-> When we defined `sale_price`, for example, we told Python *instructions for how to compute the sale price for some abstract car*. When we called `c.sale_price()`, we told Python to *follow those instructions using the car `c`*.
+> Hint: For the first recursive call (when you do choose the first item), don't forget to add that item to each of the lists returned by the recursive call.
 
-`__init__` is special - this is the function that Python calls automatically when you create a new Car object. So when we did `c = Car(4, 20000, None)`, Python created an empty Car object and called `__init__(c, 4, 20000, None)`. `__init__` is responsible for creating all of the variables within the class, which we call *attributes*. (Notice that all our `__init__` function does is assign the values from its parameters to attributes on `self`.) Then when we call other functions on the object `c`, like `c.sale_price()` and `c.purchase_price()`, they can access those same attributes.
+## 4. Maze solving
 
-> Note: You can access these attributes from outside the class definition too. For example, we can do something like `c = Car(...)`, then later we can use `c.wheels`. We don't have to only use the attributes inside functions defined inside the class.
+Write the `solve_maze` function that checks if a maze is solvable. This isn't as hard as it sounds! Remember how the flood-fill algorithm from lesson 9 covers the entire area of a contiguous 2-dimensional space? You can modify the flood-fill algorithm to solve a maze.
 
-> Note: We call variables *"attributes"* when they're inside a class, and we call functions *"methods"* when they're inside a class. From now on, when we say "function" or "variable", we're talking about functions and variables *outside of classes*.
+Specifically, your function should take a maze and return True if the goal is reachable from the start, and False if it isn't. For this question, we'll use a new type of variable - a *class instance object*. We'll talk about classes in detail in the next lesson. For now, just use these functions to work with the maze:
+* `maze.is_wall(x, y)` checks if a cell is a wall or not
+* `maze.mark_visited(x, y)` marks a cell as visited
+* `maze.was_visited(x, y)` checks if a cell was visited already
+* `maze.print_field()` prints the maze to the terminal (useful for debugging)
+* `maze.print_visited()` prints which cells in the maze are visited (useful for debugging)
 
-## Practice time!
+Like all the recursion questions above, figure out your base cases first:
+* What should we do if the cell is a wall?
+* What should we do if the cell has already been visited?
+* What should we do if the cell is the goal cell?
+To put this in the same context as the flood fill exercise from lesson 9, you can think of walls as cats, cells you've already visited as zombies, and cells you haven't yet visited as humans.
 
-### 1. Writing a class
+Second, figure our your recursive calls. This should be very similar to flood fill - you should look in all four directions from the current cell.
 
-Find this class at the top of exercises.py:
+For this maze, your function should return True:
 
-    class Square(object):
-        # TODO: write an __init__ method that sets the side_length attribute.
-        pass
+![](maze_0.png)
 
-In this class, write an `__init__` method that sets the side_length attribute.
+For this maze, your function should return False:
 
-> Hint: don't forget that `__init__` should take both `self` and `side_length` as parameters.
+![](maze_unsolvable.png)
 
-### 2. Writing an instance method
+### Challenge
 
-Find this class at the top of exercises.py:
+Write the `solve_maze_challenge` function so that it returns the path to the goal, or None if the maze is not solvable. Specifically, it should return a list of strings saying which directions to move. For this maze, your function should return `['down', 'down', 'right', 'right', 'right', 'right', 'up' ,'up', 'right', 'right', 'down', 'down', 'down', 'down']`:
 
-    class Rectangle(object):
-        def __init__(self, width, height):
-            self.width = width
-            self.height = height
+![](maze_0.png)
 
-        def render(self):
-            # TODO: write this method!
-            print("not yet implemented")
+The function you'll write in this section should be similar to `solve_maze`. The base cases and recursive calls are actually the same - you just need to change the return values to return the path instead of only `True` or `False`.
 
-This class represents an abstract rectangle with some width and height. We provided `__init__` for you. Fill in the method `render` so that it prints a rectangle of '@' characters to the terminal with the width and height from `self`.
+When writing the recursive call, it might help to assume that it correctly solves the subproblem, then modify the return value to be the solution of the main problem.
 
-### Doing more with instance methods
+For example, suppose you recursively call `solve_maze_challenge` on the cell below the current cell (the cell at `(x, y + 1)`) and it returns a list (not None), which means that that list is the path that would take you from the cell at `(x, y + 1)` to the goal. The solution to the maze, then, is to move down from the current cell, then follow the path that the recursive call returned. In Python, you can add something to the beginning of a list by adding two lists together - for example, `['down'] + x` is a copy of the list `x` with `'down'` added to the beginning.
 
-`__init__` can do more than just assign attributes. Consider this class:
+> Hint: Don't forget to check if the recursive call's return value is None before modifying and returning it.
 
-    class CountUp(object):
-        def __init__(self):
-            self.count = 0
+## 5. Bonus: Non-intuitive recursion (Tower of Hanoi)
 
-        def count(self):
-            self.count = self.count + 3
-            print(self.count)
+This isn't a question, but it's a puzzle that you might find interesting. We'll give the solution after describing the puzzle.
 
-Now that you've read the class definition, what do you think this code will print?
+![](hanoi.jpeg)
 
-    c = CountUp()
-    c.count()
-    c.count()
-    c.count()
+The Tower of Hanoi is a puzzle game. There are three pegs, and some disks on the pegs, and the goal is to move all of the disks from the left peg to the right peg. But you can only move one disk at a time, and you can't put a larger disk on top of a smaller one. The solution can be pretty complex - here's one way to solve the puzzle for 4 disks:
 
-If you guessed that it would print 3, 6, and 9, you're right! Remember that **only `__init__` should create new attributes**, but **any method can change their values**.
+![](hanoi-solution.gif)
 
-### 3. Writing an entire class
+Looks pretty complicated... but it turns out this game has a *surprisingly simple recursive solution*. If you represent the towers as lists in Python, the solution is:
 
-Now, let's put together all that we've learned about classes so far. Find this class in exercises.py:
+    def move(n, source, target, extra):
+        if n == 0:
+            return
+        move(n - 1, source, extra, target)
+        target.append(source.pop())
+        move(n - 1, extra, target, source)
 
-    class CookieJar(object):
-        def __init__(self, num_cookies):
-            # TODO: write this method to make it set the num_cookies attribute
-            pass
+What's going on here? We can break it down like this:
 
-        def take_cookie(self):
-            # TODO: write this method to make it decrease the number of cookies in
-            # the jar by one. if there are no cookies in the jar, it should do
-            # nothing.
-            pass
+    # this function moves n disks from the source list to the target list, using
+    # the extra list for storage space.
+    def move(n, source, target, extra):
+        # if we're supposed to move zero disks, do nothing (base case)
+        if n == 0:
+            return
 
-        def add_cookie(self):
-            # TODO: write this method to make it increase the number of cookies in
-            # the jar by one.
-            pass
+        # move all the disks on top of the n'th disk to the extra list
+        move(n - 1, source, extra, target)
 
-Write all three functions to make the class keep track of the number of cookies in the jar.
+        # now the n'th disk is at the top (end) of the source list - take it off
+        # and move it to the target list
+        target.append(source.pop())
 
-## Inheritance
+        # move all of the disks from the extra list back on top of the disk we
+        # just moved
+        move(n - 1, extra, target, source)
 
-Let's say that in addition to cars, we also want to buy and sell trucks, but we don't want to buy them for the same price as cars. We could define another class to deal with trucks:
+Like the Tower of Hanoi, a surprising number of problems can be solved by breaking them down into smaller problems and solving those, which is often much easier than solving the problem all at once. See the next section for more examples of useful and popular recursive algorithms.
 
-    class Truck(object):
+## 6. More examples
 
-        def __init__(self, wheels, miles, make, model, year, date_sold):
-            self.wheels = wheels
-            self.miles = miles
-            self.make = make
-            self.model = model
-            self.year = year
-            self.date_sold = date_sold
+Wanna see more recursion? Here are some examples of useful or interesting recursive algorithms.
 
-        def sale_price(self):
-            # Returns how much we should sell the truck for.
-            return 5000.0 * self.wheels
+* [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) (described in more detail).
+* [Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
+* [Euclid's algorithm](https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html) is a really efficient way to find the Greatest Common Divisor of two numbers. It's really useful in math!
 
-        def purchase_price(self):
-            # Returns how much we would buy the truck back for.
-            return 10000 - (0.10 * self.miles)
-
-Notice that this class looks *almost exactly the same* as the Car class - the only thing that's different is a number in `purchase_price`! What if we wanted to start tracking the color of the cars and trucks? If we used this in a big project, it would get pretty annoying to have to change both classes whenever we wanted to add some information to our database. And we'd be more likely to make a mistake by forgetting to update one of the classes. What if we started selling go-karts as well? Then we'd have a third class to keep up to date along with Car and Truck! When will the madness end?!
-
-When working on a big project, we try to **repeat ourselves as little as possible**. When we were using only functions, this means we would find places where we wrote the same code multiple times and move those out into separate functions. Now we can use **inheritance** to avoid repeating the same code in classes.
-
-Put simply, inheritance means that one class can *implicitly* have all the same methods and attributes as another class.
-
-Let's look at a concrete example to better understand this. We could say that Cars and Trucks are both Vehicles, so we would actually define three classes:
-
-    class Vehicle(object):
-
-        def __init__(self, wheels, miles, make, model, year, date_sold):
-            self.wheels = wheels
-            self.miles = miles
-            self.make = make
-            self.model = model
-            self.year = year
-            self.date_sold = date_sold
-
-        def sale_price(self):
-            # Returns how much we should sell the truck for.
-            return 5000.0 * self.wheels
-
-        def purchase_price(self):
-            # Returns how much we would buy the truck back for.
-            return 8000 - (0.10 * self.miles)
-
-    class Car(Vehicle):  # NOTE: we use (Vehicle) here, not (object)
-        pass
-
-    class Truck(Vehicle):  # NOTE: we use (Vehicle) here, not (object)
-        def purchase_price(self):
-            # Returns how much we would buy the truck back for.
-            return 10000 - (0.10 * self.miles)
-
-When we use `(Vehicle)` in the class definition instead of `(object)`, that tells Python that the class we're creating should have *all the same methods as the parent class*, which is the one in parenthesis. We say that Car and Truck are **subclasses** of Vehicle, which is their **parent class** (also called the **superclass** or **base class**).
-
-In this case, even though we didn't define anything at all in the Car class, it *inherits* the functions `__init__`, `sale_price`, and `purchase_price` from the Vehicle class. It's as if we defined those functions again in Car, with exactly the same code as in Vehicle, but we didn't have to write them again. Nice!
-
-The Truck class also inherits from Vehicle, but we defined `purchase_price` in Truck also. When you create a Truck object and call `purchase_price()` on it, which function does it call? The one defined in Truck or the one defined in Vehicle?
-
-The answer is that it *always calls the one defined latest*. So when you call `purchase_price` on a Car object, it will do the same thing as `purchase_price` on a Vehicle object. But if you call `purchase_price` on a Truck object, it will do something different, since the method definition in the Truck class **overrides** the method definition in the Vehicle class.
-
-If we define another class that inherits from Truck, like MonsterTruck, and call `purchase_price` on a MonsterTruck object, it would do the same thing as it would for a Truck object, unless we defined *another* `purchase_price` function in the MonsterTruck class.
-
-Note that we didn't override `sale_price` in any of the subclasses. So if we call `sale_price` on a Car object, then on a Truck object, then on a MonsterTruck object, it will use the same function all three times.
-
-We say that Vehicle is an **abstract class** because it doesn't represent anything real - we're not supposed to use the class directly. Instead, we created subclasses of Vehicle, which we intend to use directly.
-
-## Review
-
-This was a lot of new stuff! Here's a quick summary of all the new terms we just learned:
-
-* **abstraction**: Separating out the logical parts of a program into separate units, so that each one *knows what other parts do* but *doesn't care how they do it*.
-* **instance object** (or just **object**): A logical collection of variables (*attributes*) and functions (*methods*) that operate on those variables.
-* **class definition** (or just **class**): A blueprint for creating *objects*. This blueprint defines which *methods* and *attributes* exist on each object of this type, but doesn't define the values for the attributes.
-* **instantiate**: To create an *object* using a *class definition*.
-* **attribute**: A variable stored inside an *instance object*.
-* **method**: A function defined inside a *class definition*.
-* **`__init__`**: A special function that's called when an *object* is first created.
-* **inheritance**: A method for classes to share *methods* without defining them multiple times.
-* **subclass**: A class that *inherits* its method definitions from its *parent class*. All of the methods that are defined in the parent class are automatically part of the subclass as well.
-* **parent class** (or **superclass**, or **base class**): A class that has *subclasses*.
-* **override**: A method definition in a *class* with the same name as a method inherited from the parent class. The parent class' method doesn't exist in the subclass; instead, the override method takes its place.
-* **abstract class**: A class that we only intend to *inherit* from, but never to *instantiate*. Usually we'll use abstract classes to define functions that all subclasses would need to inherit.
-
-### 4. Putting it all together
-
-Find this code in exercises.py:
-
-    class Shape(object):
-        def area(self):
-            # This method should be overridden by all subclasses.
-            return -1
-
-        def print_area(self):
-            # TODO: write this function
-            pass
-
-    class Triangle(Shape):
-        def __init__(self, base, height):
-            self.base = base
-            self.height = height
-
-        def area(self):
-            # TODO: write this function
-            return -1
-
-    class Circle(Shape):
-        def __init__(self, radius):
-            self.radius = radius
-
-        def area(self):
-            # TODO: write this function
-            return -1
-
-    class Rectangle(Shape):
-        def __init__(self, width, height):
-            self.width = width
-            self.height = height
-
-        def area(self):
-            # TODO: write this function
-            return -1
-
-    class Square(Rectangle):
-        def __init__(self, side_length):
-            # TODO: write this function
-            pass
-
-Here we define five classes at once! Shape is an abstract class that all the others inherit from. Triangle, Circle, and Rectangle inherit directly from Shape. Square inherits from Rectangle, since a square is just a rectangle whose width is equal to its height.
-
-Your tasks:
-* Fill in the `print_area` function in the base class (Shape).
-* Fill in the `area` function in the Triangle, Circle, and Rectangle classes.
-* Fill in the `__init__` function in the Square class. (Hint: it should set the `width` and `height` attributes.)
-* Test your code by creating objects and calling methods on them.
-
-> Hint: Remember that you can create an object by calling a class as if it were a function (like `r = Rectangle(10, 20)`). Then you can call methods on it like `r.area()`.
-
-Area formulas:
-* For a rectangle with width `w` and height `h`, the area is `w * h`.
-* For a triangle with base `b` and height `h`, the area is `b * h / 2.0`.
-* For a circle with radius `r`, the area is `math.PI * r * r`.
-
-## More reading
-
-If you want to learn more about classes, objects and inheritance, take a look at these tutorials:
-* [Jeff Knupp's explanation of Python objects](https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/)
-* [Object Oriented Programming from A Byte of Python](https://python.swaroopch.com/oop.html)
-
-That's all for now - what a workout! On to [lesson 12](../Lesson12)!
+In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. On to [lesson 12](../Lesson12)!
