@@ -1,181 +1,349 @@
-# Lesson 10: More recursion
+# Lesson 10: What's Recursion?
 
 **To start this lesson, students should**:
 
-* Understand the basic principles of recursion (base cases, recursive calls).
-* Have some experience writing basic recursive algorithms (factorial, flood fill).
+* Have experience coding solutions to complex problems.
+* Have a clear understanding of functions and control flow.
+* Be familiar with 2D arrays/lists.
 
 **By completing this lesson, students will**:
 
-* Gain more practice writing recursive functions.
-* Understand backtracking and state-passing in recursive algorithms.
+* Understand what recursion is.
+* Gain some experience writing recursive functions.
 
-All of the exercises in this lesson are in exercises.py. Open it up and let's get started!
+## Zombies and Cats
 
-## 1. Find a file
+To start with, take a look at [this page](https://inventwithpython.com/blog/2011/08/11/recursion-explained-with-the-flood-fill-algorithm-and-zombies-and-cats/), which has a great illustration of recursion using zombies and cats. Read up to the **"The Basics: Recursive Calls and Base Cases"** part, then **come back here**. (Feel free to read further if you're curious, but we may end up double-explaining some parts.)
 
-You're already familiar with files and folders (directories). For this question, write a function that checks if a file with a given name exists in a given directory or any directory that it contains. There are some example files and directories in this directory; you can use these to test. For example:
+![](https://inventwithpython.com/blogstatic/floodfill/zombie1.gif)
 
-    file_exists('README.md') -> True
-    file_exists('you_found_it.txt') -> True
-    file_exists('not_a_real_file.txt') -> False
+So, we just got... a weird example involving zombies and cats that somehow has to do with recursion. *How?*, you might ask? We'll get to that in a bit, but first, let's define a few things.
 
-When dealing with files and directories in code, directory names are separated by slashes. So the string `'code/Lesson10/exercises.py'` refers to exercises.py in the Lesson10 directory, which is in the code directory.
+## What is recursion?
 
-You can use the `os.listdir` function to list the contents of a directory. You can use the `os.path.isdir` function to check if a given item is a directory or a regular file. See the [Python documentation](https://docs.python.org/3/library/os.html) for more information on these functions.
+Simply put, recursion is when a **function calls itself**. One example they gave later on the website was:
 
-> Hint: Your base case should be when the item you're looking at *is not* a directory.
+    def foo():
+        foo()
 
-## 2. Choosing sums
+**So what does this do?**
 
-Given a list of integers and a target integer, is it possible to choose a group of them (or possibly none of them) so that the group sums to that target? For example:
+Feel free to copy this code and try running it to see what happens. If you read further in the earlier link or tried that yourself, you should know that you'll get an error like this:
 
-    sum_to_target([2, 4, 8], 10) -> True (2 + 8)
-    sum_to_target([2, 4, 8], 14) -> True (2 + 4 + 8)
-    sum_to_target([2, 4, 8], 9) -> False (there are no odd numbers in the list)
-    sum_to_target([2, 4, 8], 0) -> True (don't choose any of them)
+    RuntimeError: maximum recursion depth exceeded
 
-One common way to write recursive functions goes like this:
-1. Figure out what your base cases are, and write them first.
-2. Figure out what the recursive calls should be, and write them as if your function already works perfectly.
-(This is what we did with the zombies problem in lesson 9, remember? First we dealt with the current being - checking if it's human or not, and turning it into a zombie if needed, then we dealt with the neighbors.)
+This means that we got into something like an **infinite loop** and the `foo` function never stopped calling itself, causing the error you saw.
 
-In this problem, there are two base cases - one for when the numbers array is empty, and one for when the target value is zero. It might help to write the code for these first, before breaking down the problem into recursive calls.
+> An [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop) is a common thing in computer science where your program ends up hypothetically getting stuck where it will run **forever** if you don't stop it. Normally, this will either cause a crash or you'll have to exit out of the program manually when this happens.
 
-After your base cases are written, it's time to deal with all the other cases. One way to break down the problem is to consider each item individually. For each item, either you'll choose it or you won't. So there are two smaller problems that need to be solved:
-* Can we hit the target using the items in the rest of the list assuming we *don't* choose the first item?
-* Can we hit `(target - first_item)` using the items in the rest of the list assuming we *do* choose the first item?
-Each of these smaller problems should be one recursive call in your function.
+What do you think would happen if we did something like this?
 
-Write your answer in `sum_to_target` in your Python file. 
+     def foo():
+        print("hi.")
+        foo()
 
-> Hint: `numbers[1:]` is a copy of `numbers` with the first item removed.
+If you guessed that it would print out "hi" forever, you're right. But if you try running this code, you'll actually get this error again:
 
-### Challenge
+    RuntimeError: maximum recursion depth exceeded
 
-Write the `sum_to_target_challenge` function so that it returns the numbers that sum to the target, or None if there's no group that sums to the target (instead of just True or False).
+> If you can't see the "hi's", they're there - you just have to scroll up a while because the error message will have a long trail of listing what function it crashed in, which in this case involves a lot of calls of the same function.
+
+That's because the program crashes from the infinite loop after printing "hi" many times.
+
+How about this one?
+
+    def count(num):
+        print(num)
+        count(num + 1)
+
+Similar story here. It prints out numbers starting from wherever you started, then keeps counting up until it crashes.
+
+## Getting unstuck
+
+About now, you might be wondering how recursion is useful if all we'll ever do is get stuck in an infinite loop. That's where the **base case** comes in.
+
+To illustrate this, let's think back to the cat from the zombie example:
+
+![](cat_transparent.png)
+
+If there were no cats and infinite humans, what would happen? Zombies would keep spreading forever. The cats stop the zombies from spreading.
+
+**The base case is the condition that causes the function to stop making recursive calls.**
+
+To illustrate this, let's look at some more examples:
+
+    def count_to_100(num):
+        if num > 100:
+            print("all done!")
+        else:
+            print(num)
+            count_to_100(num + 1)
+
+This code is actually very similar to the last snippet we looked at. the main difference is the fact that we have a **base case**. If you run the code like this:
+
+    count_to_100(1)
+
+If you didn't already guess, we would get output like this:
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    ...
+    90
+    91
+    92
+    93
+    94
+    95
+    96
+    97
+    98
+    99
+    100
+    all done!
+
+In this case, the base case is when `num` is greater than 100, which is what allows the code to stop once it hits 100 instead of getting stuck in another infinite loop.
+
+In the zombies and cats example, the base case is when an infected zombie bites a cat - nothing happens. The recursive case is when an infected zombie bites an uninfected human, and that human becomes a zombie.
+
+## Let's try it.
+
+Let's try a similar version of this. Find this function in exercises.py:
+
+    # Recursively count down from num to 1
+    def count_down(num):
+        # TODO: implement this!
+        pass
+
+Here, we're going to want to write a recursive function to count down from whatever number we supply down to 1, then print: "all done!"
 
 For example:
 
-    sum_to_target_challenge([2, 4, 8], 10) -> [2, 8]
-    sum_to_target_challenge([2, 4, 8], 14) -> [2, 4, 8]
-    sum_to_target_challenge([2, 4, 8], 9) -> None
-    sum_to_target_challenge([2, 4, 8], 0) -> []
+    count_down(10)
 
-> Hint: You'll have to modify the value that the recursive call returns. It might be easier to come back to this question after finishing the rest of the lesson.
+should output:
 
-## 3. Generating subsets
+    10
+    9
+    8
+    7
+    6
+    5
+    4
+    3
+    2
+    1
+    all done!
 
-Write the `subsets_of_size` function so that it returns all possible ways of choosing a given number of items from a list.
+and
+    
+    count_down(4)
 
-For example:
+should output
 
-    subsets_of_size([1, 2, 3, 4], 0) -> [[]]
-    subsets_of_size([1, 2, 3, 4], 1) -> [[1], [2], [3], [4]]
-    subsets_of_size([1, 2, 3, 4], 2) -> [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
-    subsets_of_size([1, 2, 3, 4], 3) -> [[1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
-    subsets_of_size([1, 2, 3, 4], 4) -> [[1, 2, 3, 4]]
-    subsets_of_size([1, 2, 3, 4], 5) -> []  (there's no way to choose 5 items from 4)
+    4
+    3
+    2
+    1
+    all done!
+    
+**I know it's really easy to do this using a while loop or for loop**. For the sake of this problem, see if you can do it with recursion.
 
-First, figure out your base cases.
-* What should we return if `count` is zero?
-* What should we return if `items` is empty?
+> Hint: the code will be pretty similar to the previous coding problem we showed.
 
-Second, figure out your recursive calls. You can break this problem down like the problem in part 2 by considering the first item in the list.
-* Assume we **don't** choose the first item in the list. What are all possible ways of choosing `count` items from the rest of the list?
-* Assume we **do** choose the first item in the list. What are all possible ways of choosing `count - 1` items from the rest of the list?
-Each of these smaller problems should be one recursive call in your function.
+## We have to go deeper.
 
-> Hint: For the first recursive call (when you do choose the first item), don't forget to add that item to each of the lists returned by the recursive call.
+![](lego.gif)
 
-## 4. Maze solving
+After all of this, you might still be wondering why recursion is actually useful. Broadly speaking, recursion is a powerful tool for us to use whenever problems are structured where each level of the problem can be broken into a smaller version of the original problem.
 
-Write the `solve_maze` function that checks if a maze is solvable. This isn't as hard as it sounds! Remember how the flood-fill algorithm from lesson 9 covers the entire area of a contiguous 2-dimensional space? You can modify the flood-fill algorithm to solve a maze.
+To illustrate this, let's think of if we wanted to find the sum of the sequence of numbers counting up to 10.
 
-Specifically, your function should take a maze and return True if the goal is reachable from the start, and False if it isn't. For this question, we'll use a new type of variable - a *class instance object*. We'll talk about classes in detail in the next lesson. For now, just use these functions to work with the maze:
-* `maze.is_wall(x, y)` checks if a cell is a wall or not
-* `maze.mark_visited(x, y)` marks a cell as visited
-* `maze.was_visited(x, y)` checks if a cell was visited already
-* `maze.print_field()` prints the maze to the terminal (useful for debugging)
-* `maze.print_visited()` prints which cells in the maze are visited (useful for debugging)
+So:
 
-Like all the recursion questions above, figure out your base cases first:
-* What should we do if the cell is a wall?
-* What should we do if the cell has already been visited?
-* What should we do if the cell is the goal cell?
-To put this in the same context as the flood fill exercise from lesson 9, you can think of walls as cats, cells you've already visited as zombies, and cells you haven't yet visited as humans.
+    sum_to_10(5) = 5 + 6 + 7 + 8 + 9 + 10 = 45
 
-Second, figure our your recursive calls. This should be very similar to flood fill - you should look in all four directions from the current cell.
+or
 
-For this maze, your function should return True:
+    sum_to_10(6) = 6 + 7 + 8 + 9 + 10 = 40
 
-![](maze_0.png)
+or
 
-For this maze, your function should return False:
+    sum_to_10(10) = 10
 
-![](maze_unsolvable.png)
+We can see a pattern emerging where:
 
-### Challenge
+    sum_to_10(5) = 5 + sum_to_10(6)
 
-Write the `solve_maze_challenge` function so that it returns the path to the goal, or None if the maze is not solvable. Specifically, it should return a list of strings saying which directions to move. For this maze, your function should return `['down', 'down', 'right', 'right', 'right', 'right', 'up' ,'up', 'right', 'right', 'down', 'down', 'down', 'down']`:
+or in general:
 
-![](maze_0.png)
+    sum_to_10(n) = n + sum_to_10(n + 1)
 
-The function you'll write in this section should be similar to `solve_maze`. The base cases and recursive calls are actually the same - you just need to change the return values to return the path instead of only `True` or `False`.
+Here, we can see the repeating pattern of each step of this equation having another smaller version of the same equation inside of it.
 
-When writing the recursive call, it might help to assume that it correctly solves the subproblem, then modify the return value to be the solution of the main problem.
+If we were to code this up using recursion, it would look something like this:
 
-For example, suppose you recursively call `solve_maze_challenge` on the cell below the current cell (the cell at `(x, y + 1)`) and it returns a list (not None), which means that that list is the path that would take you from the cell at `(x, y + 1)` to the goal. The solution to the maze, then, is to move down from the current cell, then follow the path that the recursive call returned. In Python, you can add something to the beginning of a list by adding two lists together - for example, `['down'] + x` is a copy of the list `x` with `'down'` added to the beginning.
+    def sum_to_10(num):
+        if num == 10:
+            return 10
+        else:
+            return num + sum_to_10(num + 1)
 
-> Hint: Don't forget to check if the recursive call's return value is None before modifying and returning it.
+It might be a bit confusing how this is working on first glance. Try sketching out each function call if you're confused and go through it with a mentor until you have a good grasp on that.
 
-## 5. Bonus: Non-intuitive recursion (Tower of Hanoi)
+## Factorials
 
-This isn't a question, but it's a puzzle that you might find interesting. We'll give the solution after describing the puzzle.
+Once you've done that, we're going to try to code another similar problem. If you've heard of factorials in math before, this is the way they work:
 
-![](hanoi.jpeg)
+    5! = 5*4*3*2*1 = 120
 
-The Tower of Hanoi is a puzzle game. There are three pegs, and some disks on the pegs, and the goal is to move all of the disks from the left peg to the right peg. But you can only move one disk at a time, and you can't put a larger disk on top of a smaller one. The solution can be pretty complex - here's one way to solve the puzzle for 4 disks:
+or
 
-![](hanoi-solution.gif)
+    4! = 4*3*2*1 = 24
 
-Looks pretty complicated... but it turns out this game has a *surprisingly simple recursive solution*. If you represent the towers as lists in Python, the solution is:
+or 
 
-    def move(n, source, target, extra):
-        if n == 0:
+    0! = 1! = 1
+
+You might notice some similarities to the previous problem (hint hint). Find this part of the code in `exercises.py`:
+
+    # Recursively compute a factorial
+    def factorial(num):
+        # TODO: implement this!
+        return -1
+
+and implement the **recursive** version of factorial. 
+
+> Once again, I know this could be done with a for loop or a while loop, but for the sake of this exercises, let's do it with recursion.
+
+> **Hint**: similar to the previous problem, notice that `factorial(n) = n * factorial(n-1)`.
+
+## Back to the Zombies
+
+About now you might still not be convinced that recursion is useful. The main reason being that every problem we've solved so far could've been solved **more easily** without even using recursion in the first place.
+
+For example, we could have easily done this for count_down:
+
+    def count_down(num):
+        cur_num = num
+        while cur_num > 0:
+            print(cur_num)
+            cur_num -= 1
+        print("all done!)
+
+Or this for factorial:
+
+    def factorial(num):
+        result = 1
+        for i in range(1, num + 1):
+            result *= i
+        return result
+
+> Note: `range(1, num + 1)` returns `[1, 2, 3, ... num]`.
+
+If you thought that both of these solutions would have run just as quickly as the recursive solutions, and they would've been less confusing to code, you're right! The main purpose of us coding them recursively was just as a learning exercise. But then, *when is recursion actually useful?*
+
+### Zombie Algorithm with Recursion
+
+Rather than try to answer that question with just an explanation, I'll give an example.
+
+Let's go back to that zombie example we opened with.
+
+![](https://inventwithpython.com/blogstatic/floodfill/zombie1.gif)
+
+And this time, let's imagine what the code would look like if we were to simulate this happening **using code**.
+
+> Warning: this part is pretty tricky, but **very important** - so do take the time to go through it with a mentor if possible until you really understand it.
+
+First, how would we represent the problem in the first place? How would we keep track of what spaces have zombies, humans, or cats? 
+
+The easiest way would probably be a **two-dimensional array**. In other words, a **list of lists**. This means to access the top left person (that eventually turns into a zombie) in the above picture, we could use `world[0][0]` (where `world` is our 2D array that holds all the humans, zombies, and cats.)
+
+Likewise, to get the topmost left cat, we would use `world[2][1]`.
+
+Just to make this example easier, let's pretend turning one of these spaces into a zombie could be done simply by saying:
+
+    word[6][6] = ZOMBIE
+
+So what would the code look like for this algorithm?
+
+You can solve this problem iteratively, but the code will be somewhat complicated. The recursive solution is much simpler.
+
+### The base case
+
+To figure out what the recursive solution would look like, first figure out what the base case should be. In other words, at what points does the recursion (in this case, more humans turning into zombies) stop?
+
+The answer to this would be when you run into another zombie (it's already a zombie) or when you run into a cat.
+
+If we know this, then we can start writing our recursive function like this:
+
+    def flood_fill(world, x, y):
+        if world[x][y] is ZOMBIE or world[x][y] is CAT:
             return
-        move(n - 1, source, extra, target)
-        target.append(source.pop())
-        move(n - 1, extra, target, source)
 
-What's going on here? We can break it down like this:
+> Here we're assuming that x and y are the coordinates of the human that was just bitten.
 
-    # this function moves n disks from the source list to the target list, using
-    # the extra list for storage space.
-    def move(n, source, target, extra):
-        # if we're supposed to move zero disks, do nothing (base case)
-        if n == 0:
+### Turning the human into a zombie
+
+Now we know that if the computer reaches the next point in the code, then the being at (x, y) is a human. Since it was just bitten, we should turn it into a zombie!
+
+    def flood_fill(world, x, y):
+        if world[x][y] is ZOMBIE or world[x][y] is CAT:
             return
+        world[x][y] = ZOMBIE
 
-        # move all the disks on top of the n'th disk to the extra list
-        move(n - 1, source, extra, target)
+### Recursive zombie bites
 
-        # now the n'th disk is at the top (end) of the source list - take it off
-        # and move it to the target list
-        target.append(source.pop())
+Now, the hard part. What does the recursive call look like? How do we make sure that the zombies spread as far as they should?
 
-        # move all of the disks from the extra list back on top of the disk we
-        # just moved
-        move(n - 1, extra, target, source)
+We know that the code we already wrote takes care of checking if the being is a human, and biting it if so. All we need to do is *run the same code on the beings next to it*.
 
-Like the Tower of Hanoi, a surprising number of problems can be solved by breaking them down into smaller problems and solving those, which is often much easier than solving the problem all at once. See the next section for more examples of useful and popular recursive algorithms.
+What would happen if we did this?
 
-## 6. More examples
+    def flood_fill(world, x, y):
+        if world[x][y] is ZOMBIE or world[x][y] is CAT:
+            return
+        world[x][y] = ZOMBIE
+        flood_fill(world, x, y + 1)
 
-Wanna see more recursion? Here are some examples of useful or interesting recursive algorithms.
+Try to take some time to think this out before reading on. What would happen?
 
-* [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) (described in more detail).
-* [Quicksort](http://en.wikipedia.org/wiki/Quicksort) is one of the fastest sorting algorithms, and is used in almost every programming language. It works by separating the array into two parts, one with low values and one with high values, then recursively sorting each half. This is a good example of a "divide-and-conquer" solution to a standard problem (sorting).
-* [Euclid's algorithm](https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html) is a really efficient way to find the Greatest Common Divisor of two numbers. It's really useful in math!
+This would cause the zombie outbreak to spread vertically downwards (remember, +y is down) from the original zombie until we reached another existing zombie or a cat.
 
-In the next lesson, we'll introduce classes, a powerful concept for organizing your code and making large projects easy to manage. On to [lesson 11](../Lesson11)!
+This is because each time a human was turned into a zombie, a recursive call would be made, calling `flood_fill` on the human below, and repeating until we reached another zombie or a cat.
+
+> If you're not sure why this is, take some time to sketch it out and talk it over with a mentor until you get it - this part is really important to get before moving on.
+
+But the zombies need to be spreading in other directions too, not just down.
+
+### Multidirectional zombie bites
+
+What would happen if we changed the code to do this?
+
+    def flood_fill(world, x, y):
+        if world[x][y] is ZOMBIE or world[x][y] is CAT:
+            return
+        world[x][y] = ZOMBIE
+        flood_fill(world, x, y + 1)
+        flood_fill(world, x + 1, y)
+
+Again, talk it over with a mentor until you understand what's going on here. 
+
+### You try!
+
+Once you get that, go ahead and complete the rest of the missing code in exercises.py.
+
+> Don't worry about going out of bounds on the `world` 2-D array. We already wrote a check for you that makes `flood_fill` do nothing if (x, y) is out of bounds.
+
+Once you get that and check it with a mentor, congrats! You made it! We've just successfully coded a full zombie outbreak :)
+
+![](zombierabbits.gif)
+
+If you still don't feel like you understand recursion very well, it's fine - we'll have plenty of time to practice in [Lesson 11](../Lesson11).

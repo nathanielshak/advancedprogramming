@@ -1,139 +1,168 @@
-# Lesson 8: More advanced algorithms
+# Lesson 8: An Introduction to Sorting
 
 **To start this lesson, students should:**
 
-* Understand the basics of lists and dicts in Python.
+* Have a familiarity and basic understanding of Big O analysis.
+* Understand lists in Python.
 * Have a decent amount of experience analyzing and coding semi-complex algorithms.
 
 **By completing this lesson, students will:**
 
-* Gain more practice with using data structures.
-* Practice decomposing complex functions into smaller, simpler functions.
+* Get practice implementing complex algorithms to solve coding problems.
+* Be introduced to sorting algorithms and the variety of concerns that may come into play when choosing one.
+* Gain a greater understanding of Big O analysis and the nuances of where it might not explain everything relevant to a problem.
+* Be introduced the concept of space versus time complexity.
+* Get practice reading documentation.
 
-Learning to code is like learning to play an instrument - it's all about practice and repetition. This lesson contains a few more practice problems to reinforce what you've learned.
+## What is sorting?
 
-## 1. round_sum
+I'm sure you already know what sorting is. But how does the computer do it? Go ahead and take a look at this video:
 
-The first question is on CodingBat. Do to the question [here](http://codingbat.com/prob/p179960), then return here afterward for the other questions - they will all be in exercises.py.
+[![Watch the video](youtube.png)](https://www.youtube.com/watch?v=kPRA0W1kECg)
 
-## 2. Find last letters
+Okay, *what was that?* That was a bunch of different **sorting algorithms**.
 
-The next exercise is in exercises.py. Find this code in the file:
+### What are sorting algorithms?
 
-	# 2. Find last letters
-	
-	def find_last_letters(word):
-	  result = {}
-	  # TODO
-	  return ret
+Sorting is one of the most common problems in computer science. What is the best way to take an array, or list in our case, of unsorted numbers and rearrange them into sorted order? There are many different ways to do this; each different way we call a **sorting algorithm**.
 
-Write code that takes a word and returns a dictionary of the position of the last occurrence of each letter. 
+There are hundreds of different sorting algorithms in existence. Here we will introduce a couple of them, look at their advantages and disadvantages, and try to code some of them up.
 
-For example, given the word 'challenge', it would return the dictionary `{'c': 0, 'h': 1, 'a': 2, 'l': 4, 'e': 8, 'n': 6, 'g': 7}` (remember, the first letter is at position 0).
+Since there are a ton of explanations and research already out there around sorting algorithms, this lesson will involve a lot of us linking you to other pages that explain these. This lesson would be especially helpful to go through with a mentor if you're having trouble grasping any of the concepts. Some of these can be difficult to understand on the first read.
 
-## 3. Words by length
+## Selection Sort
 
-### Part 1:
+For an explanation of selection sort, go [here](https://www.tutorialspoint.com/data_structures_algorithms/selection_sort_algorithm.htm).
 
-Find this part of the code in part 3:
+To see a video demonstration of it, go [here](https://www.youtube.com/watch?v=92BfuxHn2XE).
 
-	def words_by_length(words):
-	  result = {}
-	  # TODO
-	  return result
+### Code it up!
 
-Write this function so that it takes a list of words and separates them into a dict that arranges them by length, mapping each length to a list of words that are that length.
+Now, we're going to try our hand at implementing this algorithm. We've provided some starter code in `exercises.py`. Open this up and find this function:
 
-For example, given the list `['cat', 'dog', 'bird', 'sheep', 'rat', 'horse', 'human', 'lion']`, your function should return:
+    # Sorts the nums array using selection sort.
+    def selection_sort(nums):
+        result = nums[:]
+        # TODO: write the code to sort the result array!
+        return result
 
-	{
-	  3: ['cat', 'dog', 'rat'],
-	  4: ['bird', 'lion'],
-	  5: ['sheep', 'horse', 'human'],
-	}
-	
-### Part 2:
+Here, we want to write a function that takes in an unsorted list of numbers, `nums`, and returns a sorted version of it using selection sort as the `result` list.
 
-Now, in this part of the code:
+Feel free to run that code to confirm that it works. We've written a quick test that will print out the results of your algorithm on a random array - if this comes out sorted, your code works! 
 
-	def word_appears(words_dict, word):
-	  # TODO
-	  return False
+Make sure to spend some time thinking out the algorithm and really understanding it before you write the code.
 
-Write another function that takes this dictionary as the parameter, `word_dict` and a word and returns True if the word appears anywhere in the dictionary.
+### Big O
 
-### Challenge:
+You already know what I'm going to ask next. **What's the Big O runtime of this?** Take some time and come up with your best answer. Once you think you have something, you can click [here](selectionbigo.md) to see if you were right. 
 
-What happens if a word appears more than once in the input list? 
+## Bucket Sort
 
-In this part of the code:
+Next, we're going to learn about a sorting algorithm you can actually combine with Selection Sort. However, in general, it will run much faster, especially with large input sizes.
 
-	def words_by_length_challenge(words):
-	  result = {}
-	  # TODO
-	  return result
+[Here](https://mathspace.co/learn/world-of-maths/coding-and-algorithms/sorting-algorithms-58142/sorting-algorithms-2104/) is a detailed description of bucket sort (you'll have to scroll down a bit until you hit bucket sort and potentially have to sign up). Feel free to check out some of the other sorting algorithms while you're there!
 
-Write a different version of your function so that each word appears only once in the dictionary that you return.
+> Where the page says: "Use the **insertion sort** algorithm to sort elements in bins that have multiple elements", you could actually use any sorting algorithm, including **selection sort**!
 
-## 4. Nested lists
+And [here](https://www.youtube.com/watch?v=VuXbEb5ywrU) is a video that demonstrates one example of how bucket sort could work.
 
-This is a two-part question.
+> When the video says "Now sort each bucket individually using **insertion sort**", once again, you could use any sorting algorithm, such as Selection Sort.
 
-### Part A: Splitting lists
+### Code it up!
 
-In this part of the code:
+Once you have a good understanding of how bucket sort works, let's code it up! Now, this one might be a bit tricky since there are several different steps. To help, we've already written some code to get you started:
 
-	def split_list(items, count):
-	  result = []
-	  # TODO
-	  return result
+    BUCKET_NUM = 10
+    
+    # Sorts the nums array using bucket sort with selection sort.
+    # The number of buckets is declared in BUCKET_NUM above.
+    def bucket_sort(nums):
+        # Initializes a list of lists - each of these lists is a bucket!
+        buckets = [[] for i in range(BUCKET_NUM)]
 
-Write a function that takes a list, `items`, and a number and breaks the list into a list of lists of the given size. 
+        # TODO: put the numbers each into their respective buckets
+        for num in nums:
+            pass
 
-The last sub-list can be shorter if there aren't enough items to fill it up. For example:
+        # TODO: sort each bucket using the selection_sort function you wrote earlier
+        for bucket in buckets:
+            pass
 
-	split_list([1, 3, 5, 7], 2) -> [[1, 3], [5, 7]]
-	split_list([1, 3, 5, 7, 9, 11, 13], 3) -> [[1, 3, 5], [7, 9, 11], [13]]
-	split_list([1, 3, 5, 7], 10) -> [[1, 3, 5, 7]]
-	split_list([], 3) -> []
+        # TODO: put all the sorted buckets together into the results list
+        result = []
+        for bucket in buckets:
+            pass
 
-(`split_list` always returns a list containing other lists, unless the input list is empty.)
+        return result
 
-### Challenge: 
+There are a lot of pieces to this. Before we get started, you should know we've put some constraints on our sorting algorithm. Importantly, **you will only be sorting numbers within the range of 0-99 using 10 buckets**.
 
-In this function:
+If you look at the first part of the code:
 
-	def split_list_challenge(items, count):
-	  result = []
-	  # TODO
-	  return result
+    buckets = [[] for i in range(BUCKET_NUM)]
 
-Try rewriting the function using slices instead. [This StackOverflow answer](https://stackoverflow.com/a/509295) explains what slices are and how to use them.
+Here, we already have set up the buckets for you. This is in the form of a list of 10 empty lists.
 
-**Note**: It's possible to write this function in a single line using a *list comprehension*, a shorthand for loops that generate lists. It's not part of this lesson, but if you're curious, you can read about list comprehensions [here](http://www.pythonforbeginners.com/basics/list-comprehensions-in-python).
+### Part 1: dividing numbers into buckets:
 
-### Part B: Finding items in nested lists
+Our first step of the algorithm, we will write here:
 
-In this function:
+    # TODO: put the numbers each into their respective buckets
+    for num in nums:
+        pass
 
-	def which_list(lists, item):
-	  # TODO
-	  return -1
+Here, we will write code that puts each of the numbers in the nums array into one of the lists in `buckets`.
 
-Write code that finds which sublist a given item is in. If the item is in multiple sublists, return the index of the first one that it appears in. If the item isn't in any of the lists, return -1. For example:
+Since we know that we have 10 buckets and the numbers go from 0-99, like the example on the [mathspace page](https://mathspace.co/learn/world-of-maths/coding-and-algorithms/sorting-algorithms-58142/sorting-algorithms-2104/), we know that we can partition the buckets as follows:
 
-	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 1) -> 0
-	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 5) -> 0
-	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 9) -> 1
-	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 11) -> 2
-	which_list([[1, 3, 5], [5, 7, 9], [9, 11]], 17) -> -1
+`buckets[0]` will have 0-9,
 
-> **Hint**: You can use `for item_index, item in enumerate(list)` to loop over list items along with their indexes, so `item_index` would equal the list index, and `item` would be the actual item at that index.
+`buckets[1]` will have 10-19,
 
-### Runtime
+`buckets[2]` will have 20-29,
 
-What's the Big O runtime of the function in part A? What about part B? Check with a mentor to see if you're right.
+and so on.
 
-Challenge: Can you make part B faster if you make part A return something else? (Don't worry if you can't figure out a way to do this - it's pretty difficult! Feel free to brainstorm ideas with mentors and people around you.)
+> Hint: the Python [append](https://docs.python.org/2/tutorial/datastructures.html) function might be helpful here.
+> Also, it might be helpful to know that dividing integers in Python always rounds down. For example, `9 / 10` will be 0 and `21 / 10` will be 2.
 
-We're all done here - on to [lesson 9](../Lesson9)!
+### Part 2: sorting the buckets using selection sort
+
+In the next part of the code:
+
+    # TODO: sort each bucket using the selection_sort function you wrote earlier
+    for bucket in buckets:
+        pass
+
+We want to go through each bucket in our `buckets` array and sort it using the `selection_sort` algorithm we wrote earlier.
+
+These should be in the same file, so you've already done most of the work! Just go through each bucket in the array and call the `selection_sort` function on it.
+
+### Part 3: putting together the sorted arrays
+
+In the last part of the code:
+
+    # TODO: put all the sorted buckets together into the results list
+    result = []
+    for bucket in buckets:
+        pass
+
+    return result
+
+We want to put together all the sorted arrays in `buckets` into our results array, then return it.
+
+> Hint: [this](https://stackoverflow.com/questions/8177079/python-take-the-content-of-a-list-and-append-it-to-another-list) StackOverflow post might be helpful if you want to figure out how to add lists together.
+
+Once you're done with that, go ahead and run the code. The tests we've written should print out a sorted array if your code works.
+
+If you want to experiment, you can try comparing how fast selection_sort and bucket_sort take on the same random list. If you increase the number of elements in the list to about 10,000, you might start to notice a difference.
+
+### Big O
+
+Now to see how much this change actually helped us... what's the Big O runtime?
+
+Staying consistent with this example, see if you can figure out what the Big O runtime would be if we used **selection sort** on each bucket.
+
+Once you think you have a good guess, click [here](bucketbigo.md) to see if you were right, then we're done!
+
+On to [lesson 9](../Lesson9)!

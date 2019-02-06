@@ -1,310 +1,317 @@
-# Lesson 12: Exceptions
+# Lesson 12: Object-oriented programming
 
 **To start this lesson, students should**:
 
-* Understand common control flow patterns like if/else blocks, while loops, and for loops.
-* Have some experience writing and using classes.
+* Understand basic Python data structures (lists, dicts).
+* Understand how functions are defined and called, and when to use them.
 
 **By completing this lesson, students will**:
 
-* Learn what exceptions are.
-* Learn when to use exceptions, and how to structure code around them.
+* Learn what classes are and when to use them.
+* Know the difference between classes and objects.
+* Be introduced to inheritance and abstract classes.
+* Practice implementing classes.
 
-## Dealing with errors
+## Thinking abstractly
 
-Imagine you were dealing with this code:
+Until now, we've been mainly organizing our code using *functions*. When we wanted to use the same code in multiple places, we would put it in a function, and just call the function in multiple places. What if we wanted to store data along with that code?
 
-    def some_calculation(x, y, z):
-        print('doing some calculations...')
-        ret = (x + y) / z
-        print('done with some calculations!')
-        return ret
+One useful example of this is the `maze` variable that we used in lesson 10. (You might want to go back and look at [lesson 10](../Lesson10) if you don't remember this.) The `maze` variable contained all of the data and code that you needed to deal with a two-dimensional grid. When you wrote your maze-solving algorithm, you didn't have to think about how all the data for the maze was stored, or deal with the data directly - all you had to do was tell the maze variable what you wanted it to do, and it took care of the rest.
 
-    def do_something(x, y, z):
-        print('doing something...')
-        ret = some_calculation(z, y, x)
-        print('done with something!')
-        return ret
+This is a really powerful concept: **abstraction**. When working on large projects, it's always a good idea to break them down into small, manageable parts, and try to make each part know *as little about the other parts as possible*. Ideally, each part of the code should only care about *what the other parts of the code do*, but not *specifically how they do it*. If you design your project like this, then you can easily switch out parts of the code that you want to change, and if you don't touch the rest, it will all still work!
 
-    def another_function(x, y):
-        print('running another function...')
-        ret = do_something(x, y, y)
-        print('done runnning another function!')
-        return ret
+## Enter the Class
 
-We already know that we can't divide by zero - there's no reasonable value that could come out of that division, so the program will crash. So we have to avoid calling `some_calculation` when `z` is zero. But we might call these functions in lots of different places - how can we make sure we avoid crashing?
+To allow us to organize code like this, we'll learn a new concept: **classes** and **instance objects** (commonly just called objects). An object is a collection of data (variables), along with functions (methods) that do things with those variables. A class is essentially a **blueprint for creating instance objects** - it defines which variables and methods exist on each object, *but not the values of the variables*. When you define a class, you're telling Python how to create objects of that type. When you **instantiate** it, you actually create an object of that type, and Python uses the class definition to fill it in.
 
-One way could be to always check if `z` is zero before calling `some_calculation`. But we'd have to repeat the same code in a lot of places, since we would have to manually check if `z` was zero every time we called `some_calculation`! In addition, we have to check `x` when we call `do_something` or `another_function`, and our code will get ugly really quickly since we're checking for zeroes all over the place.
+This can be pretty confusing at first. Let's build up a simple class and talk about each part of it as we go.
 
-In some languages, like C, this is what you're supposed to do. But Python provides a better way to handle potential errors: using **exceptions**.
+The simplest possible class has *nothing in it*. It looks like this:
 
-## Exceptions
+    class Car(object):
+        pass
 
-You're already familiar with if/else blocks, while loops, and for loops, and how each of them makes the program run in a different way. **Exceptions** are another way to change how the program runs: they allow you to *interrupt* the program when an error occurs, and *handle* it somewhere else.
+This class is called Car, and it *inherits* from `object`. We'll talk about inheritance later. For now, most classes should inherit from `object`, which is a built-in class in Python.
 
-In this example, the basic idea is that you *don't check if `z` is zero*, you just *assume it's not and proceed anyway*. If `z` is zero, then `some_calculation` raises an **exception**, and the rest of the code doesn't run.
+So what is this thing, then? Just defining the Car class doesn't actually create any variables - instead, it tells Python *how to create Car objects in general*. Now, in addition to numbers, strings, lists, dicts, and the like, we can also use Cars as values for variables! To make a Car, we call the Car class as if it were a function:
 
-When an exception is raised, Python will *skip the rest of the code* until an appropriate `except` block is found. Maybe this is best illustrated by example... we can write code like this:
+    c = Car()  # this creates a new Car object
+    print(c)  # this prints something like '<Car object at 0x10a1b0a50>'
 
-    try:
-        print('about to divide y by z...')
-        ret = y / z
-        print('y / z is', ret)
-    except ZeroDivisionError:
-        print('could not divide because z was zero')
-    print('all done!')
+    d = Car()  # this is a different Car object
+    print(d)  # this prints something like '<Car object at 0x10a1b0b10>'
 
-What exactly are we saying here? Let's break it down.
+    print(type(c) == type(d))  # this prints True: c and d are both Cars
+    print(c == d)  # this prints False: c and d are different objects
 
-We put code that we think might raise an exception in the `try` block. In this case, the `y / z` line is the important part.
+Great! Now what?
 
-The second part, `except ZeroDivisionError`, specifies a *type of exception* that we think might happen during the `try` block. If that exception does happen at any point during the `try` block, then Python stops running the code in the `try` block, and it starts running the code in the `except` block immediately. If Python reaches the end of the `try` block and there were no exceptions, then it *skips the `except` block* and continues running the code after it.
+## Adding variables
 
-If you run the code above when `z` is not zero, then the code in the `except` block will never run. The example code will print something like this:
+To make Car objects actually useful, we have to give them some variables and functions. We can do that like this:
 
-    about to divide x by y...
-    x / y is 3
-    all done!
+    class Car(object):
 
-But if you run it when `z` is zero, then the `y / z` line will raise an exception, so the `try` block will stop running at that point and the `except` block will run instead. The example code will print this:
+        def __init__(self, wheels, miles, make, model, year, date_sold):
+            self.wheels = wheels
+            self.miles = miles
+            self.make = make
+            self.model = model
+            self.year = year
+            self.date_sold = date_sold
 
-    about to divide x by y...
-    could not divide because y was zero
-    all done!
+        def sale_price(self):
+            # Returns how much we should sell the car for.
+            return 5000.0 * self.wheels
 
-We skipped the second print statement in the `try` block, because the line right before it raised a ZeroDivisionError exception, and went right away to the `except` block.
+        def purchase_price(self):
+            # Returns how much we would buy the car back for.
+            return 8000 - (0.10 * self.miles)
 
-### 1. Safe divide
+This code tells Python how to make a Car, but it doesn't actually create any Cars just yet. Like before, we can create Cars by calling the class as if it were a function, but now we have to pass some parameters:
 
-In exercises.py, write the function `safe_divide` so that it returns the value of `x / y` if `y` isn't zero, and returns zero if `y` is zero.
+    c = Car(4, 20000, None)  # 4 wheels, 20000 miles, not sold (date_sold is None)
+    print(c.sale_price())  # prints 20000
+    print(c.purchase_price())  # prints 6000
 
-You could do this by just checking if `y` is zero before dividing, but for this exercise, use a `try` block instead.
+    d = Car(6, 10000, None)  # 6 wheels, 10000 miles, not sold (date_sold is None)
+    print(d.sale_price())  # prints 30000
+    print(d.purchase_price())  # prints 7000
 
-### 2. Dictionary get
+To understand what's happening here, let's break down the Car class definition a bit. We defined a few functions, called `__init__`, `sale_price`, and `purchase_price`, *inside* the class.
 
-In exercises.py, write the function `dict_get` so that it returns the value for the given key, or `None` if the key doesn't exist in the dictionary.
+Notice that all of these functions take `self` as the first parameter - when you call them, that's the *object* itself. When you call these functions, you don't need to provide `self` - Python will do that for you! This is why we could call `sale_price` and `purchase_price` without giving any parameters at all.
 
-## Raising exceptions
+> When we defined `sale_price`, for example, we told Python *instructions for how to compute the sale price for some abstract car*. When we called `c.sale_price()`, we told Python to *follow those instructions using the car `c`*.
 
-So far, we've seen that exceptions can come from parts of the code where unexpected things can happen, like dividing by zero. But you can also raise exceptions yourself - for this, use the `raise` statement.
+`__init__` is special - this is the function that Python calls automatically when you create a new Car object. So when we did `c = Car(4, 20000, None)`, Python created an empty Car object and called `__init__(c, 4, 20000, None)`. `__init__` is responsible for creating all of the variables within the class, which we call *attributes*. (Notice that all our `__init__` function does is assign the values from its parameters to attributes on `self`.) Then when we call other functions on the object `c`, like `c.sale_price()` and `c.purchase_price()`, they can access those same attributes.
 
-It's pretty easy to use:
+> Note: You can access these attributes from outside the class definition too. For example, we can do something like `c = Car(...)`, then later we can use `c.wheels`. We don't have to only use the attributes inside functions defined inside the class.
 
-    raise ZeroDivisionError()  # this line always raises an exception
+> Note: We call variables *"attributes"* when they're inside a class, and we call functions *"methods"* when they're inside a class. From now on, when we say "function" or "variable", we're talking about functions and variables *outside of classes*.
 
-So far we've used ZeroDivisionError as an example, but there are lots of different types of exceptions. Here are some of the more common types:
+## Practice time!
 
-* `KeyError`: happens when you try to get a key from a dictionary that doesn't exist.
-* `IndexError`: happens when you try to access a list item that doesn't exist.
-* `ValueError`: happens when you give an invalid value, like trying to convert a string like `'hi'` to a number.
-* `AttributeError`: happens when you try to get an attribute from an object, but the attribute doesn't exist.
-* `NameError` or `UnboundLocalError`: happens when you try to use a variable before giving it a value.
+### 1. Writing a class
 
-Python has many more built-in exception types. You can read about them all [here](https://docs.python.org/2/library/exceptions.html).
+Find this class at the top of exercises.py:
 
-> Note: You can even define your own types of exceptions! All you have to do is define a subclass of Python's built-in `Exception` class, and then you can use your own class as an exception.
+    class Square(object):
+        # TODO: write an __init__ method that sets the side_length attribute.
+        pass
 
-### 3. Strict factorial
+In this class, write an `__init__` method that sets the side_length attribute.
 
-You remember the factorial function from lesson 8, right? It went something like this:
+> Hint: don't forget that `__init__` should take both `self` and `side_length` as parameters.
 
-    def factorial(n):
-        if n == 0:
-            return 1
-        return n * factorial(n - 1)
+### 2. Writing an instance method
 
-This function works fine for positive numbers and zero. But what if `n` is negative? It doesn't make sense to compute the factorial of a negative number, so let's make our factorial function raise an exception if someone tries to use it to compute a negative factorial.
+Find this class at the top of exercises.py:
 
-In exercises.py, write a version of `factorial` that raises ValueError if `n` is negative.
+    class Rectangle(object):
+        def __init__(self, width, height):
+            self.width = width
+            self.height = height
 
-## Exception objects
+        def render(self):
+            # TODO: write this method!
+            print("not yet implemented")
 
-Notice how in the `raise` statement, we used parenthesis?
+This class represents an abstract rectangle with some width and height. We provided `__init__` for you. Fill in the method `render` so that it prints a rectangle of '@' characters to the terminal with the width and height from `self`.
 
-    raise ZeroDivisionError()
+### Doing more with instance methods
 
-This looks just like creating a new object of a class - that's because that's exactly what it is! We're actually creating an *object* of the class ZeroDivisionError, and *raising* that object. You could even do it like this:
+`__init__` can do more than just assign attributes. Consider this class:
 
-    z = ZeroDivisionError()
-    raise z
+    class CountUp(object):
+        def __init__(self):
+            self.count = 0
 
-You can pass arguments to most types of exceptions:
+        def count(self):
+            self.count = self.count + 3
+            print(self.count)
 
-    raise KeyError('this key does not exist')
-    raise ValueError(14)
-    raise Exception('you can put as many parameters as you want here', 42, 56.3, None, True)
+Now that you've read the class definition, what do you think this code will print?
 
-If you want to get the actual exception object that was raised, you can catch it using the `as` keyword:
+    c = CountUp()
+    c.count()
+    c.count()
+    c.count()
 
-    try:
-        raise KeyError('lolz', 42)
+If you guessed that it would print 3, 6, and 9, you're right! Remember that **only `__init__` should create new attributes**, but **any method can change their values**.
 
-    except KeyError as e:
-        # now e is the exception object itself. the arguments that were passed
-        # to it are in e.args.
-        print(e.args[0])  # prints 'lolz'
-        print(e.args[1])  # prints '42'
+### 3. Writing an entire class
 
-<!-- %%
-TODO: write an exercise here
--->
+Now, let's put together all that we've learned about classes so far. Find this class in exercises.py:
 
-## Catching more exceptions
+    class CookieJar(object):
+        def __init__(self, num_cookies):
+            # TODO: write this method to make it set the num_cookies attribute
+            pass
 
-Now that you know about some more types of exceptions, you can also catch multiple types of exceptions at once. Imagine that instead of dividing by `z` in our example above, we're instead dividing by a value from a dictionary, `d[k]`. If `d[k]` is zero, we can still get ZeroDivisionError, like before. But if `d[k]` doesn't exist, then we could also get KeyError. Here's how we can deal with that:
+        def take_cookie(self):
+            # TODO: write this method to make it decrease the number of cookies in
+            # the jar by one. if there are no cookies in the jar, it should do
+            # nothing.
+            pass
 
-    try:
-        print('about to divide y by d[k]...')
-        ret = y / d[k]
-        print('y / d[k] is', ret)
-    except ZeroDivisionError:
-        print('could not divide because d[k] was zero')
-    except KeyError:
-        print('could not divide because d[k] did not exist')
-    print('all done!')
+        def add_cookie(self):
+            # TODO: write this method to make it increase the number of cookies in
+            # the jar by one.
+            pass
 
-The order of the `except` blocks doesn't matter in this case. If there's no exception, then none of them will ever be run, but if there is an exception, **only one** of them will ever be run - the one corresponding to the type of exception that happened. (If the `except ZeroDivisionError` block runs, then it will skip the `except KeyError` block when it's done.)
+Write all three functions to make the class keep track of the number of cookies in the jar.
 
-<!-- %%
-TODO: write an exercise here
--->
+## Inheritance
 
-## Exceptions and functions
+Let's say that in addition to cars, we also want to buy and sell trucks, but we don't want to buy them for the same price as cars. We could define another class to deal with trucks:
 
-You may be wondering: what happens if my code raises an exception, but doesn't catch it with an `except` block? What part of the program do we skip to?
+    class Truck(object):
 
-The answer is that we *unwind the call stack*. This means that whatever function we're in "returns" immediately, and then we look for an `except` block in the function that called it.
+        def __init__(self, wheels, miles, make, model, year, date_sold):
+            self.wheels = wheels
+            self.miles = miles
+            self.make = make
+            self.model = model
+            self.year = year
+            self.date_sold = date_sold
 
-We could rearrange the previous example like this:
+        def sale_price(self):
+            # Returns how much we should sell the truck for.
+            return 5000.0 * self.wheels
 
-    def divide(a, b):
-        print('about to divide a by b...')
-        ret = a / b
-        print('a / b is', ret)
-        return ret
+        def purchase_price(self):
+            # Returns how much we would buy the truck back for.
+            return 10000 - (0.10 * self.miles)
 
-    try:
-        ret = divide(y, d[k])
-    except ZeroDivisionError:
-        print('could not divide because d[k] was zero')
-    except KeyError:
-        print('could not divide because d[k] did not exist')
-    print('all done!')
+Notice that this class looks *almost exactly the same* as the Car class - the only thing that's different is a number in `purchase_price`! What if we wanted to start tracking the color of the cars and trucks? If we used this in a big project, it would get pretty annoying to have to change both classes whenever we wanted to add some information to our database. And we'd be more likely to make a mistake by forgetting to update one of the classes. What if we started selling go-karts as well? Then we'd have a third class to keep up to date along with Car and Truck! When will the madness end?!
 
-In this example, ZeroDivisionError can happen when we're inside the `divide` function. Since it's not inside a `try` block at all in that function, the exception **propagates** to the caller - it's as if the exception was raised by the `divide(y, d[k])` line instead. Exceptions can propagate through any number of functions.
+When working on a big project, we try to **repeat ourselves as little as possible**. When we were using only functions, this means we would find places where we wrote the same code multiple times and move those out into separate functions. Now we can use **inheritance** to avoid repeating the same code in classes.
 
-In fact, all of the following functions can raise ZeroDivisionError:
+Put simply, inheritance means that one class can *implicitly* have all the same methods and attributes as another class.
 
-    # this function raises ZeroDivisionError if y is zero
-    def f1(x, y):
-        return x / y
+Let's look at a concrete example to better understand this. We could say that Cars and Trucks are both Vehicles, so we would actually define three classes:
 
-    # this function also raises ZeroDivisionError if y is zero
-    def f2(x, y):
-        if y == 0:
-            raise ZeroDivisionError()
-        return x / y
+    class Vehicle(object):
 
-    # this function always raises ZeroDivisionError
-    def f3(x, y):
-        raise ZeroDivisionError()
+        def __init__(self, wheels, miles, make, model, year, date_sold):
+            self.wheels = wheels
+            self.miles = miles
+            self.make = make
+            self.model = model
+            self.year = year
+            self.date_sold = date_sold
 
-    # this function raises ZeroDivisionError if y is zero (since there is no
-    # except block to catch it), but returns 0 if d[k] doesn't exist (since the
-    # KeyError is caught by the except block)
-    def f4(x, d, k):
-        try:
-            return x / d[k]
-        except KeyError:
-            return 0
+        def sale_price(self):
+            # Returns how much we should sell the truck for.
+            return 5000.0 * self.wheels
 
-<!-- %%
-TODO: write an exercise here
--->
+        def purchase_price(self):
+            # Returns how much we would buy the truck back for.
+            return 8000 - (0.10 * self.miles)
 
-## Exceptions and inheritance
+    class Car(Vehicle):  # NOTE: we use (Vehicle) here, not (object)
+        pass
 
-When you catch a specific type of exception, you're actually catching that exception type *and all subclasses of that exception type*. This might be a little confusing at first, so here's another example:
+    class Truck(Vehicle):  # NOTE: we use (Vehicle) here, not (object)
+        def purchase_price(self):
+            # Returns how much we would buy the truck back for.
+            return 10000 - (0.10 * self.miles)
 
-    try:
-        print('about to divide y by d[k]...')
-        ret = y / d[k]
-        print('y / d[k] is', ret)
-    except Exception:
-        print('could not divide')
-    print('all done!')
+When we use `(Vehicle)` in the class definition instead of `(object)`, that tells Python that the class we're creating should have *all the same methods as the parent class*, which is the one in parenthesis. We say that Car and Truck are **subclasses** of Vehicle, which is their **parent class** (also called the **superclass** or **base class**).
 
-When we run this code, we would see `could not divide` in the output in both error cases (where `d[k]` is zero, and where `d[k]` doesn't exist). This is because ZeroDivisionError and KeyError are both subclasses of Exception, so the `except` block catches both of them. See [the Python documentation](https://docs.python.org/2/library/exceptions.html#exception-hierarchy) for a full description of which exceptions inherit from which others.
+In this case, even though we didn't define anything at all in the Car class, it *inherits* the functions `__init__`, `sale_price`, and `purchase_price` from the Vehicle class. It's as if we defined those functions again in Car, with exactly the same code as in Vehicle, but we didn't have to write them again. Nice!
 
-<!-- %%
-TODO: write an exercise here
--->
+The Truck class also inherits from Vehicle, but we defined `purchase_price` in Truck also. When you create a Truck object and call `purchase_price()` on it, which function does it call? The one defined in Truck or the one defined in Vehicle?
 
-## Finally
+The answer is that it *always calls the one defined latest*. So when you call `purchase_price` on a Car object, it will do the same thing as `purchase_price` on a Vehicle object. But if you call `purchase_price` on a Truck object, it will do something different, since the method definition in the Truck class **overrides** the method definition in the Vehicle class.
 
-By now, you've seen a lot of examples of `try` and `except` blocks. There are actually two more blocks that you should know about: `else` and `finally`. `else` isn't useful very often (we'll describe it at the end, but won't do any exercises for it). But you should probably know about `finally`.
+If we define another class that inherits from Truck, like MonsterTruck, and call `purchase_price` on a MonsterTruck object, it would do the same thing as it would for a Truck object, unless we defined *another* `purchase_price` function in the MonsterTruck class.
 
-Put simply, if Python reaches the `try` block at all, then the code in a `finally` block will **always** run. And it runs after everything else in the other blocks (`try`, `except`, and `else`). Specifically:
+Note that we didn't override `sale_price` in any of the subclasses. So if we call `sale_price` on a Car object, then on a Truck object, then on a MonsterTruck object, it will use the same function all three times.
 
-* If an exception happens in the `try` block and is caught in an `except` block, the `finally` block runs after the `except` block.
-* If an exception happens in the `try` block and is not caught, the `finally` block runs *before* the exception propagates.
-* If no exception happens in the `try` block, the `finally` block runs immediately after the `try` block is done.
-* If the function returns during the `try` block, the `finally` block runs immediately before the function returns.
+We say that Vehicle is an **abstract class** because it doesn't represent anything real - we're not supposed to use the class directly. Instead, we created subclasses of Vehicle, which we intend to use directly.
 
-So when should you use a `finally` block? Usually, you would use a `finally` block when you need to *clean something up* regardless of whether an error occurred or not. For example, we might open a file and do something with it, but we need to make sure to close it when we're done even if there's an exception. We could do that like this:
+## Review
 
-    file = open(...)
-    try:
-        # do something with the file here
-        ...
-    finally:
-        file.close()
+This was a lot of new stuff! Here's a quick summary of all the new terms we just learned:
 
-<!-- %%
-TODO: write an exercise here
--->
+* **abstraction**: Separating out the logical parts of a program into separate units, so that each one *knows what other parts do* but *doesn't care how they do it*.
+* **instance object** (or just **object**): A logical collection of variables (*attributes*) and functions (*methods*) that operate on those variables.
+* **class definition** (or just **class**): A blueprint for creating *objects*. This blueprint defines which *methods* and *attributes* exist on each object of this type, but doesn't define the values for the attributes.
+* **instantiate**: To create an *object* using a *class definition*.
+* **attribute**: A variable stored inside an *instance object*.
+* **method**: A function defined inside a *class definition*.
+* **`__init__`**: A special function that's called when an *object* is first created.
+* **inheritance**: A method for classes to share *methods* without defining them multiple times.
+* **subclass**: A class that *inherits* its method definitions from its *parent class*. All of the methods that are defined in the parent class are automatically part of the subclass as well.
+* **parent class** (or **superclass**, or **base class**): A class that has *subclasses*.
+* **override**: A method definition in a *class* with the same name as a method inherited from the parent class. The parent class' method doesn't exist in the subclass; instead, the override method takes its place.
+* **abstract class**: A class that we only intend to *inherit* from, but never to *instantiate*. Usually we'll use abstract classes to define functions that all subclasses would need to inherit.
 
-## Else
+### 4. Putting it all together
 
-We mentioned the `else` block above, but we said it's not useful very often. But for completeness, we'll describe how it works.
+Find this code in exercises.py:
 
-If there's an `else` block after a `try` block, it only runs if *no exception happened* during the `try` block, but it's *not covered by the `except` blocks*. Maybe it's easier to understand in code:
+    class Shape(object):
+        def area(self):
+            # This method should be overridden by all subclasses.
+            return -1
 
-    try:
-        # if a KeyError happens in here, we run the except block and NOT the
-        # else block. if any other exception happens in here, we don't run the
-        # except block or the else block - the exception propagates. but if no
-        # exception happens in here, then we run the else block after the try
-        # block is done.
-        ...
-    except KeyError:
-        ...
-    else:
-        # if any exception (including KeyError) happens in here, it propagates.
-        # it does NOT run the except block above.
-        ...
+        def print_area(self):
+            # TODO: write this function
+            pass
 
-So what's the point of `else`? What's the difference between this:
+    class Triangle(Shape):
+        def __init__(self, base, height):
+            self.base = base
+            self.height = height
 
-    try:
-        # do something risky
-    except KeyError:
-        # handle the KeyError
-    # do something else
+        def area(self):
+            # TODO: write this function
+            return -1
 
-and this:
+    class Circle(Shape):
+        def __init__(self, radius):
+            self.radius = radius
 
-    try:
-        # do something risky
-    except KeyError:
-        # handle the KeyError
-    else:
-        # do something else
+        def area(self):
+            # TODO: write this function
+            return -1
 
-In the first case, the `# do something else` part runs if there was a KeyError, and also runs if there was no exception. In the second case, the `# do something else` part only runs if there was no exception - it doesn't run if there was a KeyError.
+    class Rectangle(Shape):
+        def __init__(self, width, height):
+            self.width = width
+            self.height = height
+
+        def area(self):
+            # TODO: write this function
+            return -1
+
+    class Square(Rectangle):
+        def __init__(self, side_length):
+            # TODO: write this function
+            pass
+
+Here we define five classes at once! Shape is an abstract class that all the others inherit from. Triangle, Circle, and Rectangle inherit directly from Shape. Square inherits from Rectangle, since a square is just a rectangle whose width is equal to its height.
+
+Your tasks:
+* Fill in the `print_area` function in the base class (Shape).
+* Fill in the `area` function in the Triangle, Circle, and Rectangle classes.
+* Fill in the `__init__` function in the Square class. (Hint: it should set the `width` and `height` attributes.)
+* Test your code by creating objects and calling methods on them.
+
+> Hint: Remember that you can create an object by calling a class as if it were a function (like `r = Rectangle(10, 20)`). Then you can call methods on it like `r.area()`.
+
+Area formulas:
+* For a rectangle with width `w` and height `h`, the area is `w * h`.
+* For a triangle with base `b` and height `h`, the area is `b * h / 2.0`.
+* For a circle with radius `r`, the area is `math.PI * r * r`.
 
 ## More reading
 
-If you want to learn more about exceptions and error handling, take a look at these pages:
-* [Official Python documentation about exceptions](https://docs.python.org/2/tutorial/errors.html)
-* [Programiz tutorial on Python exceptions](https://www.programiz.com/python-programming/exception-handling)
+If you want to learn more about classes, objects and inheritance, take a look at these tutorials:
+* [Jeff Knupp's explanation of Python objects](https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/)
+* [Object Oriented Programming from A Byte of Python](https://python.swaroopch.com/oop.html)
+
+That's all for now - what a workout! On to [lesson 13](../Lesson13)!
