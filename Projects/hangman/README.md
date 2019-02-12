@@ -420,7 +420,7 @@ Lets now attempt to do this for the full word.
 We want to make sure the game goes on until the player has won the game or is out of guesses.
 For each letter, based on whether the guess is correct or not, we have different actions.
 Since we want to do the same action for each letter, we will be using a `loop`, specifically a `while loop`.
-(If you don't remember what a `while loop` is, do a quick recap here)
+(If you don't remember what a `while loop` is, do a quick recap [here](https://www.w3schools.com/python/python_while_loops.asp))
 
 If we were to write in simple english what we wanted our code to do it would be : 
 
@@ -451,23 +451,27 @@ Try to implement this yourself - for some inspiration, you can always see and tr
 ### Milestone 5 : Getting your hangman to work for any word!
 
 Our algorithm should currently be quite easy to use for any word - 
-all we have to make a code change. However, what we could do is make it even more fun
-and allow someone to type in a secret word at the start of the game, and have other people 
+all we have to make a code change to change `secret word` and `dashes`. 
+However, what we could do is make it even more fun and allow someone to 
+type in a secret word at the start of the game, and have other people 
 guess the word.
 
-We can re-use a lot of concepts from the previous milestones, specifically `raw_input()`.
+We can re-use a lot of concepts from the previous milestones, 
+specifically `raw_input()`.
 
 Give it a shot before looking at [hangman5](hangman5.py)
 
 
 ### Milestone 6 : Celebrate!
 
-You now have a fully functional hangman game that you can run in your terminal, Congratulations!
+You now have a fully functional hangman game that you can run in your terminal, 
+Congratulations!
 
 As a future exercise, you can think about how to add some cool features like:
 
 * Have hangman not be sensitive about the case of the letter.
-* Have the hangman game in place (not have a series of hangmen print out in the terminal, but instead the same one look like its updating)
+* Have the hangman game in place (not have a series of hangmen print out in 
+the terminal, but instead the same one look like its updating)
 * Have many more parts in the hangman
 * Have hangman work for phrases in addition to words.
 * Have timeouts for guesses.
