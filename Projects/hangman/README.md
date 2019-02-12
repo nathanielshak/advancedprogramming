@@ -119,11 +119,6 @@ First, go to your `hangman.py` file. Lets change the function to print our hangm
 
 Run the file and see what happens!
 
-<<<<<<< HEAD:Projects/hangman/README.md
-=======
-Mini Celebration!! :tada: 
-
->>>>>>> 66c65276d6d04cbf900f6e0a86d9c510daf2be29:Projects/README.md
 Now that you can print one hangman to the terminal, let's build the different stages of the hangman we will use throughout the game!
 
     def start_hangman():
