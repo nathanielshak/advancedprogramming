@@ -471,10 +471,10 @@ As a future exercise, you can think about how to add some cool features like:
 
 * Have hangman not be sensitive about the case of the letter.
 * Have the hangman game in place (not have a series of hangmen print out in 
-the terminal, but instead the same one look like its updating)
-* Have many more parts in the hangman
+the terminal, but instead the same one look like its updating).
+* Have many more parts in the hangman.
 * Have hangman work for phrases in addition to words.
 * Have timeouts for guesses.
-* Have a competitive version(multiplayer)
+* Have a competitive version(multiplayer).
 
 ..... and many more!
