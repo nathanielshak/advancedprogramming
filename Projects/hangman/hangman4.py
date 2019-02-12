@@ -83,6 +83,8 @@ def start_hangman():
         |_________|
         """
 
+    # The number of guesses our players get depends on the
+    # number of total hangmen you design, hence I call this list guesses
     guesses = [man1, man2, man3, man4, man5, man6, man7]
 
     secret_word = "MINI"
@@ -109,10 +111,13 @@ def start_hangman():
                 if secret_word[position] == guessed_letter:
                     dashes[position] = guessed_letter
             print("Good Job!")
+            # Printing a blank line to make our terminal look more organized
             print
 
             # Check if game has been won
             if "_" not in dashes:
+                # The moment you set this to True, you won't re-enter the while loop
+                # indicating your game is over
                 game_over = True
                 print("------------------------------")
                 print("Congratulations! You have won!")
@@ -126,13 +131,11 @@ def start_hangman():
 
             # If the player is out of guesses, he has lost
             else:
+                # The moment you set this to True, you won't re-enter the while loop
+                # indicating your game is over
                 game_over = True
                 print("Sorry! You lost!")
                 print
-
-        if game_over:
-            # Ends the while loop since game is over
-            break
 
 
 start_hangman()

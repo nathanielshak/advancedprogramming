@@ -478,3 +478,16 @@ the terminal, but instead the same one look like its updating).
 * Have a competitive version(multiplayer).
 
 ..... and many more!
+
+### Takeaways
+
+* **Many ways to achieve the same result**: Before you look into the code for each milstone, 
+attempt to do it yourself first. You may achieve the same output in a completely different
+way - and that is completely acceptable. 
+
+* **You learn by doing**: This is not meant to be a theory lesson, please keep trying
+everything in code to see if you understand it. In fact something I greatly recommend
+is deleting chunks of code from the hangman files I have provided and see what happens.
+
+* **Coding is fun**: At the end of the day, coding is about building cool things. Find 
+something you think you like and simply build :)

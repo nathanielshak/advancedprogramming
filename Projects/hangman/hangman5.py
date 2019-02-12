@@ -1,3 +1,5 @@
+import os
+
 def start_hangman():
     print("Let's Start playing Hangman!")
 
@@ -88,7 +90,6 @@ def start_hangman():
     print("Welcome to Hangman!")
     print
 
-
     # Customizing our input
     print("Please enter the secret word")
     secret_word = raw_input()
@@ -96,6 +97,8 @@ def start_hangman():
     dashes = ["_" for _ in secret_word]
 
     print("Thank you! - Lets start the game")
+    # Try to figure out what this does! :)
+    os.system('clear')
 
     print(guesses.pop(0))
     game_over = False
@@ -126,11 +129,9 @@ def start_hangman():
 
             else:
                 game_over = True
+                print("----------------")
                 print("Sorry! You lost!")
+                print("----------------")
                 print
-
-        if game_over:
-            break
-
 
 start_hangman()
